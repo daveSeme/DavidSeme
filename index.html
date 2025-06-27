@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Seme | Software Engineer | Data Analyst | Academic Writer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6e00ff;
+            --secondary: #ff00aa;
+            --dark: #0a0a1a;
+            --light: #f0f0ff;
+            --neon: #00f7ff;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(110, 0, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 0, 170, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .navbar {
+            background-color: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(110, 0, 255, 0.3);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 5s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .nav-link {
+            color: var(--light);
+            position: relative;
+            margin: 0 10px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s ease infinite;
+            background-size: 300% 300%;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: var(--neon);
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transition: all 0.4s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            left: 0;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110, 0, 255, 0.3);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .card {
+            background: rgba(20, 20, 40, 0.7);
+            border: 1px solid rgba(110, 0, 255, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(110, 0, 255, 0.2);
+            border-color: rgba(255, 0, 170, 0.4);
+        }
+        
+        .card-header {
+            background: rgba(110, 0, 255, 0.1);
+            border-bottom: 1px solid rgba(110, 0, 255, 0.3);
+        }
+        
+        .skill-badge {
+            background: rgba(110, 0, 255, 0.2);
+            color: var(--neon);
+            border: 1px solid var(--primary);
+            margin: 5px;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(255, 0, 170, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* Enhanced Project Cards */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            border: none;
+        }
+        
+        .project-img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+        
+       .project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-img-container:hover .project-overlay,
+.card:hover .project-overlay {
+  opacity: 1;
+}
+
+.skill-badge {
+  background-color: #17a2b8;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+        
+        .project-content {
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-content {
+            transform: translateY(0);
+        }
+        
+        .project-badges {
+            margin-bottom: 10px;
+        }
+        
+        /* Experience Timeline Alternative */
+        .exp-card {
+            border-left: 3px solid var(--primary);
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 15px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(110, 0, 255, 0.2);
+        }
+        
+        .exp-date {
+            background: rgba(110, 0, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(20, 20, 40, 0.7);
+            border: 1px solid rgba(110, 0, 255, 0.3);
+            color: var(--light);
+            border-radius: 10px;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background: rgba(30, 30, 60, 0.7);
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(255, 0, 170, 0.2);
+            color: var(--light);
+        }
+        
+        footer {
+            background: rgba(10, 10, 26, 0.9);
+            border-top: 1px solid rgba(110, 0, 255, 0.3);
+            padding: 30px 0;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(110, 0, 255, 0.2);
+            color: var(--light);
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+            border: 1px solid rgba(110, 0, 255, 0.3);
+        }
+        
+        .social-icon:hover {
+            background: rgba(255, 0, 170, 0.2);
+            color: var(--neon);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(110, 0, 255, 0.3);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 10%;
+            left: 5%;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
+            top: 60%;
+            left: 70%;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--neon);
+            top: 30%;
+            left: 80%;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0, 247, 255, 0.3);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: screen;
+        }
+        
+        .download-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn::after {
+            content: '\f019';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover::after {
+            right: 15px;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 30px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        .humor-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 0, 170, 0.2);
+            border: 1px solid var(--secondary);
+            border-radius: 20px;
+            padding: 15px;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .humor-bubble.show {
+            transform: scale(1);
+        }
+        
+        .humor-close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            color: var(--light);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .exp-card {
+                padding-left: 15px;
+            }
+            
+            .exp-card::before {
+                left: -8px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+            /* Terminal Styles */
+    .terminal-container {
+        background: rgba(10, 10, 20, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        margin: 15px 0;
+        max-width: 600px;
+        border: 1px solid rgba(110, 0, 255, 0.3);
+    }
+    
+    .terminal-header {
+        background: rgba(20, 20, 40, 0.9);
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(110, 0, 255, 0.2);
+    }
+    
+    .terminal-buttons {
+        display: flex;
+        gap: 6px;
+    }
+    
+    .terminal-btn {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    
+    .terminal-btn.red { background: #ff5f56; }
+    .terminal-btn.yellow { background: #ffbd2e; }
+    .terminal-btn.green { background: #27c93f; }
+    
+    .terminal-title {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        margin-left: 15px;
+        font-family: monospace;
+    }
+    
+    .terminal-body {
+        padding: 15px;
+        font-family: 'Courier New', monospace;
+        color: #00f7ff;
+        min-height: 100px;
+        position: relative;
+    }
+    
+    .terminal-cursor {
+        animation: blink 1s infinite;
+        color: #00f7ff;
+    }
+    
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    
+    #terminal-text {
+        white-space: pre;
+        line-height: 1.5;
+    }
+     /* Floating Action Buttons */
+    .floating-buttons {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 100;
+    }
+    
+    .whatsapp-btn, .call-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        position: relative;
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-btn {
+        background: #25D366; /* WhatsApp green */
+    }
+    
+    .call-btn {
+        background: var(--primary); /* Your theme color */
+    }
+    
+    .whatsapp-btn:hover, .call-btn:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    
+    .tooltip {
+        position: absolute;
+        right: 70px;
+        background: rgba(10,10,26,0.9);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 0.3s;
+        pointer-events: none;
+        border: 1px solid rgba(110,0,255,0.3);
+    }
+    
+    .whatsapp-btn:hover .tooltip,
+    .call-btn:hover .tooltip {
+        opacity: 1;
+        right: 75px;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .floating-buttons {
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .whatsapp-btn, .call-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Cursor Trail Effect -->
+    <div class="cursor-trail"></div>
+    
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <!-- Humor Bubble -->
+    <div class="humor-bubble" id="humorBubble">
+        <span class="humor-close" onclick="closeHumorBubble()">&times;</span>
+        <h5><i class="fas fa-lightbulb me-2"></i>Dev Joke of the Day</h5>
+        <p id="jokeText">Why do programmers prefer dark mode? Because light attracts bugs!</p>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">DAVID SEME</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-6 hero-content">
+            <h1 class="animate__animated animate__fadeInDown">David Seme Luvai</h1>
+            <h2 class="animate__animated animate__fadeIn animate__delay-1s">Software Engineer</h2>
+            
+            <!-- Your existing content -->
+            <p class="animate__animated animate__fadeIn animate__delay-2s">I architect robust systems and transform data into strategic insights. Building solutions that scale with your business needs.</p>
+            
+            <!-- Terminal Animation Container -->
+            <div class="terminal-container animate__animated animate__fadeIn animate__delay-3s">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="terminal-btn red"></span>
+                        <span class="terminal-btn yellow"></span>
+                        <span class="terminal-btn green"></span>
+                    </div>
+                    <div class="terminal-title">bash — 80×24</div>
+                </div>
+                <div class="terminal-body">
+                    <div id="terminal-text"></div>
+                    <span class="terminal-cursor">|</span>
+                </div>
+            </div>
+            
+            <p class="tagline animate__animated animate__fadeIn animate__delay-4s">"ERP systems by day, innovative projects by night - because why limit creativity?"</p>
+            
+            <div class="mt-4 animate__animated animate__fadeIn animate__delay-5s">
+                <a href="#contact" class="btn btn-primary me-3">Hire Me</a>
+                <a href="assets\CV.pdf" download class="btn btn-outline-light download-btn">Download CV</a>
+            </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeIn animate__delay-3s">
+            <img src="assets\ProfilePic2.png" alt="David Seme" class="img-fluid rounded-circle shadow-lg" style="border: 5px solid var(--primary);">
+        </div>
+    </div>
+</div>
+</section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title animate__animated animate__fadeIn">About Me</h2>
+            <div class="row">
+                <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                    <p>Hello! I'm David, a Software engineer with extensive experience in enterprise solutions, data analytics, and full-stack development.</p>
+                    <p>When I'm not architecting complex systems or optimizing ERP implementations, you can find me building innovative web applications, exploring AI/ML technologies, or mentoring the next generation of tech professionals.</p>
+                    <p>I bridge the gap between technical implementation and business strategy, ensuring technology solutions deliver measurable value.</p>
+                    <div class="mt-4">
+                        <a href="assets\CV.pdf" download class="btn btn-primary me-3 download-btn">Download Resume</a>
+                        <a href="#contact" class="btn btn-outline-light">Let's Talk</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="card p-4 h-100">
+                        <h4 style="color: white; margin-bottom: 10px;"><i class="fas fa-graduation-cap me-2"></i>Education</h4>
+                        <p style="color: white; margin-bottom: 10px;"><strong>The Co-operative University of Kenya</strong><br>
+                     </p>
+                        
+                        <h4 class="mt-4"style="color: white; margin-bottom: 10px;"><i class="fas fa-star me-2"></i>Interests</h4>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge"><i class="fas fa-code me-1"></i>Web Assembly</span>
+                            <span class="skill-badge"><i class="fas fa-heart me-1"></i>Open Source</span>
+                            <span class="skill-badge"><i class="fas fa-robot me-1"></i>Hackathons</span>
+                            <span class="skill-badge"><i class="fas fa-users me-1"></i>Tech Meetups</span>
+                            <span class="skill-badge"><i class="fas fa-link me-1"></i>Blockchain</span>
+                            <span class="skill-badge"><i class="fas fa-car me-1"></i>Formula 1</span>
+                            <span class="skill-badge"><i class="fas fa-camera me-1"></i>Photography</span>
+                            <span class="skill-badge"><i class="fas fa-utensils me-1"></i>Cooking</span>
+                            <span class="skill-badge"><i class="fas fa-basketball-ball me-1"></i>Basketball</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-dark">
+        <div class="container py-5">
+            <h2 class="section-title animate__animated animate__fadeIn">My Skills</h2>
+            <div class="row">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 style="color: white; margin-bottom: 10px;" ><i class="fas fa-code me-2"></i>Programming & Development</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">.NET</span>
+                                <span class="skill-badge">Django</span>
+                                <span class="skill-badge">Android Dev</span>
+                                <span class="skill-badge">SQL</span>
+                                <span class="skill-badge">Jupyter Notebook</span>
+                                <span class="skill-badge">Flutter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 style="color: white; margin-bottom: 10px;"><i class="fas fa-database me-2"></i>Data & Analytics</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge">Power BI</span>
+                                <span class="skill-badge">PostgreSQL</span>
+                                <span class="skill-badge">EDA</span>
+                                <span class="skill-badge">Data Visualization</span>
+                                <span class="skill-badge">Business Intelligence</span>
+                                <span class="skill-badge">Machine Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 style="color: white; margin-bottom: 10px;"><i class="fas fa-cogs me-2"></i>Systems & Integration</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge">Dynamics NAV/BC</span>
+                                <span class="skill-badge">API Integrations</span>
+                                <span class="skill-badge">Docker</span>
+                                <span class="skill-badge">GitHub Actions</span>
+                                <span class="skill-badge">System Architecture</span>
+                                <span class="skill-badge">Cloud Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title animate__animated animate__fadeIn">Professional Experience</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="exp-card animate__animated animate__fadeInRight">
+                        <span class="exp-date">October 2023 – Present</span>
+                        <h4>Software Developer & Power BI Specialist</h4>
+                        <h5>LociAfrica</h5>
+                        <ul>
+                            <li>Develop and customize ERP solutions using Microsoft Dynamics NAV/Business Central and .NET</li>
+                            <li>Build and maintain Android applications to enhance business processes</li>
+                            <li>Conduct exploratory data analysis and develop interactive Power BI dashboards</li>
+                            <li>Integrate Microsoft Business Dynamics NAV with external portals</li>
+                        </ul>
+                        <div class="d-flex flex-wrap mt-2">
+                            <span class="skill-badge">Dynamics NAV</span>
+                            <span class="skill-badge">Power BI</span>
+                            <span class="skill-badge">.NET</span>
+                            <span class="skill-badge">Android</span>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-card animate__animated animate__fadeInRight animate__delay-1s">
+                        <span class="exp-date">January 2024 – Present</span>
+                        <h4>Senior Systems Engineer</h4>
+                        <h5>Namfront Solutions</h5>
+                        <ul>
+                            <li>Design and implement scalable system architectures for enterprise clients</li>
+                            <li>Lead integration projects between ERP systems and custom applications</li>
+                            <li>Optimize database performance and business intelligence solutions</li>
+                            <li>Mentor junior engineers and establish development best practices</li>
+                        </ul>
+                        <div class="d-flex flex-wrap mt-2">
+                            <span class="skill-badge">System Architecture</span>
+                            <span class="skill-badge">ERP Integration</span>
+                            <span class="skill-badge">Performance Optimization</span>
+                            <span class="skill-badge">Team Leadership</span>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-card animate__animated animate__fadeInRight animate__delay-2s">
+                        <span class="exp-date">September 2023 – November 2024</span>
+                        <h4>Part-Time Robotics Instructor</h4>
+                        <h5>ChezaStemEd</h5>
+                        <ul>
+                            <li>Design and deliver STEM workshops for underrepresented students</li>
+                            <li>Develop interactive lesson plans tailored to different learning levels</li>
+                            <li>Showcase diverse STEM career pathways</li>
+                            <li>Facilitate workshops improving students' problem-solving skills</li>
+                        </ul>
+                        <div class="d-flex flex-wrap mt-2">
+                            <span class="skill-badge">STEM Education</span>
+                            <span class="skill-badge">Robotics</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Scratch</span>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-card animate__animated animate__fadeInRight animate__delay-3s">
+                        <span class="exp-date">May 2022 – August 2022</span>
+                        <h4>Junior Software Engineer Intern</h4>
+                        <h5>ByteCity Inc</h5>
+                        <ul>
+                            <li>Develop and maintain web applications using Python, Django, JavaScript</li>
+                            <li>Assist in database design, testing, debugging, and deployment</li>
+                            <li>Gain experience with Agile methodologies and Git</li>
+                        </ul>
+                        <div class="d-flex flex-wrap mt-2">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Django</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  <!-- Projects Section -->
+<section id="projects" class="py-5 bg-dark text-white">
+  <div class="container py-5">
+    <h2 class="section-title text-center mb-5 animate__animated animate__fadeIn">Featured Projects</h2>
+    <div class="row g-4">
+      
+      <!-- Project 1 -->
+      <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+        <div class="card project-card h-100 border-0 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top project-img" alt="Vian Website">
+            <div class="project-overlay d-flex align-items-center justify-content-center">
+              <div class="project-content text-center">
+                <h4 class="mb-2">Vian Website</h4>
+                <p class="mb-3 text-white-50">Modern responsive website with interactive elements and seamless UX design.</p>
+                <div class="project-badges mb-3 d-flex justify-content-center flex-wrap gap-2">
+                  <span class="skill-badge">HTML/CSS</span>
+                  <span class="skill-badge">JavaScript</span>
+                  <span class="skill-badge">Bootstrap</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-outline-light">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="card project-card h-100 border-0 shadow-sm">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top project-img" alt="Sales Analysis System">
+            <div class="project-overlay d-flex align-items-center justify-content-center">
+              <div class="project-content text-center">
+                <h4 class="mb-2">Sales Analysis System</h4>
+                <p class="mb-3 text-white-50">Python-based system to analyze customer transactions with advanced data visualization.</p>
+                <div class="project-badges mb-3 d-flex justify-content-center flex-wrap gap-2">
+                  <span class="skill-badge">Python</span>
+                  <span class="skill-badge">Data Analysis</span>
+                  <span class="skill-badge">Visualization</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-outline-light">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- You can add more project cards below following the same pattern -->
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title animate__animated animate__fadeIn">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                    <div class="card p-4 h-100">
+                        <h4 style="color: white; margin-bottom: 10px;"><i class="fas fa-paper-plane me-2"style="color: white; margin-bottom: 10px;"></i>Contact Info</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"style="color: white; margin-bottom: 10px;"><i class="fas fa-phone me-2"style="color: white; margin-bottom: 10px;"></i> +254 740 135 474</li>
+                            <li class="mb-3"style="color: white; margin-bottom: 10px;"><i class="fas fa-envelope me-2"style="color: white; margin-bottom: 10px;"></i> davidluvai56@gmail.com</li>
+                            <li class="mb-3"style="color: white; margin-bottom: 10px;"><i class="fab fa-linkedin me-2"style="color: white; margin-bottom: 10px;"></i> linkedin.com/in/DavidSeme</li>
+                            <li class="mb-3"style="color: white; margin-bottom: 10px;"><i class="fab fa-github me-2"style="color: white; margin-bottom: 10px;"></i> github.com/daveSeme</li>
+                        </ul>
+                        
+                        <h4 class="mt-4" style="color: white; margin-bottom: 10px;"><i class="fas fa-users me-2"></i>References</h4>
+                        <div class="reference">
+                            <p><strong>Duncan Mwirigi</strong><br>
+                            CEO, ByteCity Inc.<br>
+                            <i class="fas fa-envelope me-1"></i> duncan@bytecityinc.com<br>
+                            <i class="fas fa-phone me-1"></i> 0729542528</p>
+                        </div>
+                        <div class="reference">
+                            <p><strong>Walter Kiprono</strong><br>
+                            Senior Software Engineer, LociAfrica<br>
+                            <i class="fas fa-envelope me-1"></i> wkiprono@lociafrica.co.ke<br>
+                            <i class="fas fa-phone me-1"></i> +254 729 795939</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="card p-4 h-100">
+                        <h4 style="color: white; margin-bottom: 10px;"><i class="fas fa-envelope me-2"></i>Send Me a Message</h4>
+                        <form class="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label" style="color: white; margin-bottom: 10px;">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label"style="color: white; margin-bottom: 10px;">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label"style="color: white; margin-bottom: 10px;">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label"style="color: white; margin-bottom: 10px;">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="color: white; margin-bottom: 10px;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="floating-buttons">
+    <a href="https://wa.me/254740135474" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Chat on WhatsApp</span>
+    </a>
+ 
+</div>
+    
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="social-icons mb-4">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2023 David Seme Luvai. All rights reserved.</p>
+          
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Cursor trail effect
+        const cursor = document.querySelector('.cursor-trail');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(10, 10, 26, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(110, 0, 255, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(10, 10, 26, 0.9)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add(element.getAttribute('data-animation'));
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Humor bubble with random jokes
+        const jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            "How many programmers does it take to change a light bulb? None, that's a hardware problem!",
+            "Why do Java developers wear glasses? Because they can't C#!",
+            "I would tell you a joke about UDP, but you might not get it.",
+            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
+            "Why don't programmers like nature? It has too many bugs.",
+            "How do you comfort a JavaScript bug? You console it!",
+            "Why did the developer go broke? Because he used up all his cache!",
+            "Why did the programmer quit his job? Because he didn't get arrays!",
+            "What's the object-oriented way to become wealthy? Inheritance!"
+        ];
+        
+        function showHumorBubble() {
+            const bubble = document.getElementById('humorBubble');
+            const jokeText = document.getElementById('jokeText');
+            
+            // Show bubble after 10 seconds
+            setTimeout(() => {
+                bubble.classList.add('show');
+                
+                // Change joke every 15 seconds
+                setInterval(() => {
+                    jokeText.textContent = jokes[Math.floor(Math.random() * jokes.length)];
+                    bubble.classList.remove('show');
+                    setTimeout(() => bubble.classList.add('show'), 500);
+                }, 15000);
+            }, 10000);
+        }
+        
+        function closeHumorBubble() {
+            document.getElementById('humorBubble').classList.remove('show');
+        }
+        
+        // Initialize humor bubble
+        showHumorBubble();
+        
+        // Form submission
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks for your message! I\'ll get back to you soon.');
+            form.reset();
+        });
+
+          // Terminal Animation Script
+    const terminalText = document.getElementById('terminal-text');
+    const phrases = [
+        "> npm init david-seme\n",
+        "> Loading portfolio...\n",
+        "> Installing skills...\n",
+        "   • Python\n",
+        "   • JavaScript\n",
+        "   • Power BI\n",
+        "   • Dynamics NAV\n",
+        "> Building projects...\n",
+        "> System ready!\n",
+        "> Welcome to my portfolio!"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let currentPhrase = [];
+    let isDeleting = false;
+    let isEnd = false;
+    
+    function typeTerminal() {
+        isEnd = false;
+        terminalText.innerHTML = currentPhrase.join('');
+        
+        if (phraseIndex < phrases.length) {
+            if (!isDeleting && charIndex <= phrases[phraseIndex].length) {
+                currentPhrase.push(phrases[phraseIndex][charIndex]);
+                charIndex++;
+                terminalText.innerHTML = currentPhrase.join('');
+            }
+            
+            if (isDeleting && charIndex >= 0) {
+                currentPhrase.pop();
+                charIndex--;
+                terminalText.innerHTML = currentPhrase.join('');
+            }
+            
+            if (charIndex == phrases[phraseIndex].length) {
+                isEnd = true;
+                isDeleting = true;
+            }
+            
+            if (isDeleting && charIndex === 0) {
+                currentPhrase = [];
+                isDeleting = false;
+                phraseIndex++;
+            }
+        } else {
+            phraseIndex = 0;
+        }
+        
+        const speedUp = isDeleting ? 50 : 100;
+        const normalSpeed = isEnd ? 1500 : speedUp;
+        setTimeout(typeTerminal, normalSpeed);
+    }
+    
+    // Start the animation when page loads
+    window.addEventListener('load', () => {
+        setTimeout(typeTerminal, 2500); // Starts after other animations
+    });
+
+     // Call button confirmation
+    document.querySelector('.call-btn').addEventListener('click', function(e) {
+        if(window.innerWidth > 768) { // Only show confirmation on desktop
+            e.preventDefault();
+            if(confirm('Call David Seme at +254 740 135 474?')) {
+                window.location.href = this.getAttribute('href');
+            }
+        }
+        // On mobile, let the native dialer handle it directly
+    });
+    </script>
+</body>
+</html>

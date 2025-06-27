@@ -1,0 +1,63 @@
+/* Cosmic Background */
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #0a192f;
+  color: #ccd6f6;
+  font-family: 'Courier New', monospace;
+}
+
+/* Terminal Styling */
+.terminal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+}
+
+.terminal {
+  background: rgba(10, 25, 47, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.5);
+}
+
+.terminal-header {
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+.terminal-header .btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.terminal-header .red { background: #ff5f56; }
+.terminal-header .yellow { background: #ffbd2e; }
+.terminal-header .green { background: #27c93f; }
+
+.terminal-body {
+  padding: 20px;
+}
+
+.prompt {
+  color: #00a8ff;
+  font-weight: bold;
+}
+
+.output {
+  color: #00ffff;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
