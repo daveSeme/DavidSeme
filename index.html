@@ -1103,12 +1103,32 @@
         showHumorBubble();
         
         // Form submission
-        const form = document.querySelector('.contact-form');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thanks for your message! I\'ll get back to you soon.');
+      const form = document.querySelector('.contact-form');
+const status = document.getElementById('form-status');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault(); // prevent default form submission
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            status.textContent = "Thanks for your message! I'll get back to you soon.";
             form.reset();
-        });
+        } else {
+            status.textContent = "Oops! Something went wrong.";
+        }
+    }).catch(error => {
+        status.textContent = "Error sending form.";
+    });
+});
+
 
           // Terminal Animation Script
     const terminalText = document.getElementById('terminal-text');
