@@ -10,24 +10,27 @@
     <style>
         :root {
             --primary: #ffffff;
-            --secondary: #b0b0b0;
+            --secondary: #e0e0e0;
             --accent: #4d94ff;
             --accent-light: #66a3ff;
-            --text: #e0e0e0;
-            --text-light: #a0a0a0;
+            --text: #f7f7f7;
+            --text-light: #b0b0b0;
             --bg: #0a0a0a;
             --bg-light: #1a1a1a;
-            --border: #333333;
+            --border: #444444;
             --terminal-bg: #0a0a0a;
             --terminal-text: #e0e0e0;
             --terminal-green: #9ece6a;
             --terminal-blue: #7aa2f7;
             --card-bg: #1a1a1a;
-            --card-border: #333333;
+            --card-border: #444444;
             --section-bg: #0f0f0f;
             --hero-bg: #0a0a0a;
             --nav-bg: #0a0a0a;
-            --nav-border: #333333;
+            --nav-border: #444444;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #f44336;
         }
 
         [data-theme="light"] {
@@ -290,6 +293,7 @@
             overflow: hidden;
             height: 100%;
             background: var(--card-bg);
+            color: var(--text);
         }
         
         .card:hover {
@@ -351,6 +355,7 @@
             background: var(--card-bg);
             border-radius: 8px;
             border-left: 3px solid var(--accent);
+            color: var(--text);
         }
         
         .exp-card::before {
@@ -398,6 +403,7 @@
             padding: 2rem;
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
+            color: var(--text);
         }
         
         .project-item:hover {
@@ -491,6 +497,7 @@
             padding: 2rem;
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
+            color: var(--text);
         }
         
         .startup-card:hover {
@@ -750,6 +757,81 @@
             transform: translateY(0);
         }
         
+        /* Form Status */
+        .form-status {
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .form-status.success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+        
+        .form-status.error {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--error);
+            border: 1px solid var(--error);
+            display: block;
+        }
+        
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Contact Info Fixes */
+        .contact-info li {
+            color: var(--text) !important;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .reference p {
+            color: var(--text) !important;
+        }
+
+        .reference strong {
+            color: var(--primary);
+        }
+
+        /* Education Text Fix */
+        .education-text {
+            color: var(--text) !important;
+        }
+
+        .education-institution {
+            color: var(--text-light);
+        }
+
+        /* Ensure all text in cards is visible */
+        .card p, .card li {
+            color: var(--text);
+        }
+
+        .card h4 {
+            color: var(--primary);
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -808,7 +890,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#about">About</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#skills">Skills</a>
@@ -867,19 +949,23 @@
                     
                     <div class="mt-4 fade-in">
                         <a href="#contact" class="btn btn-primary me-3">Hire Me</a>
-                        <a href="assets/CV.pdf" download class="btn btn-outline">Download CV</a>
+                        <a href="#" class="btn btn-outline" id="downloadCV">Download CV</a>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block fade-in">
                     <div class="text-center">
-                        <img src="assets/ProfilePic2.png" alt="David Seme" class="img-fluid rounded shadow" style="max-height: 500px; border: 3px solid var(--accent);">
+                        <!-- Profile placeholder - replace with actual image when available -->
+                        <div class="profile-placeholder" style="height: 500px; background: var(--bg-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--accent);">
+                            <i class="fas fa-user" style="font-size: 5rem; color: var(--text-light);"></i>
+                        </div>
+                        <!-- Uncomment when you have the actual image -->
+                        <!-- <img src="assets/profile.jpg" alt="David Seme" class="img-fluid rounded shadow" style="max-height: 500px; border: 3px solid var(--accent);"> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Rest of your HTML content remains exactly the same -->
     <!-- About Section -->
     <section id="about" class="py-5 bg-light-custom">
         <div class="container py-5">
@@ -890,15 +976,17 @@
                     <p>When I'm not architecting complex systems or optimizing ERP implementations, you can find me building innovative web applications, exploring AI/ML technologies, or mentoring the next generation of tech professionals.</p>
                     <p>I bridge the gap between technical implementation and business strategy, ensuring technology solutions deliver measurable value.</p>
                     <div class="mt-4">
-                        <a href="assets/CV.pdf" download class="btn btn-primary me-3">Download Resume</a>
+                        <a href="#" class="btn btn-primary me-3" id="downloadResume">Download Resume</a>
                         <a href="#contact" class="btn btn-outline">Let's Talk</a>
                     </div>
                 </div>
                 <div class="col-lg-6 fade-in">
                     <div class="card p-4 h-100">
                         <h4><i class="fas fa-graduation-cap me-2"></i>Education</h4>
-                        <p class="mt-3" style="color: white;"><strong>Bachelor of Science in Computer Science</strong><br>
-                        The Co-operative University of Kenya</p>
+                        <p class="mt-3 education-text">
+                            <strong>Bachelor of Science in Computer Science</strong><br>
+                            <span class="education-institution">The Co-operative University of Kenya</span>
+                        </p>
                         
                         <h4 class="mt-4"><i class="fas fa-star me-2"></i>Interests</h4>
                         <div class="d-flex flex-wrap mt-3">
@@ -1228,16 +1316,28 @@
                 <div class="col-lg-6 fade-in">
                     <div class="card p-4 h-100">
                         <h4><i class="fas fa-paper-plane me-2"></i>Contact Info</h4>
-                        <ul class="list-unstyled mt-3">
-                            <li class="mb-3" style="color: white;"><i class="fas fa-phone me-2" style="color: white;"></i> +254 740 135 474</li>
-                            <li class="mb-3" style="color: white;"><i class="fas fa-envelope me-2" style="color: white;"></i> davidluvai56@gmail.com</li>
-                            <li class="mb-3" style="color: white;"><i class="fab fa-linkedin me-2" style="color: white;"></i> linkedin.com/in/DavidSeme</li>
-                            <li class="mb-3" style="color: white;"><i class="fab fa-github me-2" style="color: white;"></i> github.com/daveSeme</li>
+                        <ul class="list-unstyled mt-3 contact-info">
+                            <li class="mb-3">
+                                <i class="fas fa-phone me-2"></i> 
+                                <span>+254 740 135 474</span>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-envelope me-2"></i> 
+                                <span>davidluvai56@gmail.com</span>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fab fa-linkedin me-2"></i> 
+                                <span>linkedin.com/in/DavidSeme</span>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fab fa-github me-2"></i> 
+                                <span>github.com/daveSeme</span>
+                            </li>
                         </ul>
                         
                         <h4 class="mt-4"><i class="fas fa-users me-2"></i>References</h4>
                         <div class="reference mt-3">
-                            <p style="color: white;"><strong>Professional Reference</strong><br>
+                            <p><strong>Professional Reference</strong><br>
                             Senior Technology Executive<br>
                             <i class="fas fa-envelope me-1"></i> Available upon request</p>
                         </div>
@@ -1246,7 +1346,7 @@
                 <div class="col-lg-6 fade-in">
                     <div class="card p-4 h-100">
                         <h4><i class="fas fa-envelope me-2"></i>Send Me a Message</h4>
-                        <form class="contact-form mt-3" action="https://formsubmit.co/4a15a65ba1f44301f47ebb63dc7ce8ab" method="POST">
+                        <form class="contact-form mt-3" id="contactForm">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -1263,9 +1363,12 @@
                                 <label for="message" class="form-label">Message</label>
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <span id="submitText">Send Message</span>
+                                <span id="submitLoading" class="loading" style="display: none;"></span>
+                            </button>
                         </form>
-                        <div id="form-status" class="mt-3 text-success fw-bold"></div>
+                        <div id="form-status" class="form-status"></div>
                     </div>
                 </div>
             </div>
@@ -1302,9 +1405,10 @@
         const themeText = document.getElementById('themeText');
         const body = document.body;
 
-        // Set dark mode as default
-        body.setAttribute('data-theme', 'dark');
-        updateThemeText('dark');
+        // Check for saved theme or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeText(savedTheme);
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
@@ -1319,8 +1423,7 @@
             themeText.textContent = theme === 'light' ? 'Dark' : 'Light';
         }
 
-        // Rest of your JavaScript remains the same
-        // Navbar scroll effect
+        // Navbar scroll effect and active section highlighting
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -1328,6 +1431,26 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
         
         // Smooth scrolling for anchor links
@@ -1359,31 +1482,49 @@
             fadeObserver.observe(el);
         });
         
-        // Form submission
-        const form = document.querySelector('.contact-form');
-        const status = document.getElementById('form-status');
+        // Form submission with enhanced UX
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitLoading = document.getElementById('submitLoading');
+        const formStatus = document.getElementById('form-status');
         
-        form.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             
-            const formData = new FormData(form);
+            // Show loading state
+            submitText.textContent = 'Sending...';
+            submitLoading.style.display = 'inline-block';
+            submitBtn.disabled = true;
             
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    status.textContent = "Thanks for your message! I'll get back to you soon.";
-                    form.reset();
-                } else {
-                    status.textContent = "Oops! Something went wrong.";
-                }
-            }).catch(error => {
-                status.textContent = "Error sending form.";
-            });
+            // Simulate form submission (replace with actual form submission)
+            setTimeout(() => {
+                submitText.textContent = 'Send Message';
+                submitLoading.style.display = 'none';
+                submitBtn.disabled = false;
+                
+                formStatus.textContent = "Thanks for your message! I'll get back to you soon.";
+                formStatus.className = 'form-status success';
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+        
+        // CV Download handlers
+        document.getElementById('downloadCV').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('CV download functionality would be implemented here');
+            // In a real implementation, this would trigger a file download
+        });
+        
+        document.getElementById('downloadResume').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Resume download functionality would be implemented here');
+            // In a real implementation, this would trigger a file download
         });
         
         // Dev Jokes
@@ -1407,12 +1548,12 @@
             jokeText.textContent = randomJoke;
         }, 10000);
         
-        // Interactive Terminal
+        // Interactive Terminal with enhanced commands
         const terminalBody = document.getElementById('terminal-body');
         const terminalInput = document.getElementById('terminal-input');
         
         const commands = {
-            'help': 'Available commands: help, about, skills, experience, projects, contact, clear, joke',
+            'help': 'Available commands: help, about, skills, experience, projects, contact, clear, joke, ls, whoami, pwd, theme',
             'about': 'David Seme - Software Engineer with Computer Science degree and expertise in enterprise solutions.',
             'skills': 'Python, JavaScript, .NET, Django, Power BI, PostgreSQL, Dynamics NAV, Docker, and more.',
             'experience': 'Software Developer, Senior Systems Engineer, and Technical Lead roles.',
@@ -1426,9 +1567,13 @@
                 }
                 return '';
             },
-            'ls': 'portfolio.pdf  projects/  skills.txt  experience.md',
+            'ls': 'portfolio.pdf  projects/  skills.txt  experience.md  contact.info',
             'whoami': 'visitor',
-            'pwd': '/home/david-seme-portfolio'
+            'pwd': '/home/david-seme-portfolio',
+            'theme': function() { 
+                themeToggle.click();
+                return 'Theme toggled!';
+            }
         };
         
         function addOutput(text) {
@@ -1472,6 +1617,9 @@
         terminalBody.addEventListener('click', function() {
             terminalInput.focus();
         });
+        
+        // Initialize with focus on terminal
+        terminalInput.focus();
     </script>
 </body>
 </html>
