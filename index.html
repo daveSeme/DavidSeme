@@ -1518,18 +1518,23 @@
             }, 2000);
         });
         
-        // CV Download handlers
-        document.getElementById('downloadCV').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('CV download functionality would be implemented here');
-            // In a real implementation, this would trigger a file download
-        });
+       document.getElementById('downloadResume').addEventListener('click', function(e) {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = 'assets/CV.pdf';
+    link.download = 'David_Seme_Resume.pdf'; // customize filename
+    link.click();
+});
+
         
         document.getElementById('downloadResume').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Resume download functionality would be implemented here');
-            // In a real implementation, this would trigger a file download
-        });
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = 'assets/CV.pdf';
+    link.download = 'David_Seme_Resume.pdf'; // customize filename
+    link.click();
+});
+
         
         // Dev Jokes
         const jokes = [

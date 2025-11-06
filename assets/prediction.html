@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Executive Dashboard | Microsoft BC Integration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --sidebar-width: 280px;
+            --header-height: 70px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, var(--primary), #1a2530);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 100;
+            box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .sidebar-menu {
+            padding: 15px 0;
+        }
+        
+        .menu-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .menu-item.active {
+            background: rgba(52, 152, 219, 0.2);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .menu-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 0.3s ease;
+        }
+        
+        .header {
+            height: var(--header-height);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-left h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+        
+        .header-left p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-left: 15px;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Data Controls */
+        .data-controls {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        
+        .data-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .data-btn:hover {
+            background: #27ae60;
+        }
+        
+        .data-btn.secondary {
+            background: var(--warning);
+        }
+        
+        .data-btn.secondary:hover {
+            background: #e67e22;
+        }
+        
+        .data-btn.loading {
+            background: #7f8c8d;
+            cursor: not-allowed;
+        }
+        
+        /* Configuration Panel */
+        .config-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .config-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .config-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .config-form {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+        }
+        
+        .url-input {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .url-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        /* Data Terminal */
+        .data-terminal {
+            background: #1a1a1a;
+            color: #00ff00;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+        
+        .terminal-content {
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+        
+        /* Slides Container */
+        .slides-container {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .slide-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        /* KPI Cards */
+        .kpi-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .kpi-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .kpi-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            height: 300px;
+            position: relative;
+        }
+        
+        .chart-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .insight-box {
+            background: #f0f7ff;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Data Status */
+        .data-status {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .data-status.success {
+            background: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        
+        .data-status.error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--secondary);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-controls {
+                flex-direction: column;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .config-form {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>HR Executive Dashboard</h2>
+                <p>Microsoft BC Integration</p>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item active" data-slide="0">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard Overview</span>
+                </div>
+                <div class="menu-item" data-slide="1">
+                    <i class="fas fa-cog"></i>
+                    <span>Data Configuration</span>
+                </div>
+                <div class="menu-item" data-slide="2">
+                    <i class="fas fa-users"></i>
+                    <span>Workforce Overview</span>
+                </div>
+                <div class="menu-item" data-slide="3">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Age Demographics</span>
+                </div>
+                <div class="menu-item" data-slide="4">
+                    <i class="fas fa-globe-africa"></i>
+                    <span>Diversity & Inclusion</span>
+                </div>
+                <div class="menu-item" data-slide="5">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education & Skills</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>HR Executive Dashboard</h1>
+                    <p>Workforce Analytics Snapshot</p>
+                </div>
+                <div class="header-right">
+                    <div class="data-controls">
+                        <button class="data-btn" id="load-data-btn">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Load BC Data</span>
+                        </button>
+                        <button class="data-btn secondary" id="demo-data-btn">
+                            <i class="fas fa-database"></i>
+                            <span>Use Demo Data</span>
+                        </button>
+                    </div>
+                    <div class="nav-controls">
+                        <button class="nav-btn" id="prev-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="slide-counter">
+                            <span id="current-slide">1</span> / <span id="total-slides">6</span>
+                        </div>
+                        <button class="nav-btn" id="next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slides-container">
+                <!-- Data Status -->
+                <div class="data-status" id="data-status">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Configure your OData URL in the Data Configuration tab, then click "Load BC Data"</span>
+                </div>
+                
+                <!-- Slide 0: Dashboard Overview -->
+                <div class="slide active" id="slide-0">
+                    <div class="slide-header">
+                        <h2 class="slide-title">HR Executive Dashboard</h2>
+                        <p class="slide-subtitle">Workforce Analytics Snapshot</p>
+                    </div>
+                    
+                    <div class="kpi-cards">
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="total-employees">-</div>
+                            <div class="kpi-label">Total Employees</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="gender-ratio">-</div>
+                            <div class="kpi-label">Male | Female</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="avg-age">-</div>
+                            <div class="kpi-label">Average Age</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="avg-tenure">-</div>
+                            <div class="kpi-label">Average Tenure</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="new-hires">-</div>
+                            <div class="kpi-label">New Hires (YTD)</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="attrition-rate">-</div>
+                            <div class="kpi-label">Attrition Rate</div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-grid">
+                        <div class="chart-container">
+                            <div class="chart-title">Employment Type Distribution</div>
+                            <canvas id="employmentTypeChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Headcount by Department</div>
+                            <canvas id="departmentChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-box">
+                        <strong>Key Insight:</strong> Operations holds 35% of staff, ICT has the youngest team with an average age of 31 years.
+                    </div>
+                </div>
+                
+                <!-- Slide 1: Data Configuration -->
+                <div class="slide" id="slide-1">
+                    <div class="slide-header">
+                        <h2 class="slide-title">Data Configuration</h2>
+                        <p class="slide-subtitle">Configure your Microsoft Dynamics BC OData connection</p>
+                    </div>
+                    
+                    <div class="config-panel">
+                        <div class="config-header">
+                            <div class="config-title">OData Endpoint Configuration</div>
+                        </div>
+                        <div class="config-form">
+                            <input type="url" class="url-input" id="odata-url" 
+                                   placeholder="Enter your OData endpoint URL" 
+                                   value="http://ufaa-bc24-app.ufaa.go.ke:2048/BC240DEV/ODataV4/Company('UFAA%20OPERATIONS')/EmployeeList">
+                            <button class="data-btn" id="test-connection-btn">
+                                <i class="fas fa-plug"></i>
+                                Test Connection
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="data-terminal">
+                        <div class="terminal-header">
+                            <span>Data Terminal - Raw OData Response</span>
+                            <span id="terminal-status">Ready</span>
+                        </div>
+                        <div class="terminal-content" id="terminal-content">
+// No data loaded yet. Configure your OData URL and click "Test Connection"
+                        </div>
+                    </div>
+                    
+                    <div class="insight-box">
+                        <strong>Instructions:</strong> 
+                        <ol>
+                            <li>Enter your Microsoft Dynamics BC OData endpoint URL above</li>
+                            <li>Click "Test Connection" to verify the connection and see raw data</li>
+                            <li>Go to Dashboard Overview and click "Load BC Data" to populate the dashboard</li>
+                            <li>Use "Use Demo Data" if you want to test with sample data</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- Additional slides would continue here -->
+                <!-- For brevity, I'm showing just the first two slides -->
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let employeeData = [];
+        let charts = {};
+        let currentODataUrl = "http://ufaa-bc24-app.ufaa.go.ke:2048/BC240DEV/ODataV4/Company('UFAA%20OPERATIONS')/EmployeeList";
+        
+        // Slide Management
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            
+            // Set total slides counter
+            document.getElementById('total-slides').textContent = totalSlides;
+            
+            // Navigation buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentSlideEl = document.getElementById('current-slide');
+            
+            // Menu items
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            // Menu toggle for mobile
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            // Data buttons
+            const loadDataBtn = document.getElementById('load-data-btn');
+            const demoDataBtn = document.getElementById('demo-data-btn');
+            const testConnectionBtn = document.getElementById('test-connection-btn');
+            const dataStatus = document.getElementById('data-status');
+            const odataUrlInput = document.getElementById('odata-url');
+            const terminalContent = document.getElementById('terminal-content');
+            const terminalStatus = document.getElementById('terminal-status');
+            
+            // Set initial URL
+            odataUrlInput.value = currentODataUrl;
+            
+            // Update slide function
+            function updateSlide() {
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Show current slide
+                slides[currentSlide].classList.add('active');
+                
+                // Update slide counter
+                currentSlideEl.textContent = currentSlide + 1;
+                
+                // Update menu items
+                menuItems.forEach(item => item.classList.remove('active'));
+                menuItems[currentSlide].classList.add('active');
+                
+                // Update button states
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', function() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+            
+            // Menu item click
+            menuItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentSlide = index;
+                    updateSlide();
+                    
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth < 992) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Menu toggle for mobile
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    // Next slide on right arrow or space
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlide();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    // Previous slide on left arrow
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlide();
+                    }
+                }
+            });
+            
+            // Update OData URL when input changes
+            odataUrlInput.addEventListener('change', function() {
+                currentODataUrl = this.value;
+            });
+            
+            // Test Connection
+            testConnectionBtn.addEventListener('click', function() {
+                testConnectionBtn.classList.add('loading');
+                testConnectionBtn.innerHTML = '<div class="spinner"></div><span>Testing...</span>';
+                terminalStatus.textContent = 'Testing connection...';
+                
+                testODataConnection(currentODataUrl)
+                    .then(data => {
+                        terminalContent.textContent = JSON.stringify(data, null, 2);
+                        terminalStatus.textContent = `Success - Loaded ${data.value ? data.value.length : 0} records`;
+                        testConnectionBtn.classList.remove('loading');
+                        testConnectionBtn.innerHTML = '<i class="fas fa-plug"></i> Test Connection';
+                    })
+                    .catch(error => {
+                        terminalContent.textContent = `ERROR: ${error.message}\n\nURL: ${currentODataUrl}\n\nPlease check:\n1. URL is correct\n2. CORS is enabled on the server\n3. Authentication is not required`;
+                        terminalStatus.textContent = 'Connection failed';
+                        testConnectionBtn.classList.remove('loading');
+                        testConnectionBtn.innerHTML = '<i class="fas fa-plug"></i> Test Connection';
+                    });
+            });
+            
+            // Load BC Data
+            loadDataBtn.addEventListener('click', function() {
+                loadDataBtn.classList.add('loading');
+                loadDataBtn.innerHTML = '<div class="spinner"></div><span>Loading...</span>';
+                
+                fetchBCData(currentODataUrl)
+                    .then(data => {
+                        employeeData = data;
+                        updateDashboard();
+                        dataStatus.innerHTML = '<i class="fas fa-check-circle"></i><span>Successfully loaded data from Microsoft Dynamics Business Central</span>';
+                        dataStatus.className = 'data-status success';
+                        
+                        // Show data sample in terminal
+                        terminalContent.textContent = `Loaded ${employeeData.length} employees\n\nSample records:\n\n${JSON.stringify(employeeData.slice(0, 3), null, 2)}`;
+                        terminalStatus.textContent = `Loaded ${employeeData.length} records`;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        dataStatus.innerHTML = `<i class="fas fa-exclamation-triangle"></i><span>Error loading data: ${error.message}</span>`;
+                        dataStatus.className = 'data-status error';
+                    })
+                    .finally(() => {
+                        loadDataBtn.classList.remove('loading');
+                        loadDataBtn.innerHTML = '<i class="fas fa-sync-alt"></i><span>Load BC Data</span>';
+                    });
+            });
+            
+            // Use Demo Data
+            demoDataBtn.addEventListener('click', function() {
+                employeeData = generateDemoData();
+                updateDashboard();
+                dataStatus.innerHTML = '<i class="fas fa-info-circle"></i><span>Using demo data. Click "Load BC Data" to fetch real data.</span>';
+                dataStatus.className = 'data-status';
+                
+                // Show demo data info in terminal
+                terminalContent.textContent = `Using demo data with ${employeeData.length} sample records\n\nSample records:\n\n${JSON.stringify(employeeData.slice(0, 3), null, 2)}`;
+                terminalStatus.textContent = `Demo data loaded`;
+            });
+            
+            // Initialize first slide
+            updateSlide();
+            
+            // Initialize with demo data
+            employeeData = generateDemoData();
+            updateDashboard();
+        });
+        
+        // Test OData connection and return raw data
+        async function testODataConnection(url) {
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Connection test failed:', error);
+                throw error;
+            }
+        }
+        
+        // Fetch data from Microsoft Dynamics Business Central
+        async function fetchBCData(url) {
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('BC Data received:', data);
+                
+                // Transform BC data to our format
+                return transformBCData(data.value || data);
+            } catch (error) {
+                console.error('Error fetching BC data:', error);
+                throw error;
+            }
+        }
+        
+        // Transform BC data to our format
+        function transformBCData(bcData) {
+            if (!bcData || !Array.isArray(bcData)) {
+                throw new Error('Invalid data format received from OData endpoint');
+            }
+            
+            return bcData.map((employee, index) => {
+                // Map BC fields to our data structure
+                return {
+                    id: employee.No || employee.EmployeeID || `EMP${index}`,
+                    firstName: employee.First_Name || employee.FirstName || 'Unknown',
+                    lastName: employee.Last_Name || employee.LastName || 'Unknown',
+                    department: employee.Department_Code || employee.Department || 'Unknown',
+                    jobTitle: employee.Job_Title || employee.JobTitle || 'Unknown',
+                    employmentType: mapEmploymentType(employee.Employment_Type),
+                    gender: mapGender(employee.Gender),
+                    birthDate: employee.Birth_Date ? new Date(employee.Birth_Date) : generateRandomDate(25, 60),
+                    hireDate: employee.Hire_Date ? new Date(employee.Hire_Date) : generateRandomDate(0, 10),
+                    location: employee.City || 'Nairobi',
+                    salary: employee.Salary || Math.floor(Math.random() * 50000) + 30000,
+                    ethnicity: getRandomEthnicity(),
+                    education: getRandomEducation(),
+                    status: employee.Status || 'Active'
+                };
+            });
+        }
+        
+        // Helper functions for data transformation
+        function mapEmploymentType(bcType) {
+            const typeMap = {
+                'Permanent': 'Permanent',
+                'Contract': 'Contract',
+                'Temporary': 'Contract',
+                'Intern': 'Intern'
+            };
+            return typeMap[bcType] || 'Permanent';
+        }
+        
+        function mapGender(bcGender) {
+            const genderMap = {
+                'Male': 'Male',
+                'Female': 'Female',
+                'M': 'Male',
+                'F': 'Female'
+            };
+            return genderMap[bcGender] || (Math.random() > 0.5 ? 'Male' : 'Female');
+        }
+        
+        function generateRandomDate(minYearsAgo, maxYearsAgo) {
+            const yearsAgo = minYearsAgo + Math.random() * (maxYearsAgo - minYearsAgo);
+            const date = new Date();
+            date.setFullYear(date.getFullYear() - yearsAgo);
+            return date;
+        }
+        
+        function getRandomEthnicity() {
+            const ethnicities = ['Kikuyu', 'Luo', 'Luhya', 'Kalenjin', 'Kamba', 'Other'];
+            return ethnicities[Math.floor(Math.random() * ethnicities.length)];
+        }
+        
+        function getRandomEducation() {
+            const educations = ['Diploma', 'Degree', 'Masters', 'PhD'];
+            return educations[Math.floor(Math.random() * educations.length)];
+        }
+        
+        // Generate demo data for testing
+        function generateDemoData() {
+            const departments = ['ICT', 'Finance', 'HR', 'Legal', 'Operations', 'Claims'];
+            const employmentTypes = ['Permanent', 'Contract', 'Intern'];
+            const genders = ['Male', 'Female'];
+            
+            const data = [];
+            const employeeCount = 1245;
+            
+            for (let i = 0; i < employeeCount; i++) {
+                const hireDate = generateRandomDate(0, 10);
+                const birthDate = generateRandomDate(25, 60);
+                
+                data.push({
+                    id: `EMP${1000 + i}`,
+                    firstName: `Employee${i + 1}`,
+                    lastName: `Last${i + 1}`,
+                    department: departments[Math.floor(Math.random() * departments.length)],
+                    jobTitle: `Job ${Math.floor(Math.random() * 5) + 1}`,
+                    employmentType: employmentTypes[Math.floor(Math.random() * employmentTypes.length)],
+                    gender: genders[Math.floor(Math.random() * genders.length)],
+                    birthDate: birthDate,
+                    hireDate: hireDate,
+                    location: ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru'][Math.floor(Math.random() * 4)],
+                    salary: Math.floor(Math.random() * 50000) + 30000,
+                    ethnicity: getRandomEthnicity(),
+                    education: getRandomEducation(),
+                    status: 'Active'
+                });
+            }
+            
+            return data;
+        }
+        
+        // Update dashboard with current data
+        function updateDashboard() {
+            updateKPIs();
+            updateCharts();
+        }
+        
+        // Update KPI cards
+        function updateKPIs() {
+            const totalEmployees = employeeData.length;
+            const maleCount = employeeData.filter(e => e.gender === 'Male').length;
+            const femaleCount = employeeData.filter(e => e.gender === 'Female').length;
+            const malePercentage = Math.round((maleCount / totalEmployees) * 100);
+            const femalePercentage = Math.round((femaleCount / totalEmployees) * 100);
+            
+            // Calculate average age
+            const now = new Date();
+            const totalAge = employeeData.reduce((sum, emp) => {
+                const age = now.getFullYear() - emp.birthDate.getFullYear();
+                return sum + age;
+            }, 0);
+            const averageAge = Math.round(totalAge / totalEmployees);
+            
+            // Calculate average tenure
+            const totalTenure = employeeData.reduce((sum, emp) => {
+                const tenure = (now - emp.hireDate) / (365 * 24 * 60 * 60 * 1000);
+                return sum + tenure;
+            }, 0);
+            const averageTenure = (totalTenure / totalEmployees).toFixed(1);
+            
+            // Calculate new hires (last 6 months)
+            const sixMonthsAgo = new Date();
+            sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+            const newHires = employeeData.filter(emp => emp.hireDate > sixMonthsAgo).length;
+            
+            // Calculate attrition (placeholder)
+            const attritionRate = '4.8%';
+            
+            // Update DOM elements
+            document.getElementById('total-employees').textContent = totalEmployees.toLocaleString();
+            document.getElementById('gender-ratio').textContent = `${malePercentage}% | ${femalePercentage}%`;
+            document.getElementById('avg-age').textContent = `${averageAge} years`;
+            document.getElementById('avg-tenure').textContent = `${averageTenure} years`;
+            document.getElementById('new-hires').textContent = newHires;
+            document.getElementById('attrition-rate').textContent = attritionRate;
+        }
+        
+        // Update charts
+        function updateCharts() {
+            updateEmploymentTypeChart();
+            updateDepartmentChart();
+        }
+        
+        // Update Employment Type Chart
+        function updateEmploymentTypeChart() {
+            const typeCounts = {};
+            employeeData.forEach(emp => {
+                typeCounts[emp.employmentType] = (typeCounts[emp.employmentType] || 0) + 1;
+            });
+            
+            const types = Object.keys(typeCounts);
+            const counts = types.map(type => typeCounts[type]);
+            const total = counts.reduce((sum, count) => sum + count, 0);
+            const percentages = counts.map(count => Math.round((count / total) * 100));
+            
+            const ctx = document.getElementById('employmentTypeChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (charts.employmentType) {
+                charts.employmentType.destroy();
+            }
+            
+            charts.employmentType = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: types,
+                    datasets: [{
+                        data: percentages,
+                        backgroundColor: ['#3498db', '#2ecc71', '#f39c12'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const count = counts[context.dataIndex];
+                                    return `${label}: ${value}% (${count} employees)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update Department Chart
+        function updateDepartmentChart() {
+            const deptCounts = {};
+            employeeData.forEach(emp => {
+                deptCounts[emp.department] = (deptCounts[emp.department] || 0) + 1;
+            });
+            
+            const departments = Object.keys(deptCounts);
+            const counts = departments.map(dept => deptCounts[dept]);
+            
+            const ctx = document.getElementById('departmentChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (charts.department) {
+                charts.department.destroy();
+            }
+            
+            charts.department = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: departments,
+                    datasets: [{
+                        label: 'Headcount',
+                        data: counts,
+                        backgroundColor: '#3498db'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
