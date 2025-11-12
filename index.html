@@ -687,12 +687,14 @@
             margin-bottom: 0.5rem;
             display: flex;
             align-items: flex-start;
+            width: 100%;
         }
         
         .terminal-prompt {
             color: var(--terminal-green);
             margin-right: 10px;
             user-select: none;
+            white-space: nowrap;
         }
         
         .terminal-input {
@@ -701,9 +703,10 @@
             color: var(--terminal-text);
             font-family: 'JetBrains Mono', monospace;
             font-size: 1rem;
-            width: 100%;
+            width: calc(100% - 150px);
             outline: none;
             caret-color: var(--terminal-blue);
+            flex: 1;
         }
         
         .terminal-output {
@@ -869,6 +872,10 @@
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
+
+            .terminal-input {
+                width: calc(100% - 120px);
+            }
         }
     </style>
 </head>
@@ -953,7 +960,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block fade-in">
-                    <div class="text-center">
+                     <div class="text-center">
                         <!-- Profile placeholder - replace with actual image -->
                         <!-- <div class="profile-placeholder" style="height: 500px; background: var(--bg-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--accent);">
                             <i class="fas fa-user" style="font-size: 5rem; color: var(--text-light);"></i>
@@ -1320,24 +1327,25 @@
                 <div class="col-lg-6 fade-in">
                     <div class="card p-4 h-100">
                         <h4><i class="fas fa-paper-plane me-2"></i>Contact Info</h4>
-                        <ul class="list-unstyled mt-3 contact-info">
-                            <li class="mb-3">
-                                <i class="fas fa-phone me-2"></i> 
-                                <span>+254 740 135 474</span>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-envelope me-2"></i> 
-                                <span>davidluvai56@gmail.com</span>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fab fa-linkedin me-2"></i> 
-                                <span>linkedin.com/in/DavidSeme</span>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fab fa-github me-2"></i> 
-                                <span>github.com/daveSeme</span>
-                            </li>
-                        </ul>
+                       <ul class="list-unstyled mt-3 contact-info">
+  <li class="mb-3">
+    <i class="fas fa-phone me-2"></i> 
+    <a href="tel:+254740135474" class="text-primary text-decoration-none">+254 740 135 474</a>
+  </li>
+  <li class="mb-3">
+    <i class="fas fa-envelope me-2"></i> 
+    <a href="mailto:davidluvai56@gmail.com" class="text-primary text-decoration-none">davidluvai56@gmail.com</a>
+  </li>
+  <li class="mb-3">
+    <i class="fab fa-linkedin me-2"></i> 
+    <a href="https://linkedin.com/in/DavidSeme" target="_blank" class="text-primary text-decoration-none">linkedin.com/in/DavidSeme</a>
+  </li>
+  <li class="mb-3">
+    <i class="fab fa-github me-2"></i> 
+    <a href="https://github.com/daveSeme" target="_blank" class="text-primary text-decoration-none">github.com/daveSeme</a>
+  </li>
+</ul>
+
                         
                         <h4 class="mt-4"><i class="fas fa-users me-2"></i>References</h4>
                         <div class="reference mt-3">
@@ -1398,12 +1406,26 @@
                 <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
             </div>
-            <p>&copy; 2023 David Seme Luvai. All rights reserved.</p>
+            <p>&copy; 2025 David Seme Luvai. All rights reserved.</p>
         </div>
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Dev Jokes
+        const jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            "How many programmers does it take to change a light bulb? None, that's a hardware problem!",
+            "Why do Java developers wear glasses? Because they can't C#!",
+            "I would tell you a joke about UDP, but you might not get it.",
+            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
+            "Why don't programmers like nature? It has too many bugs.",
+            "How do you comfort a JavaScript bug? You console it!",
+            "Why did the developer go broke? Because he used up all his cache!",
+            "Why did the programmer quit his job? Because he didn't get arrays!",
+            "What's the object-oriented way to become wealthy? Inheritance!"
+        ];
+        
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const themeText = document.getElementById('themeText');
@@ -1493,142 +1515,143 @@
         const submitLoading = document.getElementById('submitLoading');
         const formStatus = document.getElementById('form-status');
         
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            
-            // Show loading state
-            submitText.textContent = 'Sending...';
-            submitLoading.style.display = 'inline-block';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission (replace with actual form submission)
-            setTimeout(() => {
-                submitText.textContent = 'Send Message';
-                submitLoading.style.display = 'none';
-                submitBtn.disabled = false;
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
                 
-                formStatus.textContent = "Thanks for your message! I'll get back to you soon.";
-                formStatus.className = 'form-status success';
-                contactForm.reset();
+                // Show loading state
+                submitText.textContent = 'Sending...';
+                submitLoading.style.display = 'inline-block';
+                submitBtn.disabled = true;
                 
-                // Hide success message after 5 seconds
+                // Simulate form submission (replace with actual form submission)
                 setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
-            }, 2000);
+                    submitText.textContent = 'Send Message';
+                    submitLoading.style.display = 'none';
+                    submitBtn.disabled = false;
+                    
+                    formStatus.textContent = "Thanks for your message! I'll get back to you soon.";
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                }, 2000);
+            });
+        }
+        
+        // CV Download buttons
+        document.getElementById('downloadCV')?.addEventListener('click', function(e) {
+            e.preventDefault();
+           // alert('CV download functionality would be implemented here');
+            //Actual implementation:
+            const link = document.createElement('a');
+            link.href = 'assets/CV.pdf';
+            link.download = 'David_Seme_Resume.pdf';
+            link.click();
         });
         
-       document.getElementById('downloadCv').addEventListener('click', function(e) {
-    e.preventDefault();
-    const link = document.createElement('a');
-    link.href = 'assets/CV.pdf';
-    link.download = 'David_Seme_Resume.pdf'; // customize filename
-    link.click();
-});
-
-        
-        document.getElementById('downloadResume').addEventListener('click', function(e) {
-    e.preventDefault();
-    const link = document.createElement('a');
-    link.href = 'assets/CV.pdf';
-    link.download = 'David_Seme_Resume.pdf'; // customize filename
-    link.click();
-});
-
-        
-        // Dev Jokes
-        const jokes = [
-            "Why do programmers prefer dark mode? Because light attracts bugs!",
-            "How many programmers does it take to change a light bulb? None, that's a hardware problem!",
-            "Why do Java developers wear glasses? Because they can't C#!",
-            "I would tell you a joke about UDP, but you might not get it.",
-            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
-            "Why don't programmers like nature? It has too many bugs.",
-            "How do you comfort a JavaScript bug? You console it!",
-            "Why did the developer go broke? Because he used up all his cache!",
-            "Why did the programmer quit his job? Because he didn't get arrays!",
-            "What's the object-oriented way to become wealthy? Inheritance!"
-        ];
+        document.getElementById('downloadResume')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            //alert('Resume download functionality would be implemented here');
+            // Actual implementation:
+            const link = document.createElement('a');
+            link.href = 'assets/CV.pdf';
+            link.download = 'David_Seme_Resume.pdf';
+            link.click();
+        });
         
         // Change joke every 10 seconds
         setInterval(() => {
             const jokeText = document.getElementById('jokeText');
-            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-            jokeText.textContent = randomJoke;
+            if (jokeText) {
+                const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+                jokeText.textContent = randomJoke;
+            }
         }, 10000);
         
-        // Interactive Terminal with enhanced commands
+        // Interactive Terminal - FIXED VERSION
         const terminalBody = document.getElementById('terminal-body');
         const terminalInput = document.getElementById('terminal-input');
         
-        const commands = {
-            'help': 'Available commands: help, about, skills, experience, projects, contact, clear, joke, ls, whoami, pwd, theme',
-            'about': 'David Seme - Software Engineer with Computer Science degree and expertise in enterprise solutions.',
-            'skills': 'Python, JavaScript, .NET, Django, Power BI, PostgreSQL, Dynamics NAV, Docker, and more.',
-            'experience': 'Software Developer, Senior Systems Engineer, and Technical Lead roles.',
-            'projects': 'MubiLeather.com, Eonn.co.ke, Virovil Coffee Factory, and many more e-commerce platforms.',
-            'contact': 'Email: davidluvai56@gmail.com | Phone: +254 740 135 474',
-            'joke': function() { return jokes[Math.floor(Math.random() * jokes.length)]; },
-            'clear': function() { 
-                const lines = terminalBody.querySelectorAll('.terminal-line');
-                for (let i = 0; i < lines.length - 1; i++) {
-                    lines[i].remove();
+        // Make sure elements exist before adding event listeners
+        if (terminalBody && terminalInput) {
+            const commands = {
+                'help': 'Available commands: help, about, skills, experience, projects, contact, clear, joke, ls, whoami, pwd',
+                'about': 'David Seme - Software Engineer with Computer Science degree and expertise in enterprise solutions.',
+                'skills': 'Python, JavaScript, .NET, Django, Power BI, PostgreSQL, Dynamics NAV, Docker, and more.',
+                'experience': 'Software Developer, Senior Systems Engineer, and Technical Lead roles.',
+                'projects': 'MubiLeather.com, Eonn.co.ke, Virovil Coffee Factory, and many more e-commerce platforms.',
+                'contact': 'Email: davidluvai56@gmail.com | Phone: +254 740 135 474',
+                'joke': function() { 
+                    return jokes[Math.floor(Math.random() * jokes.length)]; 
+                },
+                'clear': function() { 
+                    const lines = terminalBody.querySelectorAll('.terminal-line');
+                    for (let i = 0; i < lines.length - 1; i++) {
+                        lines[i].remove();
+                    }
+                    return '';
+                },
+                'ls': 'portfolio.pdf  projects/  skills.txt  experience.md',
+                'whoami': 'visitor',
+                'pwd': '/home/david-seme-portfolio'
+            };
+            
+            function addOutput(text) {
+                const outputLine = document.createElement('div');
+                outputLine.className = 'terminal-line';
+                outputLine.innerHTML = `<span class="terminal-output">${text}</span>`;
+                terminalBody.insertBefore(outputLine, terminalBody.lastElementChild);
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+            
+            function processCommand(command) {
+                const cmd = command.trim().toLowerCase();
+                
+                if (cmd === '') {
+                    return;
                 }
-                return '';
-            },
-            'ls': 'portfolio.pdf  projects/  skills.txt  experience.md  contact.info',
-            'whoami': 'visitor',
-            'pwd': '/home/david-seme-portfolio',
-            'theme': function() { 
-                themeToggle.click();
-                return 'Theme toggled!';
-            }
-        };
-        
-        function addOutput(text) {
-            const outputLine = document.createElement('div');
-            outputLine.className = 'terminal-line';
-            outputLine.innerHTML = `<span class="terminal-output">${text}</span>`;
-            terminalBody.insertBefore(outputLine, terminalBody.lastElementChild);
-            terminalBody.scrollTop = terminalBody.scrollHeight;
-        }
-        
-        function processCommand(command) {
-            const cmd = command.trim().toLowerCase();
-            
-            if (cmd === '') {
-                return;
-            }
-            
-            if (commands[cmd]) {
-                if (typeof commands[cmd] === 'function') {
-                    const result = commands[cmd]();
-                    if (result) addOutput(result);
+                
+                if (commands[cmd]) {
+                    if (typeof commands[cmd] === 'function') {
+                        const result = commands[cmd]();
+                        if (result) addOutput(result);
+                    } else {
+                        addOutput(commands[cmd]);
+                    }
                 } else {
-                    addOutput(commands[cmd]);
+                    addOutput(`Command not found: ${cmd}. Type 'help' for available commands.`);
                 }
-            } else {
-                addOutput(`Command not found: ${cmd}. Type 'help' for available commands.`);
             }
+            
+            terminalInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const command = terminalInput.value;
+                    // Add the command to output
+                    const commandLine = document.createElement('div');
+                    commandLine.className = 'terminal-line';
+                    commandLine.innerHTML = `<span class="terminal-prompt">visitor@portfolio:~$</span> ${command}`;
+                    terminalBody.insertBefore(commandLine, terminalBody.lastElementChild);
+                    
+                    processCommand(command);
+                    terminalInput.value = '';
+                    e.preventDefault();
+                }
+            });
+            
+            // Focus on terminal input when clicking anywhere on terminal
+            terminalBody.addEventListener('click', function() {
+                terminalInput.focus();
+            });
+            
+            // Auto-focus on page load
+            setTimeout(() => {
+                terminalInput.focus();
+            }, 1000);
         }
-        
-        terminalInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value;
-                addOutput(`<span class="terminal-prompt">visitor@portfolio:~$</span> ${command}`);
-                processCommand(command);
-                terminalInput.value = '';
-                e.preventDefault();
-            }
-        });
-        
-        // Focus on terminal input when clicking anywhere on terminal
-        terminalBody.addEventListener('click', function() {
-            terminalInput.focus();
-        });
-        
-        // Initialize with focus on terminal
-        terminalInput.focus();
     </script>
 </body>
 </html>
