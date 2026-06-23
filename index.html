@@ -3,7 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Seme | Software Engineer</title>
+    <title>David Seme | Software Engineer & Data Analyst</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="David Seme is a Software Engineer and Data Analyst specializing in enterprise software, ERP systems, data analytics, Power BI, and modern web applications.">
+    <meta name="keywords" content="software engineer, data analyst, ERP, Power BI, Microsoft Dynamics NAV, full-stack developer, Kenya">
+    <meta name="author" content="David Seme Luvai">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="David Seme | Software Engineer & Data Analyst">
+    <meta property="og:description" content="Software Engineer and Data Analyst specializing in enterprise software, data analytics, ERP systems, and modern web applications.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davidseme.vercel.app">
+    <meta property="og:image" content="https://davidseme.vercel.app/assets/profilepic%202.jpeg">
+    <meta property="og:site_name" content="David Seme Portfolio">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="David Seme | Software Engineer & Data Analyst">
+    <meta name="twitter:description" content="Software Engineer and Data Analyst specializing in enterprise solutions, ERP systems, and data analytics.">
+    <meta name="twitter:image" content="https://davidseme.vercel.app/assets/profilepic%202.jpeg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "David Seme Luvai",
+      "jobTitle": "Software Engineer & Data Analyst",
+      "url": "https://davidseme.vercel.app",
+      "email": "mailto:davidluvai56@gmail.com",
+      "telephone": "+254740135474",
+      "sameAs": [
+        "https://github.com/daveSeme",
+        "https://linkedin.com/in/DavidSeme"
+      ],
+      "knowsAbout": [
+        "Software Engineering",
+        "Data Analytics",
+        "ERP Systems",
+        "Power BI",
+        "Microsoft Dynamics NAV",
+        "Full-Stack Development",
+        "Business Intelligence",
+        "Data Visualization"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "The Co-operative University of Kenya"
+      }
+    }
+    </script>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -31,6 +83,7 @@
             --success: #4CAF50;
             --warning: #FF9800;
             --error: #f44336;
+            --data-accent: #00bcd4;
         }
 
         [data-theme="light"] {
@@ -53,6 +106,7 @@
             --hero-bg: #ffffff;
             --nav-bg: #ffffff;
             --nav-border: #eaeaea;
+            --data-accent: #0097a7;
         }
         
         * {
@@ -97,33 +151,13 @@
             color: white;
         }
 
-        .theme-icon {
-            font-size: 1rem;
-        }
-
-        [data-theme="dark"] .theme-icon.sun {
-            display: block;
-        }
-
-        [data-theme="dark"] .theme-icon.moon {
-            display: none;
-        }
-
-        .theme-icon.sun {
-            display: none;
-        }
-
-        .theme-icon.moon {
-            display: block;
-        }
-
-        [data-theme="light"] .theme-icon.sun {
-            display: block;
-        }
-
-        [data-theme="light"] .theme-icon.moon {
-            display: none;
-        }
+        .theme-icon { font-size: 1rem; }
+        [data-theme="dark"] .theme-icon.sun { display: block; }
+        [data-theme="dark"] .theme-icon.moon { display: none; }
+        .theme-icon.sun { display: none; }
+        .theme-icon.moon { display: block; }
+        [data-theme="light"] .theme-icon.sun { display: block; }
+        [data-theme="light"] .theme-icon.moon { display: none; }
         
         /* Typography */
         h1, h2, h3, h4, h5, h6 {
@@ -145,11 +179,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
+        .navbar-brand { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
         
         .nav-link {
             color: var(--text);
@@ -159,13 +189,8 @@
             transition: color 0.3s ease;
         }
         
-        .nav-link:hover {
-            color: var(--accent);
-        }
-        
-        .nav-link.active {
-            color: var(--accent);
-        }
+        .nav-link:hover { color: var(--accent); }
+        .nav-link.active { color: var(--accent); }
         
         .nav-link.active::after {
             content: '';
@@ -187,22 +212,22 @@
             background-color: var(--hero-bg);
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        .hero-content { position: relative; z-index: 2; }
         
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; }
         
         .hero h2 {
             font-size: 1.5rem;
             font-weight: 500;
             color: var(--text);
             margin-bottom: 1.5rem;
+        }
+        
+        .hero .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--data-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero p {
@@ -220,8 +245,15 @@
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             border: 1px solid rgba(77, 148, 255, 0.3);
+        }
+        
+        .hero-badge.data {
+            background: rgba(0, 188, 212, 0.2);
+            color: var(--data-accent);
+            border: 1px solid rgba(0, 188, 212, 0.3);
+            margin-left: 0.5rem;
         }
         
         /* Buttons */
@@ -259,14 +291,26 @@
             color: white;
         }
         
+        /* Cert Badge */
+        .cert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            margin: 0.3rem;
+        }
+        
+        .cert-badge i { font-size: 0.9rem; }
+        
         /* Section Styling */
-        section {
-            padding: 6rem 0;
-        }
-
-        .bg-light-custom {
-            background-color: var(--section-bg) !important;
-        }
+        section { padding: 6rem 0; }
+        .bg-light-custom { background-color: var(--section-bg) !important; }
         
         .section-title {
             font-size: 2.5rem;
@@ -308,9 +352,7 @@
             padding: 1.5rem;
         }
         
-        .card-body {
-            padding: 1.5rem;
-        }
+        .card-body { padding: 1.5rem; }
         
         /* Skills Section */
         .skill-badge {
@@ -330,6 +372,12 @@
             border-color: var(--accent);
             transform: translateY(-2px);
             color: var(--accent);
+        }
+        
+        .skill-badge.data-badge:hover {
+            background: rgba(0, 188, 212, 0.2);
+            border-color: var(--data-accent);
+            color: var(--data-accent);
         }
         
         /* Experience Section */
@@ -382,9 +430,7 @@
         }
         
         /* Projects Section */
-        .project-category {
-            margin-bottom: 3rem;
-        }
+        .project-category { margin-bottom: 3rem; }
         
         .category-title {
             font-size: 1.8rem;
@@ -396,75 +442,94 @@
             color: var(--primary);
         }
         
-        .project-item {
+        .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             color: var(--text);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
-        .project-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border-color: var(--accent);
         }
         
-        .project-name {
-            font-size: 1.4rem;
+        .project-card.enterprise:hover {
+            border-color: var(--data-accent);
+        }
+        
+        .project-card .project-name {
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             color: var(--primary);
         }
         
-        .project-description {
+        .project-card .project-subtitle {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .project-card .project-description {
             color: var(--text);
             margin-bottom: 1rem;
             line-height: 1.6;
+            font-size: 0.9rem;
+            flex-grow: 1;
         }
         
-        .project-features {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
+        .project-card .project-features {
+            margin: 0.5rem 0;
+            padding-left: 1.2rem;
+            font-size: 0.85rem;
         }
         
-        .project-features li {
-            margin-bottom: 0.5rem;
-            color: var(--text);
+        .project-card .project-features li {
+            margin-bottom: 0.3rem;
+            color: var(--text-light);
+            font-size: 0.83rem;
         }
         
-        .project-stats {
+        .project-card .project-stats {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 1rem;
+            gap: 10px;
+            margin: 0.8rem 0;
             flex-wrap: wrap;
         }
         
         .visitors {
             background: rgba(77, 148, 255, 0.2);
             color: var(--accent);
-            padding: 0.4rem 1rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             border: 1px solid rgba(77, 148, 255, 0.3);
+            display: inline-block;
         }
         
         .tech-stack {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
+            margin-top: auto;
         }
         
         .tech-badge {
             background: var(--bg-light);
             color: var(--text);
-            padding: 0.4rem 0.8rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border: 1px solid var(--border);
         }
 
@@ -481,8 +546,9 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             transition: all 0.3s;
+            font-size: 0.9rem;
         }
         
         .project-link:hover {
@@ -506,18 +572,8 @@
             border-color: var(--accent);
         }
         
-        .startup-name {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .startup-role {
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
+        .startup-name { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary); }
+        .startup-role { color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
         
         .startup-description {
             color: var(--text);
@@ -525,11 +581,7 @@
             line-height: 1.6;
         }
         
-        .focus-areas {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+        .focus-areas { display: flex; gap: 10px; flex-wrap: wrap; }
         
         .focus-badge {
             background: rgba(77, 148, 255, 0.2);
@@ -560,10 +612,7 @@
             color: var(--text);
         }
 
-        .contact-form label {
-            color: var(--text);
-            font-weight: 500;
-        }
+        .contact-form label { color: var(--text); font-weight: 500; }
         
         /* Footer */
         footer {
@@ -618,13 +667,8 @@
             transition: all 0.3s ease;
         }
         
-        .whatsapp-btn {
-            background: #25D366;
-        }
-        
-        .call-btn {
-            background: var(--accent);
-        }
+        .whatsapp-btn { background: #25D366; }
+        .call-btn { background: var(--accent); }
         
         .whatsapp-btn:hover, .call-btn:hover {
             transform: translateY(-5px) scale(1.1);
@@ -651,10 +695,7 @@
             border-bottom: 1px solid var(--border);
         }
         
-        .terminal-buttons {
-            display: flex;
-            gap: 8px;
-        }
+        .terminal-buttons { display: flex; gap: 8px; }
         
         .terminal-btn {
             width: 14px;
@@ -709,10 +750,7 @@
             flex: 1;
         }
         
-        .terminal-output {
-            white-space: pre-wrap;
-            line-height: 1.5;
-        }
+        .terminal-output { white-space: pre-wrap; line-height: 1.5; }
         
         .terminal-cursor {
             display: inline-block;
@@ -737,16 +775,8 @@
             border-left: 4px solid var(--accent);
         }
         
-        .joke-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .joke-title i {
-            color: var(--accent);
-            margin-right: 0.5rem;
-        }
+        .joke-title { display: flex; align-items: center; margin-bottom: 1rem; }
+        .joke-title i { color: var(--accent); margin-right: 0.5rem; }
         
         /* Animations */
         .fade-in {
@@ -755,10 +785,7 @@
             transition: all 0.6s ease;
         }
         
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
         
         /* Form Status */
         .form-status {
@@ -794,46 +821,16 @@
             margin-right: 10px;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Contact Info Fixes */
-        .contact-info li {
-            color: var(--text) !important;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info li i {
-            color: var(--accent);
-            width: 20px;
-        }
-
-        .reference p {
-            color: var(--text) !important;
-        }
-
-        .reference strong {
-            color: var(--primary);
-        }
-
-        /* Education Text Fix */
-        .education-text {
-            color: var(--text) !important;
-        }
-
-        .education-institution {
-            color: var(--text-light);
-        }
-
-        /* Ensure all text in cards is visible */
-        .card p, .card li {
-            color: var(--text);
-        }
-
-        .card h4 {
-            color: var(--primary);
-        }
+        .contact-info li { color: var(--text) !important; margin-bottom: 1rem; }
+        .contact-info li i { color: var(--accent); width: 20px; }
+        .reference p { color: var(--text) !important; }
+        .reference strong { color: var(--primary); }
+        .education-text { color: var(--text) !important; }
+        .education-institution { color: var(--text-light); }
+        .card p, .card li { color: var(--text); }
+        .card h4 { color: var(--primary); }
 
         /* Thank You Popup */
         .thank-you-popup {
@@ -852,10 +849,7 @@
             transition: all 0.3s ease;
         }
 
-        .thank-you-popup.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .thank-you-popup.active { opacity: 1; visibility: visible; }
 
         .thank-you-content {
             background: var(--card-bg);
@@ -869,77 +863,29 @@
             transition: transform 0.3s ease;
         }
 
-        .thank-you-popup.active .thank-you-content {
-            transform: translateY(0);
-        }
-
-        .thank-you-content i {
-            font-size: 4rem;
-            color: var(--success);
-            margin-bottom: 1.5rem;
-        }
-
-        .thank-you-content h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .thank-you-content p {
-            color: var(--text);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
+        .thank-you-popup.active .thank-you-content { transform: translateY(0); }
+        .thank-you-content i { font-size: 4rem; color: var(--success); margin-bottom: 1.5rem; }
+        .thank-you-content h3 { color: var(--primary); margin-bottom: 1rem; }
+        .thank-you-content p { color: var(--text); margin-bottom: 2rem; line-height: 1.6; }
         
         /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+        }
+        
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .floating-buttons {
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .whatsapp-btn, .call-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .terminal-container {
-                margin: 1rem 0;
-            }
-            
-            .project-stats {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-
-            .theme-toggle {
-                top: 80px;
-                right: 15px;
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-
-            .terminal-input {
-                width: calc(100% - 120px);
-            }
-
-            .thank-you-content {
-                padding: 2rem;
-                margin: 1rem;
-            }
-
-            .thank-you-content i {
-                font-size: 3rem;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .floating-buttons { bottom: 20px; right: 20px; }
+            .whatsapp-btn, .call-btn { width: 50px; height: 50px; font-size: 1.2rem; }
+            .terminal-container { margin: 1rem 0; }
+            .project-stats { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .theme-toggle { top: 80px; right: 15px; padding: 6px 10px; font-size: 0.8rem; }
+            .terminal-input { width: calc(100% - 120px); }
+            .thank-you-content { padding: 2rem; margin: 1rem; }
+            .thank-you-content i { font-size: 3rem; }
+            .hero-badge.data { margin-left: 0; margin-top: 0.5rem; }
         }
     </style>
 </head>
@@ -960,21 +906,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -985,11 +921,20 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <span class="hero-badge fade-in">Software Engineer & Data Analyst</span>
+                    <div class="mb-2 fade-in">
+                        <span class="hero-badge">Software Engineer</span>
+                        <span class="hero-badge data">Data Analyst</span>
+                    </div>
                     <h1 class="fade-in">David Seme Luvai</h1>
-                    <h2 class="fade-in">Software Engineer</h2>
+                    <h2 class="fade-in">Building <span class="highlight">scalable systems</span> & transforming data into <span class="highlight">strategic insights</span></h2>
                     
-                    <p class="fade-in">I architect robust systems and transform data into strategic insights. Building solutions that scale with your business needs.</p>
+                    <p class="fade-in">I'm a Software Engineer and Data Analyst who architects robust enterprise systems while harnessing the power of data analytics to drive business decisions. From ERP implementations to interactive dashboards, I deliver end-to-end solutions that scale.</p>
+                    
+                    <!-- Certifications -->
+                    <div class="mb-3 fade-in">
+                        <span class="cert-badge"><i class="fas fa-certificate"></i> Microsoft Power BI Certified</span>
+                        <span class="cert-badge"><i class="fas fa-certificate"></i> Microsoft Dynamics NAV Certified</span>
+                    </div>
                     
                     <!-- Interactive Terminal -->
                     <div class="terminal-container fade-in">
@@ -1025,13 +970,7 @@
                 </div>
                 <div class="col-lg-6 d-none d-lg-block fade-in">
                     <div class="text-center">
-                        <!-- Profile placeholder - replace with actual image -->
-                        <!-- <div class="profile-placeholder" style="height: 500px; background: var(--bg-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--accent);">
-                            <i class="fas fa-user" style="font-size: 5rem; color: var(--text-light);"></i>
-                        </div> -->
-
-                        <!-- <img src="assets/profilepic 2.jpeg" alt="David Seme" class="img-fluid rounded shadow" style="max-height: 500px; border: 1px solid var(--accent);"> -->
-                    <img src="assets/profilepic 2.jpeg" alt="David Seme" class="img-fluid rounded shadow" style="max-height: 500px; border: 1px solid ;">
+                        <img src="assets/profilepic 2.jpeg" alt="David Seme - Software Engineer & Data Analyst" class="img-fluid rounded shadow" style="max-height: 500px; border: 1px solid var(--accent);">
                     </div>
                 </div>
             </div>
@@ -1044,8 +983,9 @@
             <h2 class="section-title fade-in">About Me</h2>
             <div class="row">
                 <div class="col-lg-6 fade-in">
-                    <p>Hello! I'm David, a Software Engineer with a Bachelor's degree in Computer Science and extensive experience in enterprise solutions, data analytics, and full-stack development.</p>
-                    <p>When I'm not architecting complex systems or optimizing ERP implementations, you can find me building innovative web applications, exploring AI/ML technologies, or mentoring the next generation of tech professionals.</p>
+                    <p>Hello! I'm David, a <strong>Software Engineer & Data Analyst</strong> with a Bachelor's degree in Computer Science and extensive experience in enterprise solutions, data analytics, and full-stack development.</p>
+                    <p>I'm <strong>Microsoft certified in Power BI and Dynamics NAV</strong>, and I've contributed to major systems for government agencies including UFAA, NCA, KRA, and MOESNA.</p>
+                    <p>I specialize in building scalable web applications, implementing ERP solutions, and transforming complex data into actionable business intelligence. Whether it's designing system architecture or creating interactive Power BI dashboards, I deliver solutions that drive measurable results.</p>
                     <p>I bridge the gap between technical implementation and business strategy, ensuring technology solutions deliver measurable value.</p>
                     <div class="mt-4">
                         <a href="#" class="btn btn-primary me-3" id="downloadResume">Download Resume</a>
@@ -1059,6 +999,12 @@
                             <strong>Bachelor of Science in Computer Science</strong><br>
                             <span class="education-institution">The Co-operative University of Kenya</span>
                         </p>
+                        
+                        <h4 class="mt-4"><i class="fas fa-certificate me-2"></i>Certifications</h4>
+                        <div class="d-flex flex-wrap mt-3">
+                            <span class="cert-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="cert-badge"><i class="fas fa-cogs"></i> Dynamics NAV</span>
+                        </div>
                         
                         <h4 class="mt-4"><i class="fas fa-star me-2"></i>Interests</h4>
                         <div class="d-flex flex-wrap mt-3">
@@ -1095,18 +1041,21 @@
                 <div class="col-md-4 fade-in">
                     <div class="card h-100">
                         <div class="card-header">
-                            <h4><i class="fas fa-code me-2"></i>Programming & Development</h4>
+                            <h4><i class="fas fa-code me-2"></i>Software Engineering</h4>
                         </div>
                         <div class="card-body">
                             <div class="d-flex flex-wrap">
                                 <span class="skill-badge">Python</span>
                                 <span class="skill-badge">JavaScript</span>
-                                <span class="skill-badge">.NET</span>
+                                <span class="skill-badge">.NET / C#</span>
+                                <span class="skill-badge">ASP.NET</span>
                                 <span class="skill-badge">Django</span>
+                                <span class="skill-badge">Node.js</span>
+                                <span class="skill-badge">React.js</span>
+                                <span class="skill-badge">Vue.js</span>
                                 <span class="skill-badge">Android Dev</span>
-                                <span class="skill-badge">SQL</span>
-                                <span class="skill-badge">Jupyter Notebook</span>
                                 <span class="skill-badge">Flutter</span>
+                                <span class="skill-badge">SQL</span>
                             </div>
                         </div>
                     </div>
@@ -1114,16 +1063,18 @@
                 <div class="col-md-4 fade-in">
                     <div class="card h-100">
                         <div class="card-header">
-                            <h4><i class="fas fa-database me-2"></i>Data & Analytics</h4>
+                            <h4><i class="fas fa-chart-line me-2"></i>Data & Analytics</h4>
                         </div>
                         <div class="card-body">
                             <div class="d-flex flex-wrap">
-                                <span class="skill-badge">Power BI</span>
-                                <span class="skill-badge">PostgreSQL</span>
-                                <span class="skill-badge">EDA</span>
-                                <span class="skill-badge">Data Visualization</span>
-                                <span class="skill-badge">Business Intelligence</span>
-                                <span class="skill-badge">Machine Learning</span>
+                                <span class="skill-badge data-badge">Power BI</span>
+                                <span class="skill-badge data-badge">PostgreSQL</span>
+                                <span class="skill-badge data-badge">MS SQL</span>
+                                <span class="skill-badge data-badge">EDA</span>
+                                <span class="skill-badge data-badge">Data Visualization</span>
+                                <span class="skill-badge data-badge">Business Intelligence</span>
+                                <span class="skill-badge data-badge">Machine Learning</span>
+                                <span class="skill-badge data-badge">Jupyter Notebook</span>
                             </div>
                         </div>
                     </div>
@@ -1136,8 +1087,10 @@
                         <div class="card-body">
                             <div class="d-flex flex-wrap">
                                 <span class="skill-badge">Dynamics NAV/BC</span>
-                                <span class="skill-badge">API Integrations</span>
+                                <span class="skill-badge">ERP Integration</span>
+                                <span class="skill-badge">REST APIs</span>
                                 <span class="skill-badge">Docker</span>
+                                <span class="skill-badge">GCP</span>
                                 <span class="skill-badge">GitHub Actions</span>
                                 <span class="skill-badge">System Architecture</span>
                                 <span class="skill-badge">Cloud Solutions</span>
@@ -1158,22 +1111,23 @@
                     <div class="exp-timeline">
                         <div class="exp-card fade-in">
                             <span class="exp-date">October 2023 – Present</span>
-                            <h4>Software Developer & Power BI Specialist</h4>
+                            <h4>Lead Data Analyst & Software Developer</h4>
                             <h5>Loci Africa Technologies</h5>
                             <ul>
+                                <li>Lead data analytics initiatives, developing interactive Power BI dashboards and conducting exploratory data analysis for enterprise clients</li>
                                 <li>Develop and customize ERP solutions using Microsoft Dynamics NAV/Business Central and .NET</li>
                                 <li>Build and maintain Android applications to enhance business processes</li>
-                                <li>Conduct exploratory data analysis and develop interactive Power BI dashboards</li>
-                                <li>Integrate Microsoft Business Dynamics NAV with external portals</li>
+                                <li>Integrate Microsoft Business Dynamics NAV with external portals and third-party systems</li>
+                                <li>Drive data-driven decision making through comprehensive business intelligence reporting</li>
                             </ul>
                             <div class="d-flex flex-wrap mt-2">
-                                <span class="skill-badge">Dynamics NAV</span>
                                 <span class="skill-badge">Power BI</span>
+                                <span class="skill-badge">Dynamics NAV</span>
                                 <span class="skill-badge">.NET</span>
                                 <span class="skill-badge">Python</span>
                                 <span class="skill-badge">Android</span>
                                 <span class="skill-badge">PHP</span>
-                                
+                                <span class="skill-badge data-badge">Data Analytics</span>
                             </div>
                         </div>
                         
@@ -1200,7 +1154,7 @@
                         <div class="exp-card fade-in">
                             <span class="exp-date">September 2023 – November 2024</span>
                             <h4>Part-Time Robotics Instructor</h4>
-                            <h5> CHEZA STEM Education Organization</h5>
+                            <h5>CHEZA STEM Education Organization</h5>
                             <ul>
                                 <li>Design and deliver STEM workshops for underrepresented students</li>
                                 <li>Develop interactive lesson plans tailored to different learning levels</li>
@@ -1220,7 +1174,7 @@
         </div>
     </section>
     
-    <!-- Projects Section -->
+    <!-- Projects Section - ALL IN 3-COLUMN GRID -->
     <section id="projects" class="py-5">
         <div class="container py-5">
             <h2 class="section-title fade-in">My Projects</h2>
@@ -1232,134 +1186,281 @@
                     <span>E-Commerce Platforms</span>
                 </div>
                 
-                <div class="project-item">
-                    <div class="project-name">MubiLeather</div>
-                    <div class="project-description">
-                        An elegant leather goods e-commerce platform featuring secure checkout, admin dashboard, automated email receipts, and payment integrations.
-                    </div>
-                    <ul class="project-features">
-                        <li>Role-based admin system with multi-level permissions</li>
-                        <li>Advanced analytics dashboard for sales reporting</li>
-                        <li>Automated inventory management system</li>
-                        <li>Integrated payment gateways and shipping calculators</li>
-                        <li>DHL integration for global shipping</li>
-                    </ul>
-                    <div class="project-stats">
-                        <span class="visitors">→ Monthly Active Users: 50+</span>
-                        <div class="tech-stack">
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">Power BI</span>
+                <div class="row">
+                    <!-- Dandora GVTC -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card h-100">
+                            <div class="project-name">Dandora Green Light VTC</div>
+                            <div class="project-subtitle">Vocational Training Centre</div>
+                            <div class="project-description">
+                                Complete institutional website with CMS for a TVET-accredited vocational training centre. Features department management, events, careers, tenders, online applications, and driving school section.
+                            </div>
+                            <ul class="project-features">
+                                <li>Admin panel with role-based access & activity logging</li>
+                                <li>Online student application with document upload</li>
+                                <li>NTSA-approved driving school section</li>
+                            </ul>
+                            <div class="project-stats">
+                                <span class="visitors">TVET Accredited</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Bootstrap</span>
+                            </div>
+                            <a href="https://rovil.co.ke/Dandora/" target="_blank" rel="noopener" class="project-link">
+                                Visit Site <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
-                    <a href="https://mubileather.com" target="_blank" class="project-link">
-                        Visit Site <i class="fas fa-arrow-right"></i>
-                    </a>
+                    
+                    <!-- VITO Electronics -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card h-100">
+                            <div class="project-name">VITO Electronics</div>
+                            <div class="project-subtitle">E-Commerce Platform</div>
+                            <div class="project-description">
+                                Modern electronics e-commerce platform for phones, gadgets, and tech accessories with multi-currency support, wishlist, and advanced shopping features.
+                            </div>
+                            <ul class="project-features">
+                                <li>Multi-currency support with live exchange rates</li>
+                                <li>Wishlist & persistent shopping cart</li>
+                                <li>M-PESA payment integration ready</li>
+                            </ul>
+                            <div class="project-stats">
+                                <span class="visitors">Full E-Commerce</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">ExchangeRate API</span>
+                            </div>
+                            <a href="https://namfront.co.ke/kabugi/" target="_blank" rel="noopener" class="project-link">
+                                Visit Site <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- MubiLeather -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card h-100">
+                            <div class="project-name">MubiLeather</div>
+                            <div class="project-subtitle">Leather Goods E-Commerce</div>
+                            <div class="project-description">
+                                Elegant leather goods e-commerce platform featuring secure checkout, admin dashboard, automated email receipts, and DHL global shipping integration.
+                            </div>
+                            <ul class="project-features">
+                                <li>Role-based admin with multi-level permissions</li>
+                                <li>Advanced analytics & inventory management</li>
+                                <li>DHL integration for global shipping</li>
+                            </ul>
+                            <div class="project-stats">
+                                <span class="visitors">50+ Monthly Users</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Power BI</span>
+                            </div>
+                            <a href="https://mubileather.com" target="_blank" rel="noopener" class="project-link">
+                                Visit Site <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Eonn Furniture -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card h-100">
+                            <div class="project-name">Eonn Furniture</div>
+                            <div class="project-subtitle">Premium Furniture Platform</div>
+                            <div class="project-description">
+                                Premium furniture e-commerce platform with multi-vendor management, sales analytics, and custom SEO optimization tools.
+                            </div>
+                            <ul class="project-features">
+                                <li>Multi-vendor role management system</li>
+                                <li>Sales analytics & customer behavior tracking</li>
+                                <li>Real-time inventory synchronization</li>
+                            </ul>
+                            <div class="project-stats">
+                                <span class="visitors">100+ Monthly Users</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Google Analytics</span>
+                            </div>
+                            <a href="https://eonn.co.ke" target="_blank" rel="noopener" class="project-link">
+                                Visit Site <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Virovil Coffee -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card h-100">
+                            <div class="project-name">Virovil Coffee Factory</div>
+                            <div class="project-subtitle">Premium Coffee E-Commerce</div>
+                            <div class="project-description">
+                                Premium Kenyan organic coffee platform connecting global customers with authentic Arabica beans. Features subscriptions, farmer portal, and sustainability tracking.
+                            </div>
+                            <ul class="project-features">
+                                <li>Subscription-based delivery system</li>
+                                <li>Farmer relationship management portal</li>
+                                <li>DHL integration for global shipping</li>
+                            </ul>
+                            <div class="project-stats">
+                                <span class="visitors">900+ Monthly Users</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Data Analytics</span>
+                            </div>
+                            <a href="https://namfront.co.ke/virovil" target="_blank" rel="noopener" class="project-link">
+                                Visit Site <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Vian Consultancy -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card h-100">
+                            <div class="project-name">Vian Consultancy</div>
+                            <div class="project-subtitle">Professional Services Website</div>
+                            <div class="project-description">
+                                Professional consulting firm website with client portal, lead tracking analytics, and project management dashboard for business growth.
+                            </div>
+                            <ul class="project-features">
+                                <li>Client portal with role-based access</li>
+                                <li>Lead tracking & conversion analytics</li>
+                                <li>Automated reporting system</li>
+                            </ul>
+                            <div class="project-stats">
+                                <span class="visitors">900+ Monthly Users</span>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">Tailwind</span>
+                                <span class="tech-badge">FormSubmit</span>
+                            </div>
+                            <a href="https://vianconsultancy.com" target="_blank" rel="noopener" class="project-link">
+                                Visit Site <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enterprise & Government Systems -->
+            <div class="project-category fade-in">
+                <div class="category-title">
+                    <span>🏛️</span>
+                    <span>Enterprise & Government Systems</span>
                 </div>
                 
-                <div class="project-item">
-                    <div class="project-name">Eonn furniture</div>
-                    <div class="project-description">
-                        A premium furniture e-commerce platform with dynamic portfolio CMS and custom SEO optimization tools for content visibility.
-                    </div>
-                    <ul class="project-features">
-                        <li>Multi-vendor role management system</li>
-                        <li>Sales analytics and customer behavior tracking</li>
-                        <li>Customizable product catalogs with advanced filtering</li>
-                        <li>Real-time inventory synchronization</li>
-                        <li>DHL integration for global shipping</li>
-                    </ul>
-                    <div class="project-stats">
-                        <span class="visitors">→ Monthly Active Users: 100+</span>
-                        <div class="tech-stack">
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">Bootstrap</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">Google Analytics</span>
-                            
+                <div class="row">
+                    <!-- UFAA -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card enterprise h-100">
+                            <div class="project-name">UFAA</div>
+                            <div class="project-subtitle">Unclaimed Financial Assets Authority</div>
+                            <div class="project-description">
+                                Enterprise system for managing collection and tracking of financial and physical assets for the Unclaimed Financial Assets Authority of Kenya.
+                            </div>
+                            <div class="tech-stack mt-3">
+                                <span class="tech-badge">ASP.NET</span>
+                                <span class="tech-badge">MS SQL</span>
+                                <span class="tech-badge">GCP</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://eonn.co.ke" target="_blank" class="project-link">
-                        Visit Site <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="project-item">
-                    <div class="project-name">Virovil Coffee Factory</div>
-                    <div class="project-description">
-                        E-commerce platform for premium Kenyan organic coffee, connecting global coffee lovers with authentic Arabica beans from small-scale farmers.
-                    </div>
-                    <ul class="project-features">
-                        <li>Multi-level admin roles for factory management</li>
-                        <li>Sales performance analytics and reporting dashboards</li>
-                        <li>Subscription-based coffee delivery system</li>
-                        <li>Farmer relationship management portal</li>
-                        <li>Sustainability impact tracking</li>
-                        <li>DHL integration for global shipping</li>
-                    </ul>
-                    <div class="project-stats">
-                        <span class="visitors">→ Monthly Active Users: 900+</span>
-                        <div class="tech-stack">
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">Data Analytics</span>
+                    
+                    <!-- NCA -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card enterprise h-100">
+                            <div class="project-name">NCA</div>
+                            <div class="project-subtitle">National Construction Authority</div>
+                            <div class="project-description">
+                                End-to-end contractor registration and management workflows for the National Construction Authority of Kenya.
+                            </div>
+                            <div class="tech-stack mt-3">
+                                <span class="tech-badge">C#</span>
+                                <span class="tech-badge">ASP.NET</span>
+                                <span class="tech-badge">MS SQL</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://namfront.co.ke/virovil" target="_blank" class="project-link">
-                        Visit Site <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="project-item">
-                    <div class="project-name">Kakia Oils</div>
-                    <div class="project-description">
-                        Organic beauty brand site with modern UI, product gallery, M-Pesa integration, and analytics dashboard.
-                    </div>
-                    <ul class="project-features">
-                        <li>Role-based content management system</li>
-                        <li>Customer segmentation and purchase analytics</li>
-                        <li>M-Pesa payment integration with real-time confirmation</li>
-                        <li>Product recommendation engine</li>
-                    </ul>
-                    <div class="project-stats">
-                        <span class="visitors">→ Monthly Active Users: 650+</span>
-                        <div class="tech-stack">
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">CSS</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">M-Pesa API</span>
+                    
+                    <!-- KRA -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card enterprise h-100">
+                            <div class="project-name">KRA</div>
+                            <div class="project-subtitle">Kenya Revenue Authority</div>
+                            <div class="project-description">
+                                Automated tax compliance integration with KRA's TIMS system, streamlining electronic tax invoice management for businesses.
+                            </div>
+                            <div class="tech-stack mt-3">
+                                <span class="tech-badge">ASP.NET</span>
+                                <span class="tech-badge">REST API</span>
+                                <span class="tech-badge">NAV ERP</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://namfront.co.ke/kakiaoils" target="_blank" class="project-link">
-                        Visit Site <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="project-item">
-                    <div class="project-name">Vian Consultancy</div>
-                    <div class="project-description">
-                        Professional consulting firm website focused on SEO visibility and client acquisition with inquiry form system and project showcase.
-                    </div>
-                    <ul class="project-features">
-                        <li>Client portal with role-based access</li>
-                        <li>Lead tracking and conversion analytics</li>
-                        <li>Project management dashboard</li>
-                        <li>Automated reporting system</li>
-                    </ul>
-                    <div class="project-stats">
-                        <span class="visitors">→ Monthly Active Users: 900+</span>
-                        <div class="tech-stack">
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">HTML</span>
-                            <span class="tech-badge">Tailwind</span>
-                            <span class="tech-badge">FormSubmit</span>
+                    
+                    <!-- Sky Capital -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card enterprise h-100">
+                            <div class="project-name">Sky Capital</div>
+                            <div class="project-subtitle">Financial Asset Management</div>
+                            <div class="project-description">
+                                System for tracking financial instruments, performance reporting, and asset lifecycle management.
+                            </div>
+                            <div class="tech-stack mt-3">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">React.js</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://vianconsultancy.com" target="_blank" class="project-link">
-                        Visit Site <i class="fas fa-arrow-right"></i>
-                    </a>
+                    
+                    <!-- MOESNA -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card enterprise h-100">
+                            <div class="project-name">MOESNA</div>
+                            <div class="project-subtitle">Maritime Organisation</div>
+                            <div class="project-description">
+                                Multi-country performance evaluation and reporting platform spanning Eastern, Southern, and Northern Africa.
+                            </div>
+                            <div class="tech-stack mt-3">
+                                <span class="tech-badge">Vue.js</span>
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rovil Coffee -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card enterprise h-100">
+                            <div class="project-name">Rovil Coffee</div>
+                            <div class="project-subtitle">Premium Coffee Platform</div>
+                            <div class="project-description">
+                                Premium Kenyan organic coffee platform with multi-currency support, M-PESA integration, and international shipping capabilities.
+                            </div>
+                            <div class="tech-stack mt-3">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">M-PESA API</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1372,17 +1473,18 @@
                 
                 <div class="startup-card">
                     <div class="startup-name">Software Architecture & Technical Strategy</div>
-                    <div class="startup-role">Lead Software Engineer</div>
+                    <div class="startup-role">Lead Software Engineer & Data Analyst</div>
                     <div class="startup-description">
-                        Leading software development initiatives and technical strategy for multiple e-commerce platforms. Specializing in scalable architecture, data analytics integration, and role-based access control systems that empower businesses with enterprise-grade digital tools.
+                        Leading software development initiatives and data analytics strategy for multiple e-commerce platforms and enterprise systems. Specializing in scalable architecture, business intelligence, ERP implementations, and role-based access control systems that empower organizations with enterprise-grade digital tools and data-driven insights.
                     </div>
                     <div class="focus-areas">
-                        <span class="focus-badge">ERP systems</span>
-                        <span class="focus-badge">Analytics dashboards</span>
-                        <span class="focus-badge">E-commerce architecture</span>
-                        <span class="focus-badge">Role-based systems</span>
+                        <span class="focus-badge">ERP Systems</span>
                         <span class="focus-badge">Data Analytics</span>
+                        <span class="focus-badge">Business Intelligence</span>
+                        <span class="focus-badge">E-Commerce Architecture</span>
+                        <span class="focus-badge">Role-Based Systems</span>
                         <span class="focus-badge">System Integration</span>
+                        <span class="focus-badge">Government Systems</span>
                     </div>
                 </div>
             </div>
@@ -1408,11 +1510,11 @@
                             </li>
                             <li class="mb-3">
                                 <i class="fab fa-linkedin me-2"></i> 
-                                <a href="https://linkedin.com/in/DavidSeme" target="_blank" class="text-primary text-decoration-none">linkedin.com/in/DavidSeme</a>
+                                <a href="https://linkedin.com/in/DavidSeme" target="_blank" rel="noopener" class="text-primary text-decoration-none">linkedin.com/in/DavidSeme</a>
                             </li>
                             <li class="mb-3">
                                 <i class="fab fa-github me-2"></i> 
-                                <a href="https://github.com/daveSeme" target="_blank" class="text-primary text-decoration-none">github.com/daveSeme</a>
+                                <a href="https://github.com/daveSeme" target="_blank" rel="noopener" class="text-primary text-decoration-none">github.com/daveSeme</a>
                             </li>
                         </ul>
                         
@@ -1427,35 +1529,28 @@
                 <div class="col-lg-6 fade-in">
                     <div class="card p-4 h-100">
                         <h4><i class="fas fa-envelope me-2"></i>Send Me a Message</h4>
-
-                        <!-- FormSubmit form with JavaScript handling -->
                         <form id="contactForm">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
-
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
-
                             <div class="mb-3">
                                 <label for="subject" class="form-label">Subject</label>
                                 <input type="text" class="form-control" id="subject" name="subject" required>
                             </div>
-
                             <div class="mb-3">
                                 <label for="message" class="form-label">Message</label>
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
-
                             <button type="submit" class="btn btn-primary" id="submitBtn">
                                 <span id="submitText">Send Message</span>
                                 <span id="submitLoading" class="loading" style="display: none;"></span>
                             </button>
                         </form>
-
                         <div id="form-status" class="form-status"></div>
                     </div>
                 </div>
@@ -1475,7 +1570,7 @@
     
     <!-- Floating Action Buttons -->
     <div class="floating-buttons">
-        <a href="https://wa.me/254740135474" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/254740135474" class="whatsapp-btn" target="_blank" rel="noopener">
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="tel:+254740135474" class="call-btn">
@@ -1487,8 +1582,8 @@
     <footer class="text-center">
         <div class="container">
             <div class="social-icons mb-4">
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/DavidSeme" target="_blank" rel="noopener" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/daveSeme" target="_blank" rel="noopener" class="social-icon"><i class="fab fa-github"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
             </div>
@@ -1498,7 +1593,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Dev Jokes
         const jokes = [
             "Why do programmers prefer dark mode? Because light attracts bugs!",
             "How many programmers does it take to change a light bulb? None, that's a hardware problem!",
@@ -1509,15 +1603,14 @@
             "How do you comfort a JavaScript bug? You console it!",
             "Why did the developer go broke? Because he used up all his cache!",
             "Why did the programmer quit his job? Because he didn't get arrays!",
-            "What's the object-oriented way to become wealthy? Inheritance!"
+            "What's the object-oriented way to become wealthy? Inheritance!",
+            "A data analyst walks into a bar. The bartender says 'What'll you have?' The analyst says 'What's the average?'",
+            "Why did the data analyst break up with the statistician? No significant relationship."
         ];
         
-        // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const themeText = document.getElementById('themeText');
         const body = document.body;
-
-        // Check for saved theme or default to dark
         const savedTheme = localStorage.getItem('theme') || 'dark';
         body.setAttribute('data-theme', savedTheme);
         updateThemeText(savedTheme);
@@ -1525,76 +1618,43 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeText(newTheme);
         });
 
-        function updateThemeText(theme) {
-            themeText.textContent = theme === 'light' ? 'Dark' : 'Light';
-        }
+        function updateThemeText(theme) { themeText.textContent = theme === 'light' ? 'Dark' : 'Light'; }
 
-        // Navbar scroll effect and active section highlighting
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            // Update active nav link based on scroll position
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-            
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
+                if (scrollY >= (section.offsetTop - 200)) current = section.getAttribute('id');
             });
-            
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
             });
         });
         
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
         
-        // Animation on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
-        
         const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
+        fadeElements.forEach(el => fadeObserver.observe(el));
         
-        fadeElements.forEach(el => {
-            fadeObserver.observe(el);
-        });
-        
-        // Form submission with AJAX to FormSubmit
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const submitText = document.getElementById('submitText');
@@ -1602,98 +1662,54 @@
         const formStatus = document.getElementById('form-status');
 
         if (contactForm) {
-            contactForm.addEventListener('submit', async function (e) {
-                e.preventDefault(); // Prevent default form submission
-                
-                // Show loading state
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
                 submitText.textContent = 'Sending...';
                 submitLoading.style.display = 'inline-block';
                 submitBtn.disabled = true;
-                
                 try {
-                    // Get form data
                     const formData = new FormData(contactForm);
-                    
-                    // Add FormSubmit specific fields
                     formData.append('_captcha', 'false');
                     formData.append('_template', 'table');
-                    
-                    // Send to FormSubmit using fetch API
                     const response = await fetch('https://formsubmit.co/ajax/davidluvai56@gmail.com', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
                     });
-                    
                     const result = await response.json();
-                    
                     if (response.ok && result.success === 'true') {
-                        // Success - show popup
                         showThankYouPopup();
                         contactForm.reset();
-                        
-                        // Show success message in form status
                         formStatus.textContent = "Message sent successfully!";
                         formStatus.className = 'form-status success';
                         formStatus.style.display = 'block';
-                        
-                    } else {
-                        // Error handling
-                        throw new Error(result.message || 'Failed to send message');
-                    }
-                    
+                    } else throw new Error(result.message || 'Failed');
                 } catch (error) {
-                    console.error('Form submission error:', error);
-                    
-                    // Show error message
-                    formStatus.textContent = "Sorry, there was an error sending your message. Please try again or contact me directly.";
+                    formStatus.textContent = "Sorry, there was an error. Please try again.";
                     formStatus.className = 'form-status error';
                     formStatus.style.display = 'block';
-                    
                 } finally {
-                    // Reset button state
                     submitText.textContent = 'Send Message';
                     submitLoading.style.display = 'none';
                     submitBtn.disabled = false;
-                    
-                    // Hide status message after 5 seconds
-                    setTimeout(() => {
-                        formStatus.style.display = 'none';
-                    }, 5000);
+                    setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
                 }
             });
         }
         
-        // Thank You Popup Functions
         function showThankYouPopup() {
-            const popup = document.getElementById('thankYouPopup');
-            popup.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.getElementById('thankYouPopup').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-
         function closeThankYouPopup() {
-            const popup = document.getElementById('thankYouPopup');
-            popup.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.getElementById('thankYouPopup').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
-
-        // Close popup when clicking outside
         document.getElementById('thankYouPopup').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeThankYouPopup();
-            }
+            if (e.target === this) closeThankYouPopup();
         });
-
-        // Close popup with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeThankYouPopup();
-            }
+            if (e.key === 'Escape') closeThankYouPopup();
         });
         
-        // CV Download buttons
         document.getElementById('downloadCV')?.addEventListener('click', function(e) {
             e.preventDefault();
             const link = document.createElement('a');
@@ -1701,7 +1717,6 @@
             link.download = 'David_Seme_Resume.pdf';
             link.click();
         });
-        
         document.getElementById('downloadResume')?.addEventListener('click', function(e) {
             e.preventDefault();
             const link = document.createElement('a');
@@ -1710,94 +1725,68 @@
             link.click();
         });
         
-        // Change joke every 10 seconds
         setInterval(() => {
             const jokeText = document.getElementById('jokeText');
-            if (jokeText) {
-                const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-                jokeText.textContent = randomJoke;
-            }
+            if (jokeText) jokeText.textContent = jokes[Math.floor(Math.random() * jokes.length)];
         }, 10000);
         
-        // Interactive Terminal - FIXED VERSION
         const terminalBody = document.getElementById('terminal-body');
         const terminalInput = document.getElementById('terminal-input');
         
-        // Make sure elements exist before adding event listeners
         if (terminalBody && terminalInput) {
             const commands = {
-                'help': 'Available commands: help, about, skills, experience, projects, contact, clear, joke, ls, whoami, pwd',
-                'about': 'David Seme - Software Engineer with Computer Science degree and expertise in enterprise solutions.',
-                'skills': 'Python, JavaScript, .NET, Django, Power BI, PostgreSQL, Dynamics NAV, Docker, and more.',
-                'experience': 'Software Developer, Senior Systems Engineer, and Technical Lead roles.',
-                'projects': 'MubiLeather.com, Eonn.co.ke, Virovil Coffee Factory, and many more e-commerce platforms.',
+                'help': 'Commands: help, about, skills, experience, projects, contact, clear, joke, ls, whoami, pwd, certs, data',
+                'about': 'David Seme - Software Engineer & Data Analyst. Microsoft certified in Power BI & Dynamics NAV.',
+                'skills': 'Software: Python, JavaScript, .NET, Django, Node.js, React, Vue.js | Data: Power BI, PostgreSQL, ML | Systems: Dynamics NAV, Docker, GCP',
+                'experience': 'Lead Data Analyst & Software Developer at Loci Africa | Senior Systems Engineer at Namfront | STEM Instructor at CHEZA',
+                'projects': 'E-Commerce: Dandora GVTC, VITO, MubiLeather, Eonn, Virovil, Vian | Enterprise: UFAA, NCA, KRA, Sky Capital, MOESNA, Rovil Coffee',
                 'contact': 'Email: davidluvai56@gmail.com | Phone: +254 740 135 474',
-                'joke': function() { 
-                    return jokes[Math.floor(Math.random() * jokes.length)]; 
-                },
-                'clear': function() { 
+                'certs': 'Microsoft Certified: Power BI | Microsoft Certified: Dynamics NAV',
+                'data': 'Stack: Power BI, PostgreSQL, MS SQL, Python (Pandas, NumPy), Jupyter, EDA, ML, Data Visualization',
+                'joke': function() { return jokes[Math.floor(Math.random() * jokes.length)]; },
+                'clear': function() {
                     const lines = terminalBody.querySelectorAll('.terminal-line');
-                    for (let i = 0; i < lines.length - 1; i++) {
-                        lines[i].remove();
-                    }
+                    for (let i = 0; i < lines.length - 1; i++) lines[i].remove();
                     return '';
                 },
-                'ls': 'portfolio.pdf  projects/  skills.txt  experience.md',
+                'ls': 'portfolio.pdf  projects/  skills.txt  experience.md  certifications/  data-analytics/',
                 'whoami': 'visitor',
                 'pwd': '/home/david-seme-portfolio'
             };
             
             function addOutput(text) {
-                const outputLine = document.createElement('div');
-                outputLine.className = 'terminal-line';
-                outputLine.innerHTML = `<span class="terminal-output">${text}</span>`;
-                terminalBody.insertBefore(outputLine, terminalBody.lastElementChild);
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.innerHTML = `<span class="terminal-output">${text}</span>`;
+                terminalBody.insertBefore(line, terminalBody.lastElementChild);
                 terminalBody.scrollTop = terminalBody.scrollHeight;
             }
             
-            function processCommand(command) {
-                const cmd = command.trim().toLowerCase();
-                
-                if (cmd === '') {
-                    return;
-                }
-                
+            function processCommand(cmd) {
+                if (!cmd) return;
                 if (commands[cmd]) {
                     if (typeof commands[cmd] === 'function') {
-                        const result = commands[cmd]();
-                        if (result) addOutput(result);
-                    } else {
-                        addOutput(commands[cmd]);
-                    }
-                } else {
-                    addOutput(`Command not found: ${cmd}. Type 'help' for available commands.`);
-                }
+                        const r = commands[cmd]();
+                        if (r) addOutput(r);
+                    } else addOutput(commands[cmd]);
+                } else addOutput(`Command not found: ${cmd}. Type 'help' for available commands.`);
             }
             
             terminalInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
-                    const command = terminalInput.value;
-                    // Add the command to output
-                    const commandLine = document.createElement('div');
-                    commandLine.className = 'terminal-line';
-                    commandLine.innerHTML = `<span class="terminal-prompt">visitor@portfolio:~$</span> ${command}`;
-                    terminalBody.insertBefore(commandLine, terminalBody.lastElementChild);
-                    
-                    processCommand(command);
+                    const cmd = terminalInput.value;
+                    const line = document.createElement('div');
+                    line.className = 'terminal-line';
+                    line.innerHTML = `<span class="terminal-prompt">visitor@portfolio:~$</span> ${cmd}`;
+                    terminalBody.insertBefore(line, terminalBody.lastElementChild);
+                    processCommand(cmd.trim().toLowerCase());
                     terminalInput.value = '';
                     e.preventDefault();
                 }
             });
             
-            // Focus on terminal input when clicking anywhere on terminal
-            terminalBody.addEventListener('click', function() {
-                terminalInput.focus();
-            });
-            
-            // Auto-focus on page load
-            setTimeout(() => {
-                terminalInput.focus();
-            }, 1000);
+            terminalBody.addEventListener('click', () => terminalInput.focus());
+            setTimeout(() => terminalInput.focus(), 1000);
         }
     </script>
 </body>
