@@ -172,6 +172,7 @@
             background-color: var(--nav-bg);
             border-bottom: 1px solid var(--nav-border);
             transition: all 0.3s ease;
+            min-height: 70px;
         }
         
         .navbar.scrolled {
@@ -210,6 +211,8 @@
             position: relative;
             overflow: hidden;
             background-color: var(--hero-bg);
+            padding-top: 100px;
+            padding-bottom: 60px;
         }
         
         .hero-content { position: relative; z-index: 2; }
@@ -254,6 +257,21 @@
             color: var(--data-accent);
             border: 1px solid rgba(0, 188, 212, 0.3);
             margin-left: 0.5rem;
+        }
+        
+        .hero-image-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .hero-image-wrapper img {
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
         /* Buttons */
@@ -872,6 +890,7 @@
         @media (max-width: 992px) {
             .hero h1 { font-size: 2.5rem; }
             .section-title { font-size: 2rem; }
+            .hero { padding-top: 120px; }
         }
         
         @media (max-width: 768px) {
@@ -886,6 +905,8 @@
             .thank-you-content { padding: 2rem; margin: 1rem; }
             .thank-you-content i { font-size: 3rem; }
             .hero-badge.data { margin-left: 0; margin-top: 0.5rem; }
+            .hero { padding-top: 110px; padding-bottom: 40px; }
+            .hero-image-wrapper img { max-height: 350px; margin-top: 2rem; }
         }
     </style>
 </head>
@@ -970,8 +991,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block fade-in">
-                    <div class="text-center">
-                        <img src="assets/profilepic 2.jpeg" alt="David Seme - Software Engineer & Data Analyst" class="img-fluid rounded shadow" style="max-height: 500px; border: 1px solid var(--accent);">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/profilepic 2.jpeg" alt="David Seme - Software Engineer & Data Analyst" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -1785,7 +1806,7 @@
                 'about': 'David Seme - Software Engineer & Data Analyst. Microsoft certified in Power BI & Dynamics NAV.',
                 'skills': 'Software: Python, JavaScript, .NET, Django, Node.js, React, Vue.js | Data: Power BI, PostgreSQL, ML | Systems: Dynamics NAV, Docker, GCP',
                 'experience': 'Lead Data Analyst & Software Developer at Loci Africa | Senior Systems Engineer at Namfront | STEM Instructor at CHEZA',
-                'projects': 'E-Commerce: Dandora GVTC, VITO, MubiLeather, Eonn, Virovil, Vian, Ela Glow Spa | Enterprise: UFAA, NCA, KRA, Sky Capital, MOESNA, Rovil Coffee',
+                'projects': 'E-Commerce: Dandora GVTC, VITO, MubiLeather, PeaceFx, Virovil, Vian, Ela Glow Spa | Enterprise: UFAA, NCA, KRA, Sky Capital, MOESNA, Rovil Coffee',
                 'contact': 'Email: davidluvai56@gmail.com | Phone: +254 740 135 474',
                 'certs': 'Microsoft Certified: Power BI | Microsoft Certified: Dynamics NAV | Data Analytics Certified (ICTA Kenya)',
                 'data': 'Stack: Power BI, PostgreSQL, MS SQL, Python (Pandas, NumPy), Jupyter, EDA, ML, Data Visualization',
