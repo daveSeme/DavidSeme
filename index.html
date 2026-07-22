@@ -3,17 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Seme Luvai | Software Engineer & Data Analyst</title>
-
-    <meta name="description" content="David Seme Luvai is a Software Engineer and Data Analyst specializing in enterprise software, ERP systems, data analytics, Power BI, and modern web applications.">
-    <meta name="keywords" content="software engineer, data analyst, ERP, Power BI, Microsoft Dynamics NAV, full-stack developer, Kenya">
+    <title>David Seme Luvai | Software Engineer & Data Analyst | Kenya</title>
+    
+    <meta name="description" content="David Seme Luvai is a Software Engineer and Data Analyst specializing in enterprise software, ERP systems, Microsoft Dynamics NAV, Power BI, data analytics, and modern web applications. Based in Kenya.">
+    <meta name="keywords" content="software engineer Kenya, data analyst Kenya, ERP developer, Power BI expert, Microsoft Dynamics NAV, AL programming, full-stack developer, enterprise software, David Seme, David Seme Luvai">
     <meta name="author" content="David Seme Luvai">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://davidseme.vercel.app">
     
     <meta property="og:title" content="David Seme Luvai | Software Engineer & Data Analyst">
-    <meta property="og:description" content="Software Engineer and Data Analyst specializing in enterprise software, data analytics, ERP systems, and modern web applications.">
+    <meta property="og:description" content="Software Engineer and Data Analyst specializing in enterprise software, ERP systems, data analytics, and modern web applications. Microsoft certified in Power BI and Dynamics NAV.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://davidseme.vercel.app">
     <meta property="og:image" content="https://davidseme.vercel.app/assets/profilepic%202.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="David Seme Luvai Portfolio">
+    <meta property="og:locale" content="en_KE">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="David Seme Luvai | Software Engineer & Data Analyst">
+    <meta name="twitter:description" content="Software Engineer and Data Analyst specializing in enterprise solutions, ERP systems, and data analytics. Microsoft certified.">
+    <meta name="twitter:image" content="https://davidseme.vercel.app/assets/profilepic%202.jpeg">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "David Seme Luvai",
+      "jobTitle": "Software Engineer & Data Analyst",
+      "url": "https://davidseme.vercel.app",
+      "email": "mailto:davidluvai56@gmail.com",
+      "telephone": "+254740135474",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      },
+      "sameAs": [
+        "https://github.com/daveSeme",
+        "https://linkedin.com/in/DavidSeme"
+      ],
+      "knowsAbout": [
+        "Software Engineering",
+        "Data Analytics",
+        "ERP Systems",
+        "Power BI",
+        "Microsoft Dynamics NAV",
+        "AL Programming Language",
+        "Full-Stack Development",
+        "Business Intelligence",
+        "Data Visualization",
+        "Enterprise Architecture"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "The Co-operative University of Kenya"
+      }
+    }
+    </script>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -37,6 +85,9 @@
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
             --nav-blur: rgba(10, 10, 15, 0.9);
             --teal: #35b98d;
+            --gold: #d9a441;
+            --font-body: 'Poppins', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         [data-theme="light"] {
@@ -50,10 +101,10 @@
             --accent: #1f8f6d;
             --accent-light: #2aa87e;
             --accent-glow: rgba(31, 143, 109, 0.12);
-            --gradient-1: linear-gradient(135deg, #1f8f6d, #2aa87e);
-            --gradient-2: linear-gradient(135deg, #c48f28, #1f8f6d);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
             --nav-blur: rgba(246, 249, 247, 0.9);
+            --teal: #2aa87e;
+            --gold: #b8861a;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,8 +112,8 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.65;
+            font-family: var(--font-body);
+            line-height: 1.7;
             transition: background-color 0.3s, color 0.3s;
             overflow-x: hidden;
         }
@@ -71,14 +122,15 @@
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
+        /* Navbar */
         .navbar {
             padding: 0.9rem 0;
             background: var(--nav-blur);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            transition: all 0.3s;
         }
+        .navbar.scrolled { box-shadow: 0 2px 15px rgba(0,0,0,0.3); }
         .navbar-brand {
             display: flex;
             align-items: center;
@@ -101,7 +153,7 @@
             font-weight: 500;
             font-size: 0.88rem;
             padding: 0.5rem 1rem !important;
-            transition: color 0.25s;
+            position: relative;
         }
         .nav-link:hover, .nav-link.active { color: var(--teal) !important; }
         .nav-link.active::after {
@@ -126,10 +178,10 @@
             gap: 7px;
             font-size: 0.82rem;
             color: var(--text);
-            transition: all 0.3s;
         }
         .theme-toggle:hover { border-color: var(--teal); }
 
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -142,21 +194,14 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
+            width: 500px; height: 500px;
             background: radial-gradient(circle, var(--accent-glow), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        .hero-content { position: relative; z-index: 2; max-width: 750px; margin: 0 auto; }
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -169,13 +214,7 @@
             color: var(--text-secondary);
             margin: 0 4px 8px;
         }
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin: 1.5rem 0 0.75rem;
-            letter-spacing: -0.5px;
-        }
+        .hero h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.2; margin: 1.2rem 0 0.75rem; }
         .hero h1 .gradient-text {
             background: var(--gradient-2);
             -webkit-background-clip: text;
@@ -183,25 +222,19 @@
             background-clip: text;
         }
         .hero .lead {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 550px;
+            max-width: 600px;
             margin: 0 auto 1.5rem;
         }
 
-        .certs-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin: 1.5rem 0;
-        }
+        .certs-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 1.5rem 0; }
         .cert-pill {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(53, 185, 141, 0.1);
-            border: 1px solid rgba(53, 185, 141, 0.25);
+            background: rgba(53,185,141,0.1);
+            border: 1px solid rgba(53,185,141,0.25);
             color: var(--teal);
             padding: 7px 14px;
             border-radius: 50px;
@@ -221,7 +254,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s;
         }
         .btn-gradient:hover { transform: translateY(-2px); color: #fff; box-shadow: 0 8px 25px var(--accent-glow); }
         
@@ -237,7 +269,6 @@
             align-items: center;
             gap: 8px;
             background: transparent;
-            transition: all 0.3s;
         }
         .btn-outline-custom:hover { border-color: var(--teal); color: var(--teal); }
 
@@ -254,7 +285,6 @@
             border-radius: 10px;
             padding: 1rem;
             text-align: center;
-            transition: all 0.3s;
         }
         .stat-card:hover { border-color: var(--teal); }
         .stat-number {
@@ -267,6 +297,7 @@
         }
         .stat-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
 
+        /* Section Headers */
         .section-label {
             font-size: 0.78rem;
             font-weight: 600;
@@ -277,20 +308,29 @@
             display: block;
             text-align: center;
         }
-        .section-heading {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-        .section-subtitle {
-            color: var(--text-secondary);
-            max-width: 550px;
-            margin: 0 auto 2.5rem;
-            text-align: center;
-            font-size: 0.92rem;
-        }
+        .section-heading { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; text-align: center; }
+        .section-subtitle { color: var(--text-secondary); max-width: 550px; margin: 0 auto 2.5rem; text-align: center; font-size: 0.92rem; }
 
+        /* Problem Cards */
+        .problem-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            height: 100%;
+        }
+        .problem-num {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        .problem-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .problem-card p { color: var(--text-secondary); font-size: 0.88rem; }
+
+        /* Project Cards */
         .project-showcase {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -301,24 +341,14 @@
             flex-direction: column;
             transition: all 0.3s;
         }
-        .project-showcase:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--teal);
-        }
+        .project-showcase:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--teal); }
         .project-preview {
             position: relative;
             width: 100%;
-            height: 190px;
+            height: 200px;
             overflow: hidden;
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border);
-        }
-        .project-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
         }
         .project-preview iframe {
             width: 100%;
@@ -331,39 +361,32 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: 2;
-            cursor: pointer;
         }
         .live-badge {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 8px; right: 8px;
             background: var(--teal);
             color: #fff;
-            padding: 3px 9px;
+            padding: 3px 10px;
             border-radius: 20px;
             font-size: 0.65rem;
             font-weight: 600;
             z-index: 3;
             pointer-events: none;
         }
-        .project-info {
-            padding: 1.1rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+        .project-info { padding: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; }
         .project-info h4 { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
         .project-info .project-type { font-size: 0.75rem; color: var(--teal); font-weight: 500; margin-bottom: 6px; }
-        .project-info p { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.6rem; flex-grow: 1; line-height: 1.5; }
+        .project-info p { font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.75rem; flex-grow: 1; line-height: 1.5; }
         
         .admin-badge {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            background: rgba(217, 164, 65, 0.12);
-            border: 1px solid rgba(217, 164, 65, 0.25);
-            color: #d9a441;
-            padding: 3px 9px;
+            background: rgba(217,164,65,0.12);
+            border: 1px solid rgba(217,164,65,0.25);
+            color: var(--gold);
+            padding: 3px 10px;
             border-radius: 20px;
             font-size: 0.68rem;
             font-weight: 600;
@@ -374,7 +397,7 @@
         .tech-tag {
             background: var(--bg-secondary);
             color: var(--text-secondary);
-            padding: 2px 7px;
+            padding: 3px 8px;
             border-radius: 4px;
             font-size: 0.7rem;
             border: 1px solid var(--border);
@@ -388,41 +411,46 @@
             font-weight: 600;
             font-size: 0.82rem;
             margin-top: auto;
-            transition: gap 0.3s;
         }
         .project-link-btn:hover { gap: 8px; color: var(--teal); }
 
+        /* Enterprise Cards */
         .enterprise-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 1.1rem;
+            padding: 1.25rem;
             height: 100%;
             border-left: 3px solid var(--teal);
             transition: all 0.3s;
         }
         .enterprise-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
         .gov-logo {
-            width: 40px; height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 8px;
             object-fit: contain;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            padding: 4px;
         }
+        [data-theme="light"] .gov-logo { background: rgba(0,0,0,0.03); }
 
+        /* Skills */
         .skill-category {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 1.1rem;
+            padding: 1.25rem;
             height: 100%;
         }
-        .skill-category h5 { font-weight: 600; margin-bottom: 0.6rem; font-size: 0.95rem; }
+        .skill-category h5 { font-weight: 600; margin-bottom: 0.75rem; font-size: 0.95rem; }
         .skill-pill {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 5px;
             font-size: 0.78rem;
-            margin: 2px;
+            margin: 3px;
             background: var(--bg-secondary);
             color: var(--text);
             border: 1px solid var(--border);
@@ -430,31 +458,32 @@
         }
         .skill-pill:hover { border-color: var(--teal); color: var(--teal); }
 
+        /* Experience */
         .exp-item {
-            padding: 1.1rem;
+            padding: 1.25rem;
             border-left: 2px solid var(--border);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             position: relative;
-            transition: border-color 0.3s;
         }
         .exp-item:hover { border-left-color: var(--teal); }
         .exp-item::before {
             content: '';
             position: absolute;
             left: -5px;
-            top: 18px;
+            top: 20px;
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: var(--teal);
         }
-        .exp-date { font-size: 0.75rem; color: var(--teal); font-weight: 600; margin-bottom: 2px; }
+        .exp-date { font-size: 0.75rem; color: var(--teal); font-weight: 600; margin-bottom: 4px; }
 
+        /* Contact */
         .contact-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 1.5rem;
+            padding: 1.75rem;
         }
         .contact-card input,
         .contact-card textarea {
@@ -463,53 +492,37 @@
             color: var(--text);
             border-radius: 8px;
             padding: 10px 14px;
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-body);
             font-size: 0.88rem;
-            transition: border-color 0.3s;
         }
         .contact-card input:focus,
         .contact-card textarea:focus {
             border-color: var(--teal);
             box-shadow: 0 0 0 3px var(--accent-glow);
             outline: none;
-            background: var(--bg-secondary);
-            color: var(--text);
         }
         .contact-card label { color: var(--text-secondary); font-size: 0.82rem; margin-bottom: 3px; }
 
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 1.5rem 0;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.82rem;
-        }
+        footer { border-top: 1px solid var(--border); padding: 1.5rem 0; text-align: center; color: var(--text-secondary); font-size: 0.82rem; }
 
         .floating-wa {
             position: fixed;
-            bottom: 22px;
-            right: 22px;
+            bottom: 22px; right: 22px;
             z-index: 100;
-            width: 48px;
-            height: 48px;
+            width: 50px; height: 50px;
             border-radius: 50%;
             background: #25D366;
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(37,211,102,0.35);
-            transition: transform 0.3s;
         }
         .floating-wa:hover { transform: scale(1.1); color: #fff; }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.55s ease;
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.55s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 992px) {
@@ -523,7 +536,8 @@
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
             .stat-card { padding: 0.8rem; }
             .stat-number { font-size: 1.3rem; }
-            .project-preview { height: 150px; }
+            .project-preview { height: 160px; }
+            .project-preview iframe { transform: scale(0.35); transform-origin: 0 0; width: 285%; height: 285%; }
         }
     </style>
 </head>
@@ -541,6 +555,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#why-me">Why Me</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
@@ -558,10 +573,11 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div>
-                <span class="hero-badge"><i class="fas fa-circle" style="font-size:0.35rem; color:#35b98d;"></i> Available for work</span>
+                <span class="hero-badge"><i class="fas fa-circle" style="font-size:0.35rem; color:#35b98d;"></i> Available for Work</span>
+                <span class="hero-badge"><i class="fas fa-map-marker-alt" style="font-size:0.65rem; color:var(--teal);"></i> Nairobi, Kenya</span>
             </div>
             <h1>David Seme <span class="gradient-text">Luvai</span></h1>
-            <p class="lead">Software Engineer &amp; Data Analyst. I build enterprise systems, ERP solutions, and data-driven platforms that actually work.</p>
+            <p class="lead">Software Engineer &amp; Data Analyst. I build enterprise systems, ERP solutions, and data-driven platforms that close the gap between your business operations and the insights you need to grow.</p>
             
             <div class="certs-row">
                 <span class="cert-pill"><i class="fas fa-certificate"></i> Microsoft Power BI Certified</span>
@@ -583,12 +599,44 @@
         </div>
     </section>
 
+    <!-- Why Teams Bring Me In -->
+    <section id="why-me" style="padding: 80px 0; background: var(--bg-secondary);">
+        <div class="container">
+            <span class="section-label reveal">Why Teams Bring Me In</span>
+            <h2 class="section-heading reveal">Where systems usually break down</h2>
+            <p class="section-subtitle reveal">The recurring gaps I get called in to close, across ERP, compliance, and reporting work.</p>
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="problem-card">
+                        <span class="problem-num">01</span>
+                        <h4>ERP customizations no one else wants to touch</h4>
+                        <p>Dynamics NAV/BC extensions in AL that break with every update, or workflows that were never adapted to how the business actually runs. I rebuild them to be maintainable and aligned with real operations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="problem-card">
+                        <span class="problem-num">02</span>
+                        <h4>Compliance reporting done by hand</h4>
+                        <p>Tax invoicing, asset tracking, and regulatory submissions still routed through spreadsheets when a REST integration could close the loop automatically. I build the bridges between systems.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="problem-card">
+                        <span class="problem-num">03</span>
+                        <h4>Dashboards nobody trusts</h4>
+                        <p>Power BI reports built once and abandoned — disconnected from the source system, so the numbers on screen and the numbers in production drift apart. I build live-connected dashboards that stay accurate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects -->
     <section id="projects" style="padding: 80px 0;">
         <div class="container">
             <span class="section-label reveal">My Work</span>
             <h2 class="section-heading reveal">Recent Projects</h2>
-            <p class="section-subtitle reveal">Every project includes a full admin management panel. Click to visit the live site.</p>
+            <p class="section-subtitle reveal">Every project includes a full admin management panel. Click any card to visit the live site.</p>
             
             <h5 class="mb-4 reveal" style="color: var(--teal); font-weight: 600; text-align:center;">
                 <i class="fas fa-store me-2"></i>E-Commerce & Web Platforms
@@ -599,20 +647,15 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://rovil.co.ke/ElaGlowSpa/index.php" loading="lazy" 
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-spa" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">Ela Glow Spa</span>
-                            </div>
+                            <iframe src="https://rovil.co.ke/ElaGlowSpa/index.php" loading="lazy"></iframe>
                             <a href="https://rovil.co.ke/ElaGlowSpa/index.php" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
                         <div class="project-info">
                             <h4>Ela Glow Spa</h4>
-                            <span class="project-type">Beauty & Wellness</span>
+                            <span class="project-type">Beauty & Wellness Platform</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>Spa website with service menu, booking system, gallery, and admin dashboard for managing services and bookings.</p>
+                            <p>Spa and wellness website with service menu, online booking system, gallery, and full admin dashboard for managing services and bookings.</p>
                             <div class="tech-tags">
                                 <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Bootstrap</span>
                             </div>
@@ -627,20 +670,15 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://rovil.co.ke/Dandora/index.php" loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-school" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">Dandora GVTC</span>
-                            </div>
+                            <iframe src="https://rovil.co.ke/Dandora/index.php" loading="lazy"></iframe>
                             <a href="https://rovil.co.ke/Dandora/index.php" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
                         <div class="project-info">
                             <h4>Dandora Green Light VTC</h4>
-                            <span class="project-type">Vocational Training</span>
+                            <span class="project-type">Vocational Training Centre</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>TVET-accredited site with CMS, student applications, driving school section, and role-based admin.</p>
+                            <p>TVET-accredited institution site with CMS, online student applications, driving school section, and role-based admin with activity logging.</p>
                             <div class="tech-tags">
                                 <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Bootstrap</span>
                             </div>
@@ -655,22 +693,17 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://namfront.co.ke/vito/" loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-mobile-alt" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">VITO Electronics</span>
-                            </div>
+                            <iframe src="https://namfront.co.ke/vito/" loading="lazy"></iframe>
                             <a href="https://namfront.co.ke/vito/" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
                         <div class="project-info">
                             <h4>VITO Electronics</h4>
-                            <span class="project-type">E-Commerce</span>
+                            <span class="project-type">E-Commerce Platform</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>Electronics store with multi-currency, wishlist, cart, M-PESA, and product/inventory admin.</p>
+                            <p>Modern electronics store with multi-currency support, wishlist, cart persistence, M-PESA integration, and full product/inventory admin.</p>
                             <div class="tech-tags">
-                                <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">API</span>
+                                <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">ExchangeRate API</span>
                             </div>
                             <a href="https://namfront.co.ke/vito/" target="_blank" rel="noopener" class="project-link-btn">
                                 Visit Site <i class="fas fa-arrow-right"></i>
@@ -683,20 +716,15 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://mubileather.com" loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-shopping-bag" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">MubiLeather</span>
-                            </div>
+                            <iframe src="https://mubileather.com" loading="lazy"></iframe>
                             <a href="https://mubileather.com" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
                         <div class="project-info">
                             <h4>MubiLeather</h4>
-                            <span class="project-type">Leather Goods</span>
+                            <span class="project-type">Leather Goods E-Commerce</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>Premium leather platform with checkout, multi-level admin, analytics, inventory, and DHL shipping.</p>
+                            <p>Premium leather platform with secure checkout, multi-level admin dashboard, analytics, inventory management, and DHL global shipping.</p>
                             <div class="tech-tags">
                                 <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Power BI</span>
                             </div>
@@ -711,20 +739,15 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://rovil.co.ke/Peace/index.php" loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-chart-line" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">PeaceFx Trading</span>
-                            </div>
+                            <iframe src="https://rovil.co.ke/Peace/index.php" loading="lazy"></iframe>
                             <a href="https://rovil.co.ke/Peace/index.php" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
                         <div class="project-info">
                             <h4>PeaceFx Trading</h4>
-                            <span class="project-type">Forex Education</span>
+                            <span class="project-type">Forex Education Platform</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>Trading education with PDFs, charts, subscriptions, messaging, and admin approval system.</p>
+                            <p>Trading education platform with premium PDFs, real-time candlestick charts, subscriptions, WhatsApp-style messaging, and admin approval system.</p>
                             <div class="tech-tags">
                                 <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Chart.js</span>
                             </div>
@@ -739,12 +762,7 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://namfront.co.ke/virovil" loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-coffee" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">Virovil Coffee</span>
-                            </div>
+                            <iframe src="https://namfront.co.ke/virovil" loading="lazy"></iframe>
                             <a href="https://namfront.co.ke/virovil" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
@@ -752,9 +770,9 @@
                             <h4>Virovil Coffee Factory</h4>
                             <span class="project-type">Coffee E-Commerce</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>Organic Kenyan coffee with subscriptions, farmer portal, DHL shipping, and admin management.</p>
+                            <p>Organic Kenyan coffee platform with subscriptions, farmer portal, DHL shipping, and comprehensive admin management.</p>
                             <div class="tech-tags">
-                                <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Analytics</span>
+                                <span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Data Analytics</span>
                             </div>
                             <a href="https://namfront.co.ke/virovil" target="_blank" rel="noopener" class="project-link-btn">
                                 Visit Site <i class="fas fa-arrow-right"></i>
@@ -767,12 +785,7 @@
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase">
                         <div class="project-preview">
-                            <iframe src="https://vianconsultancy.com" loading="lazy"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
-                            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-secondary); position:absolute; top:0; left:0; flex-direction:column; gap:8px;">
-                                <i class="fas fa-briefcase" style="font-size:2.5rem; opacity:0.25; color:var(--teal);"></i>
-                                <span style="font-size:0.75rem; color:var(--text-secondary);">Vian Consultancy</span>
-                            </div>
+                            <iframe src="https://vianconsultancy.com" loading="lazy"></iframe>
                             <a href="https://vianconsultancy.com" target="_blank" rel="noopener" class="overlay-link"></a>
                             <span class="live-badge">LIVE</span>
                         </div>
@@ -780,9 +793,9 @@
                             <h4>Vian Consultancy</h4>
                             <span class="project-type">Professional Services</span>
                             <span class="admin-badge"><i class="fas fa-lock"></i> Admin Panel</span>
-                            <p>Consulting firm site with client portal, lead tracking, reporting, and admin dashboard.</p>
+                            <p>Consulting firm website with client portal, lead tracking analytics, automated reporting, and admin dashboard.</p>
                             <div class="tech-tags">
-                                <span class="tech-tag">PHP</span><span class="tech-tag">HTML</span><span class="tech-tag">Tailwind</span>
+                                <span class="tech-tag">PHP</span><span class="tech-tag">HTML</span><span class="tech-tag">Tailwind</span><span class="tech-tag">FormSubmit</span>
                             </div>
                             <a href="https://vianconsultancy.com" target="_blank" rel="noopener" class="project-link-btn">
                                 Visit Site <i class="fas fa-arrow-right"></i>
@@ -792,64 +805,89 @@
                 </div>
             </div>
 
-            <!-- Enterprise & Government -->
+            <!-- Enterprise & Government Systems -->
             <h5 class="mb-4 reveal" style="color: var(--teal); font-weight: 600; text-align:center;">
                 <i class="fas fa-landmark me-2"></i>Enterprise & Government Systems
             </h5>
             <div class="row g-4 mb-5">
+                <!-- SASRA -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="enterprise-card">
+                        <img src="https://www.sasra.go.ke/wp-content/uploads/2021/12/logo.jpg" alt="SASRA" class="gov-logo"
+                             onerror="this.style.display='none';">
+                        <h6>SASRA</h6>
+                        <small style="color:var(--text-secondary);">Sacco Societies Regulatory Authority</small>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">Dynamics NAV ERP customization (AL), Power BI regulatory dashboards, and a .NET staff portal for internal workflow management.</p>
+                        <div class="tech-tags"><span class="tech-tag">AL / Dynamics NAV</span><span class="tech-tag">Power BI</span><span class="tech-tag">.NET</span></div>
+                    </div>
+                </div>
+
+                <!-- UFAA -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="enterprise-card">
                         <img src="https://ufaa.go.ke/wp-content/uploads/2022/07/LOGO_RVSD-2-1.png" alt="UFAA" class="gov-logo"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <span style="display:none; font-size:1.5rem;">🏛️</span>
+                             onerror="this.style.display='none';">
                         <h6>UFAA</h6>
                         <small style="color:var(--text-secondary);">Unclaimed Financial Assets Authority</small>
-                        <p style="font-size:0.8rem;margin-top:4px;color:var(--text-secondary);">Enterprise system for managing collection and tracking of financial and physical assets.</p>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">Enterprise system for managing collection and tracking of financial and physical assets for the Unclaimed Financial Assets Authority of Kenya.</p>
                         <div class="tech-tags"><span class="tech-tag">ASP.NET</span><span class="tech-tag">MS SQL</span><span class="tech-tag">GCP</span></div>
                     </div>
                 </div>
+
+                <!-- NCA -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="enterprise-card">
-                        <span style="font-size:1.5rem;">🏗️</span>
+                        <img src="https://weadapt.org/wp-content/uploads/2023/05/logo_2-1.png" alt="NCA" class="gov-logo"
+                             onerror="this.style.display='none';">
                         <h6>NCA</h6>
                         <small style="color:var(--text-secondary);">National Construction Authority</small>
-                        <p style="font-size:0.8rem;margin-top:4px;color:var(--text-secondary);">Contractor registration and management workflows for Kenya's construction regulator.</p>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">End-to-end contractor registration and management workflows for the National Construction Authority of Kenya.</p>
                         <div class="tech-tags"><span class="tech-tag">C#</span><span class="tech-tag">ASP.NET</span><span class="tech-tag">MS SQL</span></div>
                     </div>
                 </div>
+
+                <!-- KRA -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="enterprise-card">
-                        <span style="font-size:1.5rem;">💰</span>
+                        <img src="https://www.kra.go.ke/images/logo.png" alt="KRA" class="gov-logo"
+                             onerror="this.style.display='none';">
                         <h6>KRA</h6>
                         <small style="color:var(--text-secondary);">Kenya Revenue Authority</small>
-                        <p style="font-size:0.8rem;margin-top:4px;color:var(--text-secondary);">Automated tax compliance integration with KRA's TIMS system for e-tax invoices.</p>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">Automated tax compliance integration with KRA's TIMS system, streamlining electronic tax invoice management for businesses.</p>
                         <div class="tech-tags"><span class="tech-tag">ASP.NET</span><span class="tech-tag">REST API</span><span class="tech-tag">NAV ERP</span></div>
                     </div>
                 </div>
+
+                <!-- Sky Capital -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="enterprise-card">
-                        <span style="font-size:1.5rem;">📊</span>
-                        <h6>Sky Capital</h6>
+                        <span style="font-size:1.8rem;">📊</span>
+                        <h6 class="mt-2">Sky Capital</h6>
                         <small style="color:var(--text-secondary);">Financial Asset Management</small>
-                        <p style="font-size:0.8rem;margin-top:4px;color:var(--text-secondary);">Tracking financial instruments, performance reporting, and asset lifecycle management.</p>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">System for tracking financial instruments, performance reporting, and asset lifecycle management.</p>
                         <div class="tech-tags"><span class="tech-tag">Node.js</span><span class="tech-tag">React.js</span><span class="tech-tag">PostgreSQL</span></div>
                     </div>
                 </div>
+
+                <!-- MOESNA -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="enterprise-card">
-                        <span style="font-size:1.5rem;">🚢</span>
+                        <img src="https://pbs.twimg.com/profile_images/1811670643089215491/e0R3yEQD_400x400.jpg" alt="MOESNA" class="gov-logo"
+                             onerror="this.style.display='none';">
                         <h6>MOESNA</h6>
                         <small style="color:var(--text-secondary);">Maritime Organisation</small>
-                        <p style="font-size:0.8rem;margin-top:4px;color:var(--text-secondary);">Multi-country performance evaluation platform across Eastern, Southern & Northern Africa.</p>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">Multi-country performance evaluation and reporting platform spanning Eastern, Southern, and Northern Africa.</p>
                         <div class="tech-tags"><span class="tech-tag">Vue.js</span><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span></div>
                     </div>
                 </div>
+
+                <!-- Rovil Coffee -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="enterprise-card">
-                        <span style="font-size:1.5rem;">☕</span>
-                        <h6>Rovil Coffee</h6>
+                        <span style="font-size:1.8rem;">☕</span>
+                        <h6 class="mt-2">Rovil Coffee</h6>
                         <small style="color:var(--text-secondary);">Premium Coffee Platform</small>
-                        <p style="font-size:0.8rem;margin-top:4px;color:var(--text-secondary);">Multi-currency coffee platform with M-PESA integration and international shipping.</p>
+                        <p style="font-size:0.82rem;margin-top:6px;color:var(--text-secondary);">Premium Kenyan organic coffee platform with multi-currency support, M-PESA integration, and international shipping.</p>
                         <div class="tech-tags"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">M-PESA API</span></div>
                     </div>
                 </div>
@@ -862,16 +900,16 @@
         <div class="container">
             <span class="section-label reveal">What I Use</span>
             <h2 class="section-heading reveal">Skills & Tools</h2>
-            <p class="section-subtitle reveal">Technologies I work with regularly.</p>
+            <p class="section-subtitle reveal">Technologies I work with regularly to deliver enterprise solutions.</p>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="skill-category">
-                        <h5><i class="fas fa-code" style="color:var(--teal);"></i> Engineering</h5>
+                        <h5><i class="fas fa-code" style="color:var(--teal);"></i> Software Engineering</h5>
                         <div>
-                            <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">.NET/C#</span>
-                            <span class="skill-pill">ASP.NET</span><span class="skill-pill">Django</span><span class="skill-pill">Node.js</span>
-                            <span class="skill-pill">React</span><span class="skill-pill">Vue.js</span><span class="skill-pill">Android</span>
-                            <span class="skill-pill">Flutter</span><span class="skill-pill">PHP</span><span class="skill-pill">SQL</span>
+                            <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">.NET / C#</span>
+                            <span class="skill-pill">ASP.NET</span><span class="skill-pill">AL (Business Central)</span><span class="skill-pill">Django</span>
+                            <span class="skill-pill">Node.js</span><span class="skill-pill">React.js</span><span class="skill-pill">Vue.js</span>
+                            <span class="skill-pill">Android</span><span class="skill-pill">Flutter</span><span class="skill-pill">PHP</span><span class="skill-pill">SQL</span>
                         </div>
                     </div>
                 </div>
@@ -880,8 +918,8 @@
                         <h5><i class="fas fa-chart-bar" style="color:#d9a441;"></i> Data & Analytics</h5>
                         <div>
                             <span class="skill-pill">Power BI</span><span class="skill-pill">PostgreSQL</span><span class="skill-pill">MS SQL</span>
-                            <span class="skill-pill">EDA</span><span class="skill-pill">Data Viz</span><span class="skill-pill">BI</span>
-                            <span class="skill-pill">Machine Learning</span><span class="skill-pill">Jupyter</span><span class="skill-pill">Pandas</span>
+                            <span class="skill-pill">EDA</span><span class="skill-pill">Data Visualization</span><span class="skill-pill">Business Intelligence</span>
+                            <span class="skill-pill">Machine Learning</span><span class="skill-pill">Jupyter Notebook</span><span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span>
                         </div>
                     </div>
                 </div>
@@ -889,9 +927,9 @@
                     <div class="skill-category">
                         <h5><i class="fas fa-cogs" style="color:#f59e0b;"></i> Systems & Integration</h5>
                         <div>
-                            <span class="skill-pill">Dynamics NAV/BC</span><span class="skill-pill">ERP Integration</span>
-                            <span class="skill-pill">REST APIs</span><span class="skill-pill">Docker</span><span class="skill-pill">GCP</span>
-                            <span class="skill-pill">GitHub Actions</span><span class="skill-pill">Architecture</span><span class="skill-pill">Cloud</span>
+                            <span class="skill-pill">Dynamics NAV/BC</span><span class="skill-pill">ERP Integration</span><span class="skill-pill">REST APIs</span>
+                            <span class="skill-pill">Docker</span><span class="skill-pill">GCP</span><span class="skill-pill">GitHub Actions</span>
+                            <span class="skill-pill">System Architecture</span><span class="skill-pill">Cloud Solutions</span><span class="skill-pill">CI/CD</span>
                         </div>
                     </div>
                 </div>
@@ -903,32 +941,32 @@
     <section id="experience" style="padding: 80px 0;">
         <div class="container">
             <span class="section-label reveal">Career</span>
-            <h2 class="section-heading reveal">Experience</h2>
-            <p class="section-subtitle reveal">Where I've worked and what I've done.</p>
+            <h2 class="section-heading reveal">Professional Experience</h2>
+            <p class="section-subtitle reveal">Where I've worked and the impact I've delivered.</p>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="exp-item reveal">
-                        <span class="exp-date">Oct 2023 – Present</span>
+                        <span class="exp-date">October 2023 – Present</span>
                         <h5>Software Engineer & Lead Data Analyst</h5>
                         <h6 style="color:var(--text-secondary);font-weight:500;">Loci Africa Technologies</h6>
                         <p style="font-size:0.85rem;color:var(--text-secondary);">
-                            Leading enterprise software development, ERP implementations (Dynamics NAV/BC), Power BI dashboards, and data analytics for government agencies including SASRA, Privatization Authority, and UFAA. Building Android apps, REST APIs, and workflow automation.
+                            Leading enterprise software development, ERP implementations (Dynamics NAV/BC), Power BI dashboards, and data analytics for government agencies including SASRA, Privatization Authority, and UFAA. Building Android apps, REST APIs, and workflow automation tools. Delivering digital transformation solutions from requirements gathering through deployment.
                         </p>
                     </div>
                     <div class="exp-item reveal">
-                        <span class="exp-date">Jan 2024 – Present</span>
+                        <span class="exp-date">January 2024 – Present</span>
                         <h5>Senior Systems Engineer</h5>
                         <h6 style="color:var(--text-secondary);font-weight:500;">Namfront Solutions</h6>
                         <p style="font-size:0.85rem;color:var(--text-secondary);">
-                            Designing scalable system architectures, leading ERP integrations, optimizing database performance, and mentoring junior engineers.
+                            Designing scalable system architectures for enterprise clients, leading integration projects between ERP systems and custom applications, optimizing database performance, and mentoring junior engineers.
                         </p>
                     </div>
                     <div class="exp-item reveal">
-                        <span class="exp-date">Sep 2023 – Nov 2024</span>
+                        <span class="exp-date">September 2023 – November 2024</span>
                         <h5>Part-Time Robotics Instructor</h5>
-                        <h6 style="color:var(--text-secondary);font-weight:500;">CHEZA STEM Education</h6>
+                        <h6 style="color:var(--text-secondary);font-weight:500;">CHEZA STEM Education Organization</h6>
                         <p style="font-size:0.85rem;color:var(--text-secondary);">
-                            Delivering STEM workshops and developing interactive lesson plans for underrepresented students.
+                            Designing and delivering STEM workshops for underrepresented students, developing interactive lesson plans, and showcasing diverse STEM career pathways.
                         </p>
                     </div>
                 </div>
@@ -941,15 +979,20 @@
         <div class="container">
             <span class="section-label reveal">Reach Out</span>
             <h2 class="section-heading reveal">Get In Touch</h2>
-            <p class="section-subtitle reveal">Got a project or opportunity? Let's talk.</p>
+            <p class="section-subtitle reveal">Have a project or opportunity? Let's talk.</p>
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-5 reveal">
                     <div class="contact-card h-100">
-                        <h5 class="mb-3">Details</h5>
-                        <div class="mb-2"><small style="color:var(--text-secondary);">Email</small><br><a href="mailto:davidluvai56@gmail.com" style="color:var(--teal);text-decoration:none;">davidluvai56@gmail.com</a></div>
-                        <div class="mb-2"><small style="color:var(--text-secondary);">Phone</small><br><a href="tel:+254740135474" style="color:var(--text);text-decoration:none;">+254 740 135 474</a></div>
-                        <div class="mb-2"><small style="color:var(--text-secondary);">LinkedIn</small><br><a href="https://linkedin.com/in/DavidSeme" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">linkedin.com/in/DavidSeme</a></div>
-                        <div class="mb-2"><small style="color:var(--text-secondary);">GitHub</small><br><a href="https://github.com/daveSeme" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">github.com/daveSeme</a></div>
+                        <h5 class="mb-3">Contact Details</h5>
+                        <div class="mb-3"><small style="color:var(--text-secondary);">Email</small><br><a href="mailto:davidluvai56@gmail.com" style="color:var(--teal);text-decoration:none;">davidluvai56@gmail.com</a></div>
+                        <div class="mb-3"><small style="color:var(--text-secondary);">Phone</small><br><a href="tel:+254740135474" style="color:var(--text);text-decoration:none;">+254 740 135 474</a></div>
+                        <div class="mb-3"><small style="color:var(--text-secondary);">LinkedIn</small><br><a href="https://linkedin.com/in/DavidSeme" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">linkedin.com/in/DavidSeme</a></div>
+                        <div class="mb-3"><small style="color:var(--text-secondary);">GitHub</small><br><a href="https://github.com/daveSeme" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">github.com/daveSeme</a></div>
+                        <div class="mt-3">
+                            <span class="cert-pill" style="margin:2px;"><i class="fas fa-certificate"></i> Power BI</span>
+                            <span class="cert-pill" style="margin:2px;"><i class="fas fa-certificate"></i> Dynamics NAV</span>
+                            <span class="cert-pill" style="margin:2px;"><i class="fas fa-certificate"></i> Data Analytics (ICTA)</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5 reveal">
@@ -969,7 +1012,7 @@
         </div>
     </section>
 
-    <footer><div class="container"><p>&copy; 2026 David Seme Luvai</p></div></footer>
+    <footer><div class="container"><p>&copy; 2026 David Seme Luvai. All rights reserved.</p></div></footer>
 
     <a href="https://wa.me/254740135474" class="floating-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
 
@@ -999,10 +1042,14 @@
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+        }, { threshold: 0.08 });
         revealElements.forEach(el => observer.observe(el));
 
         window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+            
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             let current = '';
@@ -1042,11 +1089,11 @@
                     });
                     if (response.ok) {
                         contactForm.reset();
-                        formStatus.textContent = 'Message sent! I\'ll get back to you soon.';
+                        formStatus.textContent = '✓ Message sent! I\'ll get back to you soon.';
                         formStatus.style.cssText = 'display:block;background:rgba(53,185,141,0.12);color:#35b98d;border:1px solid rgba(53,185,141,0.3);';
                     } else throw new Error('Failed');
                 } catch (error) {
-                    formStatus.textContent = 'Something went wrong. Please try again.';
+                    formStatus.textContent = '✗ Something went wrong. Please try again.';
                     formStatus.style.cssText = 'display:block;background:rgba(225,92,92,0.12);color:#e15c5c;border:1px solid rgba(225,92,92,0.3);';
                 } finally {
                     submitText.textContent = 'Send Message';
