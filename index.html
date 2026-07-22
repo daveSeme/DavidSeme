@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>David Seme Luvai | Software Engineer & Data Analyst | Kenya</title>
     
-    <meta name="description" content="David Seme Luvai is a Software Engineer and Data Analyst specializing in enterprise software, ERP systems, Microsoft Dynamics NAV, Power BI, data analytics, and modern web applications. Based in Kenya.">
-    <meta name="keywords" content="software engineer Kenya, data analyst Kenya, ERP developer, Power BI expert, Microsoft Dynamics NAV, AL programming, full-stack developer, enterprise software, David Seme, David Seme Luvai">
+    <meta name="description" content="David Seme Luvai is a Software Engineer and Data Analyst specializing in enterprise software, ERP systems, Microsoft Dynamics NAV, Power BI, data analytics, and modern web applications. Based in Nairobi, Kenya.">
+    <meta name="keywords" content="software engineer Kenya, data analyst Kenya, ERP developer, Power BI expert, Microsoft Dynamics NAV, AL programming, full-stack developer Nairobi, enterprise software Kenya, David Seme, David Seme Luvai, data pipelines, AI scraping">
     <meta name="author" content="David Seme Luvai">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://davidseme.vercel.app">
@@ -339,6 +339,7 @@
         .bring-card h5 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
         .bring-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
 
+        /* Project Cards - PROPERLY ZOOMED OUT */
         .project-showcase {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -359,10 +360,10 @@
             border-bottom: 1px solid var(--border);
         }
         .project-preview iframe {
-            width: 1440px;
-            height: 900px;
+            width: 1600px;
+            height: 1200px;
             border: none;
-            transform: scale(0.22);
+            transform: scale(0.2);
             transform-origin: 0 0;
             position: absolute;
             top: 0;
@@ -488,6 +489,22 @@
         }
         .exp-date { font-size: 0.75rem; color: var(--teal); font-weight: 600; margin-bottom: 4px; }
 
+        /* Dev Joke */
+        .joke-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem 2rem;
+            margin-top: 2.5rem;
+            border-left: 4px solid var(--teal);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .joke-container i { font-size: 1.5rem; color: var(--gold); flex-shrink: 0; }
+        .joke-container p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); }
+        .joke-container p span { color: var(--teal); font-weight: 600; }
+
         .contact-card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -538,8 +555,7 @@
             .hero h1 { font-size: 2.5rem; }
             .section-heading { font-size: 1.7rem; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .project-preview { height: 200px; }
-            .project-preview iframe { width: 1200px; height: 800px; transform: scale(0.2); }
+            .project-preview iframe { width: 1400px; height: 1000px; transform: scale(0.18); }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
@@ -548,7 +564,7 @@
             .stat-card { padding: 0.8rem; }
             .stat-number { font-size: 1.3rem; }
             .project-preview { height: 180px; }
-            .project-preview iframe { width: 1100px; height: 750px; transform: scale(0.18); }
+            .project-preview iframe { width: 1200px; height: 900px; transform: scale(0.16); }
         }
     </style>
 </head>
@@ -645,6 +661,13 @@
                         <h5>ERP & Business Intelligence</h5>
                         <p>Microsoft Dynamics NAV/BC customizations in AL, Power BI dashboards connected to live data sources, and ERP integrations that make your financial, compliance, and operational reporting actually work.</p>
                     </div>
+                </div>
+            </div>
+            <!-- Dev Joke -->
+            <div class="joke-container reveal">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <p><span>Dev Joke:</span> <span id="jokeText">Why do programmers prefer dark mode? Because light attracts bugs!</span></p>
                 </div>
             </div>
         </div>
@@ -1052,6 +1075,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Dev jokes array
+        const jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            "How many programmers does it take to change a light bulb? None, that's a hardware problem!",
+            "Why do Java developers wear glasses? Because they can't C#!",
+            "I would tell you a joke about UDP, but you might not get it.",
+            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
+            "Why don't programmers like nature? It has too many bugs.",
+            "How do you comfort a JavaScript bug? You console it!",
+            "Why did the developer go broke? Because he used up all his cache!",
+            "Why did the programmer quit his job? Because he didn't get arrays!",
+            "What's the object-oriented way to become wealthy? Inheritance!",
+            "A data analyst walks into a bar. The bartender says 'What'll you have?' The analyst says 'What's the average?'",
+            "Why did the data analyst break up with the statistician? No significant relationship.",
+            "Why did the developer stay at the office overnight? The production database went down on a Friday.",
+            "An SQL query walks into a bar, sees two tables and asks: 'Can I join you?'",
+            "A software engineer walks into a bar. Orders 1 beer. Orders 0 beers. Orders 99999999 beers. Orders -1 beers."
+        ];
+
         const body = document.body;
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
@@ -1072,6 +1114,18 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
             themeText.textContent = theme === 'light' ? 'Light' : 'Dark';
         }
+
+        // Dev joke rotator
+        setInterval(() => {
+            const jokeText = document.getElementById('jokeText');
+            if (jokeText) {
+                jokeText.style.opacity = '0';
+                setTimeout(() => {
+                    jokeText.textContent = jokes[Math.floor(Math.random() * jokes.length)];
+                    jokeText.style.opacity = '1';
+                }, 300);
+            }
+        }, 12000);
 
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
