@@ -215,7 +215,7 @@
             color: var(--text-secondary);
             margin: 0 4px 8px;
             white-space: nowrap;
-            margin-top: 20px;
+            
         }
         .hero h1 { 
             font-size: clamp(2rem, 5vw, 3.2rem); 
@@ -1221,9 +1221,30 @@
         const themeIcon = document.getElementById('themeIcon');
         const themeText = document.getElementById('themeText');
         
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        body.setAttribute('data-theme', savedTheme);
-        updateThemeUI(savedTheme);
+        // const savedTheme = localStorage.getItem('theme') || 'dark';
+        // body.setAttribute('data-theme', savedTheme);
+        // updateThemeUI(savedTheme);
+        // Check saved preference first, then device setting, fallback to light
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateThemeUI(savedTheme);
+        } else {
+            // Detect device preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const deviceTheme = prefersDark ? 'dark' : 'light';
+            body.setAttribute('data-theme', deviceTheme);
+            updateThemeUI(deviceTheme);
+        }
+
+        // Listen for device theme changes (if user changes system settings)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                updateThemeUI(newTheme);
+            }
+        });
 
         themeToggle.addEventListener('click', () => {
             const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
