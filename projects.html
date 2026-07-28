@@ -629,7 +629,7 @@
     <div class="modal fade" id="investorInquiryModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;">
-                <div class="modal-header" style="border-bottom:1px solid var(--border);"><h5 class="modal-title" style="color:var(--text);font-weight:600;" id="inquiryModalTitle"><i class="fas fa-handshake me-2" style="color:var(--gold);"></i>Investor / Partner Inquiry</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-header" style="border-bottom:1px solid var(--border);"><h5 class="modal-title" style="color:var(--text);font-weight:600;" id="inquiryModalTitle"><i class="fas fa-handshake me-2" style="color:var(--gold);"></i>Any Inquiry</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div>
                 <div class="modal-body">
                     <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:0.5rem;" id="inquiryContextText">You're inquiring about: <strong id="inquiryProjectName" style="color:var(--teal);">---</strong></p>
                     <p style="color:var(--text-secondary);font-size:0.75rem;margin-bottom:1rem;background:rgba(217,164,65,0.08);border:1px solid rgba(217,164,65,0.2);border-radius:8px;padding:10px;"><i class="fas fa-info-circle me-1" style="color:var(--gold);"></i>All inquiries are confidential. I respond within 24-48 hours.</p>
@@ -713,7 +713,7 @@
                 actionBtns.innerHTML = '<button type="button" class="btn-ecom" id="modalEcomBtn"><i class="fas fa-store"></i> Want a Similar Site?</button><button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Close</button>';
                 setTimeout(() => { const b = document.getElementById('modalEcomBtn'); if (b) b.addEventListener('click', () => openInquiry('Custom build similar to: ' + currentProjectTitle, 'pilot')); }, 100);
             } else {
-                actionBtns.innerHTML = '<button type="button" class="btn-investor" id="modalInvestorBtn"><i class="fas fa-handshake"></i> Investor / Partner Inquiry</button><button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Close</button>';
+                actionBtns.innerHTML = '<button type="button" class="btn-investor" id="modalInvestorBtn"><i class="fas fa-handshake"></i> Any Inquiry</button><button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Close</button>';
                 setTimeout(() => { const b = document.getElementById('modalInvestorBtn'); if (b) b.addEventListener('click', () => openInquiry(currentProjectTitle, '')); }, 100);
             }
         });
@@ -727,7 +727,7 @@
                 mt.innerHTML = '<i class="fas fa-store me-2" style="color:var(--teal);"></i>Project Inquiry';
                 ct.innerHTML = 'You\'re requesting: <strong id="inquiryProjectName" style="color:var(--teal);">' + projectName + '</strong>';
             } else {
-                mt.innerHTML = '<i class="fas fa-handshake me-2" style="color:var(--gold);"></i>Investor / Partner Inquiry';
+                mt.innerHTML = '<i class="fas fa-handshake me-2" style="color:var(--gold);"></i>Any Inquiry';
                 ct.innerHTML = 'You\'re inquiring about: <strong id="inquiryProjectName" style="color:var(--teal);">' + projectName + '</strong>';
             }
             bootstrap.Modal.getInstance(projectModalEl).hide();
