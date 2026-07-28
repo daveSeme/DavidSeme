@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | David Seme Luvai</title>
+    <meta name="description" content="Detailed project portfolio of David Seme Luvai - Software Engineer & Data Analyst. Enterprise systems, AI platforms, and government solutions.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0a0f; --bg-secondary: #0f1412; --surface: #151a18; --border: #24302b;
+            --text: #e4eae7; --text-secondary: #889992; --accent: #1f8f6d; --teal: #35b98d;
+            --gold: #d9a441; --font-body: 'Poppins', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.5); --nav-blur: rgba(10,10,15,0.9);
+        }
+        [data-theme="light"] {
+            --bg: #f6f9f7; --bg-secondary: #ffffff; --surface: #ffffff; --border: #d4dfd9;
+            --text: #1a2520; --text-secondary: #5c6b64; --teal: #2aa87e; --gold: #b8861a;
+            --nav-blur: rgba(246,249,247,0.9);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.7; transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        .navbar { padding: 0.9rem 0; background: var(--nav-blur); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .navbar-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1rem; color: var(--text); text-decoration: none; }
+        .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 50px; padding: 7px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--text); }
+        .theme-toggle:hover { border-color: var(--teal); }
+
+        .page-hero { padding: 60px 0 40px; text-align: center; }
+        .page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; background: linear-gradient(135deg, #d9a441, #1f8f6d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .page-hero p { color: var(--text-secondary); max-width: 650px; margin: 0.5rem auto 0; font-size: 0.9rem; }
+
+        .section-divider { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; }
+        .section-divider::after { content: ''; flex-grow: 1; height: 1px; background: var(--border); }
+        .section-divider h3 { font-size: 1.1rem; font-weight: 700; color: var(--teal); white-space: nowrap; margin: 0; }
+        .section-divider h3 i { margin-right: 8px; }
+
+        .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all 0.3s; height: 100%; display: flex; flex-direction: column; cursor: pointer; }
+        .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--teal); }
+        .project-card .card-preview { height: 180px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--border); }
+        .project-card .card-body { padding: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-card .card-body h5 { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+        .project-card .card-body .type { font-size: 0.72rem; color: var(--teal); font-weight: 500; margin-bottom: 6px; }
+        .project-card .card-body p { font-size: 0.8rem; color: var(--text-secondary); flex-grow: 1; line-height: 1.5; }
+        .card-badge { position: absolute; top: 12px; right: 12px; background: var(--teal); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.6rem; font-weight: 600; z-index: 3; }
+
+        .modal-content { background: var(--surface) !important; border: 1px solid var(--border) !important; border-radius: 16px !important; color: var(--text) !important; }
+        .modal-header { border-bottom: 1px solid var(--border) !important; }
+        .modal-footer { border-top: 1px solid var(--border) !important; }
+        .modal-header .btn-close { filter: invert(0.7); }
+        .detail-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 600; margin: 2px; background: rgba(217,164,65,0.12); border: 1px solid rgba(217,164,65,0.25); color: var(--gold); }
+        .detail-badge.teal { background: rgba(53,185,141,0.12); border: 1px solid rgba(53,185,141,0.25); color: var(--teal); }
+        .tech-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.68rem; margin: 2px; background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border); }
+        .metric { text-align: center; padding: 0.8rem; }
+        .metric .value { font-size: 1.5rem; font-weight: 700; color: var(--teal); font-family: var(--font-mono); }
+        .metric .label { font-size: 0.65rem; color: var(--text-secondary); }
+
+        .btn-investor { background: transparent; border: 1.5px solid var(--gold); color: var(--gold); padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap; }
+        .btn-investor:hover { background: rgba(217,164,65,0.1); color: var(--gold); }
+        .btn-ecom { background: linear-gradient(135deg, #1f8f6d, #35b98d); color: #fff; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .btn-ecom:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(31,143,109,0.25); }
+        .btn-outline-custom { border: 1.5px solid var(--border); color: var(--text); padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: transparent; white-space: nowrap; cursor: pointer; }
+        .btn-outline-custom:hover { border-color: var(--teal); color: var(--teal); }
+        .btn-gradient { background: linear-gradient(135deg, #1f8f6d, #35b98d); color: #fff; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-gradient:hover { transform: translateY(-2px); color: #fff; box-shadow: 0 8px 25px rgba(31,143,109,0.25); }
+
+        .inquiry-input, .inquiry-textarea { background: var(--bg) !important; border: 1px solid var(--border) !important; color: var(--text) !important; border-radius: 8px !important; padding: 10px 14px !important; font-family: var(--font-body) !important; font-size: 0.85rem !important; }
+        .inquiry-textarea { resize: vertical; }
+        .inquiry-input:focus, .inquiry-textarea:focus { border-color: var(--teal) !important; box-shadow: 0 0 0 3px rgba(31,143,109,0.2) !important; outline: none; }
+
+        /* Pagination */
+        .pagination-container { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 2rem; flex-wrap: wrap; }
+        .page-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .page-btn:hover { border-color: var(--teal); color: var(--teal); }
+        .page-btn.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+        .page-btn.disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+        .page-info { font-size: 0.8rem; color: var(--text-secondary); margin: 0 10px; }
+
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+
+        footer { border-top: 1px solid var(--border); padding: 1.2rem 0; text-align: center; color: var(--text-secondary); font-size: 0.78rem; margin-top: 3rem; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--teal); text-decoration: none; font-weight: 500; font-size: 0.88rem; }
+        .back-link:hover { color: var(--teal); opacity: 0.8; }
+
+        @media (max-width: 768px) { .page-hero { padding: 40px 0 30px; } .project-card .card-preview { height: 140px; } .page-btn { width: 34px; height: 34px; font-size: 0.75rem; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-code" style="color:var(--teal);"></i> David Seme Luvai</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+                <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i><span id="themeText">Dark</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Project Portfolio</h1>
+            <p>Detailed breakdown of systems I've architected and delivered. Click any card for technical depth. Startups have investor inquiry options — e-commerce projects have client inquiry options.</p>
+        </div>
+    </section>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+        
+        <!-- ============ AI & DATA PLATFORMS ============ -->
+        <div class="section-divider"><h3><i class="fas fa-robot"></i> AI & Data Platforms</h3></div>
+        <div class="row g-3 g-md-4 mb-4" id="aiDataSection">
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal" 
+                data-title="Ravka - Distributed Crawler Engine" data-type="AI-Powered Discovery Platform" data-status="Production • Live"
+                data-description="Multi-threaded scraping architecture that monitors 50+ job boards, company career pages, government tender portals, and social media channels nightly."
+                data-architecture="Microservices-based crawler fleet with Redis queue orchestration. Each crawler is containerized and rate-limited per target domain. NLP entity extraction pipeline processes raw HTML into structured listings. Notification dispatch layer handles WhatsApp Cloud API and SMTP delivery with exponential backoff."
+                data-stack="PHP 8.2, Python 3.11, BeautifulSoup4, NLP/Spacy, WhatsApp Cloud API, Redis Queues, MySQL 8"
+                data-metrics='[{"value":"50+","label":"Data Sources"},{"value":"< 3s","label":"Parse Time"},{"value":"7 AM","label":"Daily Delivery"},{"value":"99.2%","label":"Uptime"}]'
+                data-highlights="CV parsing engine with skills taxonomy mapping; Programmatic cover letter generation via template injection; Admin dashboard with crawler health monitoring; User matching algorithm using TF-IDF vector similarity"
+                data-url="https://rovil.co.ke/Ravka" data-urltext="Visit Platform">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1117,#161b22,#0f1412);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">🕷️</div><div style="color:var(--teal);font-weight:700;font-size:1rem;font-family:var(--font-mono);">RAVKA</div></div>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Distributed Crawler Engine</h5><span class="type">AI • Data Acquisition</span>
+                        <p>50+ source monitoring with NLP entity extraction and automated WhatsApp/Email dispatch.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">Python</span><span class="tech-tag">NLP</span><span class="tech-tag">Redis</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="Sentio - Social Sentiment Engine" data-type="NLP/ML Analytics Platform" data-status="Research Phase"
+                data-description="Fine-tuned BERT transformer model for analyzing public sentiment across social media, news, and forums with Swahili/Sheng language support."
+                data-architecture="Custom tokenizer trained on East African multilingual corpus. BERT-base model fine-tuned on 500K labeled sentiment examples. FastAPI serving layer with Redis caching. Stream processing pipeline ingesting Twitter/X, Reddit, and RSS feeds via Kafka connectors."
+                data-stack="Python 3.11, HuggingFace Transformers, BERT, FastAPI, Redis, Apache Kafka, PostgreSQL"
+                data-metrics='[{"value":"87%","label":"Accuracy"},{"value":"3","label":"Languages"},{"value":"< 500ms","label":"Inference"},{"value":"500K","label":"Training Set"}]'
+                data-highlights="Custom Swahili/Sheng tokenizer built from scratch; Political sentiment classifier for East African context; Brand perception tracking with time-series dashboards; Crisis signal detection with real-time alerting"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#1a0d2e,#241640,#1a1030);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">🧠</div><div style="color:#a855f7;font-weight:700;font-size:1rem;font-family:var(--font-mono);">SENTIO</div></div>
+                        <span class="card-badge" style="background:#a855f7;">RESEARCH</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Social Sentiment Analysis</h5><span class="type">NLP • Transformers</span>
+                        <p>BERT-based sentiment classifier with custom Swahili/Sheng tokenizer for East African markets.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Python</span><span class="tech-tag">BERT</span><span class="tech-tag">HuggingFace</span><span class="tech-tag">Kafka</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="SokoPredict - Commodity Price Engine" data-type="Time-Series ML Platform" data-status="Research Phase"
+                data-description="Ensemble LSTM + Transformer model forecasting agricultural commodity prices across East African markets using multi-modal data inputs."
+                data-architecture="Dual-model ensemble: LSTM for sequential price patterns, Transformer for long-range dependency capture. Feature engineering pipeline ingests weather APIs, fuel prices, border delay indices, and historical market data. Prophet used for baseline comparison and seasonality decomposition."
+                data-stack="Python, TensorFlow, PyTorch, LSTM, Prophet, FastAPI, PostgreSQL, Docker"
+                data-metrics='[{"value":"92%","label":"Direction Accuracy"},{"value":"14","label":"Commodities"},{"value":"30-day","label":"Forecast Window"},{"value":"6","label":"Data Sources"}]'
+                data-highlights="Multi-horizon forecasting (7/14/30 day); Weather pattern correlation analysis; Fuel cost impact modeling; Border delay integration from customs APIs"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#1a0d0d,#2e1616,#1f1010);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">📈</div><div style="color:#e15c5c;font-weight:700;font-size:1rem;font-family:var(--font-mono);">SOKOPREDICT</div></div>
+                        <span class="card-badge" style="background:#e15c5c;">RESEARCH</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Price Forecasting Engine</h5><span class="type">ML • Time-Series</span>
+                        <p>LSTM + Transformer ensemble predicting commodity prices from weather, fuel, and market data.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">TensorFlow</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Prophet</span><span class="tech-tag">LSTM</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="SignalFeed - Signal Aggregation Pipeline" data-type="ML • Event-Driven Architecture" data-status="Research"
+                data-description="Low-latency event processing pipeline ingesting heterogeneous data streams — financial tickers, weather APIs, news RSS, social media firehose."
+                data-architecture="Implements complex event processing (CEP) for pattern detection across multiple streams. Kafka-based ingestion with Go consumers for stream processing. Python ML layer for signal classification and confidence scoring. Redis Streams for real-time dispatch to downstream systems."
+                data-stack="Go, Apache Kafka, Redis Streams, Python, WebSockets, Docker"
+                data-metrics='[{"value":"< 100ms","label":"Latency"},{"value":"5","label":"Stream Types"},{"value":"Kafka","label":"Broker"},{"value":"Research","label":"Phase"}]'
+                data-highlights="Multi-stream complex event processing; Real-time pattern detection engine; ML-based signal confidence scoring; WebSocket dispatch for live dashboards"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1120,#151a30,#0f1428);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">📡</div><div style="color:#6366f1;font-weight:700;font-size:1rem;font-family:var(--font-mono);">SIGNALFEED</div></div>
+                        <span class="card-badge" style="background:#6366f1;">RESEARCH</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Signal Aggregation Pipeline</h5><span class="type">ML • Stream Processing</span>
+                        <p>Low-latency event processing with CEP pattern detection across heterogeneous data streams.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Go</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">Python</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="MediqAI - Medical Inventory Forecasting" data-type="HealthTech ML Platform" data-status="Prototype"
+                data-description="Predictive inventory model for hospital pharmacies forecasting drug demand based on seasonal illness patterns and supply chain lead times."
+                data-architecture="XGBoost and Prophet ensemble for demand prediction. Feature engineering from prescription trends, seasonal illness data, and supplier lead times. Cold-chain monitoring module with IoT integration. Streamlit dashboard for pharmacy managers."
+                data-stack="Python, XGBoost, Prophet, Streamlit, PostgreSQL, Docker, IoT/MQTT"
+                data-metrics='[{"value":"89%","label":"Forecast Accuracy"},{"value":"30-day","label":"Prediction"},{"value":"Cold-chain","label":"Module"},{"value":"Prototype","label":"Stage"}]'
+                data-highlights="Seasonal illness pattern correlation; Cold-chain temperature monitoring integration; Expiry prediction using survival analysis; Pharmacy dashboard with reorder alerts"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1a1f,#0f2428,#0a1a1e);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">🏥</div><div style="color:#2dd4bf;font-weight:700;font-size:1rem;font-family:var(--font-mono);">MEDIQ AI</div></div>
+                        <span class="card-badge" style="background:#2dd4bf;">PROTOTYPE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Medical Inventory Forecasting</h5><span class="type">HealthTech • ML</span>
+                        <p>Demand prediction for hospital pharmacies with cold-chain monitoring and expiry analysis.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Python</span><span class="tech-tag">XGBoost</span><span class="tech-tag">Prophet</span><span class="tech-tag">IoT</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ FINTECH & BANKING ============ -->
+        <div class="section-divider"><h3><i class="fas fa-coins"></i> FinTech & Banking</h3></div>
+        <div class="row g-3 g-md-4 mb-4">
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="PayFlow - Payment Orchestration Layer" data-type="Multi-Rail Transaction Processor" data-status="Private Beta"
+                data-description="Event-driven payment processor with adapter pattern for M-PESA STK push, card networks, and blockchain settlement."
+                data-architecture="Idempotent transaction processing with outbox pattern for guaranteed delivery. Adapter layer abstracts M-PESA API v2, Stripe Connect, and Ethereum settlement. Double-entry reconciliation engine runs as nightly batch. PCI-DSS compliant infrastructure on Docker Swarm."
+                data-stack="Node.js 20, React 18, PostgreSQL 16, M-PESA API v2, Stripe Connect, Docker Swarm, Redis"
+                data-metrics='[{"value":"3","label":"Payment Rails"},{"value":"< 2s","label":"Transaction Time"},{"value":"PCI-DSS","label":"Compliance"},{"value":"99.9%","label":"Idempotency"}]'
+                data-highlights="Idempotent transaction keys prevent double-charging; Automated reconciliation with discrepancy flagging; Multi-currency support (KES, USD, EUR); Merchant dashboard with real-time settlement tracking"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#1a1025,#1a1a2e,#16213e);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">💳</div><div style="color:var(--gold);font-weight:700;font-size:1rem;font-family:var(--font-mono);">PAYFLOW</div></div>
+                        <span class="card-badge" style="background:var(--gold);">PRIVATE BETA</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Payment Orchestration</h5><span class="type">FinTech • PCI-DSS</span>
+                        <p>Multi-rail processor with M-PESA, Stripe, and blockchain support. Idempotent transaction semantics.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">M-PESA</span><span class="tech-tag">Stripe</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="ChamaLedger - Cooperative Ledger System" data-type="FinTech • SACCO Core Banking" data-status="Alpha Development"
+                data-description="Cooperative finance engine with automated merry-go-round scheduling, dividend computation, and SASRA-compliant reporting."
+                data-architecture="Django monolith with modular SACCO domain logic. Double-entry bookkeeping engine ensures debit/credit integrity. M-PESA B2C/C2B integration for disbursements and contributions. Celery workers handle periodic tasks: dividend computation, loan interest accrual, and regulatory report generation."
+                data-stack="Django 5, React 18, PostgreSQL 16, M-PESA B2C/C2B, Celery, Redis Streams, Docker"
+                data-metrics='[{"value":"1000+","label":"Member Capacity"},{"value":"< 5s","label":"Disbursement"},{"value":"SASRA","label":"Compliant"},{"value":"6","label":"Module Types"}]'
+                data-highlights="Compound dividend computation with variable rates; Loan origination with credit scoring model; Guarantor chain management and tracking; Automated SASRA regulatory report generation"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#1a1a0d,#1f1f10,#2a2a15);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">👥</div><div style="color:var(--gold);font-weight:700;font-size:1rem;font-family:var(--font-mono);">CHAMALEDGER</div></div>
+                        <span class="card-badge" style="background:var(--gold);">ALPHA</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Cooperative Ledger System</h5><span class="type">FinTech • Core Banking</span>
+                        <p>SACCO management with automated scheduling, double-entry bookkeeping, and regulatory reporting.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Django</span><span class="tech-tag">React</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Celery</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="AuditFlow - Compliance Audit Engine" data-type="RegTech • Rule-Based ML" data-status="Development"
+                data-description="Automated compliance verification system that validates financial records against IFRS, SASRA, and KRA regulatory frameworks."
+                data-architecture="Rule engine built on Drools-compatible syntax with Python wrapper. Ingests financial statements via PDF parsing and API connectors. Anomaly detection using statistical deviation from expected patterns. Compliance scoring with weighted rule importance."
+                data-stack="Python, Drools, PostgreSQL, FastAPI, React, Docker, Redis"
+                data-metrics='[{"value":"200+","label":"Rules Engineered"},{"value":"3","label":"Frameworks"},{"value":"< 10s","label":"Audit Run"},{"value":"IFRS/SASRA","label":"Coverage"}]'
+                data-highlights="IFRS 9 financial instrument classification; SASRA SACCO regulatory rule mapping; KRA TIMS invoice compliance verification; Automated audit trail with timestamp chain"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#1a1a0a,#2a2a10,#1f1f0d);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">📋</div><div style="color:#f59e0b;font-weight:700;font-size:1rem;font-family:var(--font-mono);">AUDITFLOW</div></div>
+                        <span class="card-badge" style="background:#f59e0b;">DEV</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Compliance Audit Engine</h5><span class="type">RegTech • Rule Engine</span>
+                        <p>Automated IFRS/SASRA/KRA compliance verification with anomaly detection and remediation.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Python</span><span class="tech-tag">Drools</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Docker</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ BLOCKCHAIN & GOVTECH ============ -->
+        <div class="section-divider"><h3><i class="fas fa-link"></i> Blockchain & GovTech Research</h3></div>
+        <div class="row g-3 g-md-4 mb-4">
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="TenderShield - Procurement Fraud Detection" data-type="GovTech • Anomaly Detection ML" data-status="Concept • Research"
+                data-description="Unsupervised ML model detecting irregular tender patterns in Kenyan government procurement data."
+                data-architecture="Isolation Forest and XGBoost models trained on historical procurement data. Graph analysis via NetworkX for bidder relationship detection. Benford's Law distribution testing for price manipulation signals. FastAPI serving layer with batch and real-time inference modes."
+                data-stack="Python, scikit-learn, XGBoost, NetworkX, FastAPI, Pandas Profiling, PostgreSQL"
+                data-metrics='[{"value":"50K+","label":"Tenders Analyzed"},{"value":"4","label":"Fraud Signals"},{"value":"< 1s","label":"Inference"},{"value":"Research","label":"Phase"}]'
+                data-highlights="Bid rigging detection via graph analysis; Phantom bidder identification; Price collusion signals (Benford's Law); Shell company cross-referencing with registry"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#111a2e,#162240,#0d1a33);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">🛡️</div><div style="color:#5b8def;font-weight:700;font-size:1rem;font-family:var(--font-mono);">TENDERSHIELD</div></div>
+                        <span class="card-badge" style="background:#5b8def;">CONCEPT</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Fraud Detection ML</h5><span class="type">GovTech • Anomaly Detection</span>
+                        <p>ML model detecting bid rigging, phantom bidders, and price collusion in procurement data.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Python</span><span class="tech-tag">XGBoost</span><span class="tech-tag">NetworkX</span><span class="tech-tag">FastAPI</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="LandLedger - Land Registry Verification" data-type="GovTech • Blockchain Platform" data-status="Concept"
+                data-description="Immutable land title verification with cryptographic deed hashing and duplicate title detection."
+                data-architecture="Ethereum L2 smart contracts for deed registration and transfer. IPFS for off-chain document storage with content hashing. Perceptual hashing for duplicate title detection. REST adapters for Ardhisasa and county registry integration."
+                data-stack="Solidity, Ethereum L2, Node.js, IPFS, React, PostgreSQL, Docker"
+                data-metrics='[{"value":"Immutable","label":"Ledger Type"},{"value":"IPFS","label":"Storage"},{"value":"L2","label":"Scaling"},{"value":"Concept","label":"Phase"}]'
+                data-highlights="Cryptographic deed hashing for tamper detection; Ownership chain visualization; Duplicate title detection via perceptual hashing; Ardhisasa API integration layer"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#1a1209,#2a1f10,#1f170a);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">🏠</div><div style="color:#b8861a;font-weight:700;font-size:1rem;font-family:var(--font-mono);">LANDLEDGER</div></div>
+                        <span class="card-badge" style="background:#b8861a;">CONCEPT</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Land Registry Blockchain</h5><span class="type">GovTech • Ethereum L2</span>
+                        <p>Immutable title verification with cryptographic hashing and duplicate detection algorithms.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Solidity</span><span class="tech-tag">Ethereum</span><span class="tech-tag">IPFS</span><span class="tech-tag">React</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="VoteChain - Decentralized Voting" data-type="GovTech • Zero-Knowledge Voting" data-status="Concept • Research"
+                data-description="Cryptographic voting protocol with zero-knowledge proofs for ballot validity and homomorphic tallying."
+                data-architecture="Circom circuits for ZK-SNARK ballot validity proofs. Nullifier registry prevents double-voting. Homomorphic tallying computes results without decrypting individual votes. Smart contracts on Ethereum L2 for vote storage and verification."
+                data-stack="Rust, Circom, Solidity, ZK-SNARKs, React, Ethereum, Docker"
+                data-metrics='[{"value":"ZK-SNARK","label":"Privacy"},{"value":"Homomorphic","label":"Tallying"},{"value":"L2","label":"Scaling"},{"value":"Research","label":"Phase"}]'
+                data-highlights="Zero-knowledge ballot validity proofs; Homomorphic encrypted tallying; Double-vote prevention via nullifier; Publicly verifiable audit trail"
+                data-url="" data-urltext="">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1a1a,#0f2424,#0a1a1a);">
+                        <div style="text-align:center;"><div style="font-size:2.5rem;">🗳️</div><div style="color:#14b8a6;font-weight:700;font-size:1rem;font-family:var(--font-mono);">VOTECHAIN</div></div>
+                        <span class="card-badge" style="background:#14b8a6;">RESEARCH</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Decentralized Voting</h5><span class="type">GovTech • ZK-Proofs</span>
+                        <p>ZK-SNARK voting protocol with homomorphic tallying and double-vote prevention.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">Rust</span><span class="tech-tag">Circom</span><span class="tech-tag">ZK-SNARKs</span><span class="tech-tag">Solidity</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ E-COMMERCE & WEB PLATFORMS ============ -->
+           <!-- ============ E-COMMERCE & WEB PLATFORMS ============ -->
+        <div class="section-divider"><h3><i class="fas fa-store"></i> E-Commerce & Web Platforms</h3></div>
+        <div class="row g-3 g-md-4 mb-4 ecom-page-section" id="ecomPage1">
+            
+            <!-- Ela Glow Spa -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="Ela Glow Spa - Wellness Platform" data-type="Beauty & Wellness Platform" data-status="Live"
+                data-description="Complete spa and wellness website with online booking system, service menu, gallery, and full admin dashboard."
+                data-architecture="PHP/MySQL web application with integrated booking calendar. Service management with category and pricing controls. Image gallery with admin upload. Contact form with email notification. Responsive Bootstrap design optimized for mobile conversion."
+                data-stack="PHP, MySQL, JavaScript, Bootstrap, Email API, Booking Engine"
+                data-metrics='[{"value":"Booking","label":"System"},{"value":"Gallery","label":"Module"},{"value":"Admin","label":"Dashboard"},{"value":"Live","label":"Status"}]'
+                data-highlights="Online booking with calendar integration; Service management with pricing tiers; Image gallery with admin upload; Mobile-responsive design"
+                data-url="https://rovil.co.ke/ElaGlowSpa/index.php" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://rovil.co.ke/ElaGlowSpa/index.php" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://rovil.co.ke/ElaGlowSpa/index.php" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Ela Glow Spa</h5><span class="type">Wellness • Booking</span>
+                        <p>Spa website with online booking, service menu, gallery, and admin dashboard.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Bootstrap</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dandora Green Light VTC -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="Dandora Green Light VTC - School Portal" data-type="Educational Institution Platform" data-status="Live"
+                data-description="TVET-accredited vocational training centre website with CMS, student applications, driving school module, and role-based admin panel."
+                data-architecture="Full PHP/MySQL CMS with role-based access control (admin, instructor, student). Student application workflow with multi-stage approval pipeline. Driving school module with scheduling and instructor assignment. Content management for courses, news, and events."
+                data-stack="PHP, MySQL, JavaScript, Bootstrap, CMS Engine, Role-Based Auth"
+                data-metrics='[{"value":"3","label":"User Roles"},{"value":"CMS","label":"Engine"},{"value":"Driving","label":"Module"},{"value":"Live","label":"Status"}]'
+                data-highlights="Role-based admin (admin, instructor, student); Student application with approval workflow; Driving school scheduling module; TVET-accredited institution compliant"
+                data-url="https://rovil.co.ke/Dandora/index.php" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://rovil.co.ke/Dandora/index.php" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://rovil.co.ke/Dandora/index.php" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Dandora Green Light VTC</h5><span class="type">Education • CMS</span>
+                        <p>TVET institution site with student applications, driving school module, and role-based admin.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">CMS</span><span class="tech-tag">Bootstrap</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VITO Electronics -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="VITO Electronics - Multi-Vendor Store" data-type="E-Commerce Platform" data-status="Live"
+                data-description="Electronics marketplace with wishlist, cart, M-PESA integration, and comprehensive product management admin."
+                data-architecture="PHP/MySQL e-commerce with AJAX-driven cart and wishlist for seamless UX. M-PESA STK push integration for mobile payments. Product admin with category management, variant handling, and stock tracking. Responsive Bootstrap frontend with search and filter capabilities."
+                data-stack="PHP, MySQL, JavaScript, AJAX, M-PESA API, Bootstrap, REST APIs"
+                data-metrics='[{"value":"500+","label":"Products"},{"value":"M-PESA","label":"Payment"},{"value":"AJAX","label":"Frontend"},{"value":"Live","label":"Status"}]'
+                data-highlights="AJAX cart without page reloads; M-PESA STK push integration; Product variant management; Stock tracking with low-stock alerts"
+                data-url="https://namfront.co.ke/vito/" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://namfront.co.ke/vito/" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://namfront.co.ke/vito/" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>VITO Electronics</h5><span class="type">E-Commerce • Multi-Vendor</span>
+                        <p>Electronics store with AJAX cart, M-PESA payments, wishlist, and product admin.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">AJAX</span><span class="tech-tag">M-PESA</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rovil Coffee Factory -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="Rovil Coffee Factory - Organic E-Commerce" data-type="E-Commerce Platform" data-status="Live"
+                data-description="Organic Kenyan coffee e-commerce with subscription model, farmer portal, and DHL international shipping."
+                data-architecture="PHP e-commerce with subscription management via cron-based recurring billing. Farmer portal for cooperative members to track deliveries and payments. DHL API integration for international order fulfillment. Analytics dashboard for sales trends and customer retention metrics."
+                data-stack="PHP, MySQL, JavaScript, DHL API, Subscription Engine, Analytics, Bootstrap"
+                data-metrics='[{"value":"Subscription","label":"Model"},{"value":"Farmer","label":"Portal"},{"value":"DHL","label":"Shipping"},{"value":"Live","label":"Status"}]'
+                data-highlights="Recurring subscription management; Farmer cooperative delivery tracking; DHL international shipping integration; Customer retention analytics"
+                data-url="https://rovil.co.ke/" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://rovil.co.ke/" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://rovil.co.ke/" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Rovil Coffee Factory</h5><span class="type">E-Commerce • Subscriptions</span>
+                        <p>Organic coffee platform with subscriptions, farmer portal, and DHL global shipping.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">DHL API</span><span class="tech-tag">Analytics</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PeaceFx Trading -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="PeaceFx Trading - Forex Education" data-type="Forex Education Platform" data-status="Live"
+                data-description="Trading education platform with PDF resources, live charts, subscription system, messaging, and admin approval workflow."
+                data-architecture="PHP/MySQL platform with subscription-based content access. Chart.js integration for live market data visualization. PDF resource library with category management. Internal messaging system between students and instructors. Admin approval system for new registrations."
+                data-stack="PHP, MySQL, JavaScript, Chart.js, Subscription Engine, Bootstrap"
+                data-metrics='[{"value":"Chart.js","label":"Charts"},{"value":"PDF","label":"Resources"},{"value":"Messaging","label":"System"},{"value":"Live","label":"Status"}]'
+                data-highlights="Interactive Chart.js market visualizations; PDF resource library with categories; Internal messaging system; Admin approval workflow for registrations"
+                data-url="https://rovil.co.ke/Peace/index.php" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://rovil.co.ke/Peace/index.php" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://rovil.co.ke/Peace/index.php" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>PeaceFx Trading</h5><span class="type">Education • Trading</span>
+                        <p>Trading education with Chart.js, PDFs, subscriptions, messaging, and admin approval.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">Chart.js</span><span class="tech-tag">Bootstrap</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MubiLeather -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="MubiLeather - Premium E-Commerce" data-type="E-Commerce Platform" data-status="Live"
+                data-description="Premium leather goods platform with multi-currency checkout, DHL shipping integration, and Power BI analytics."
+                data-architecture="Custom PHP e-commerce engine with MVC pattern. Multi-level admin (super admin, manager, staff). M-PESA and card payment integration. DHL API for real-time shipping rates and label generation. Power BI dashboards for sales analytics and inventory forecasting."
+                data-stack="PHP, MySQL, JavaScript, M-PESA API, DHL API, Power BI, Bootstrap"
+                data-metrics='[{"value":"100+","label":"Products"},{"value":"3","label":"Currencies"},{"value":"DHL","label":"Shipping"},{"value":"Live","label":"Status"}]'
+                data-highlights="Multi-currency checkout (KES, USD, EUR); DHL real-time shipping integration; Power BI sales dashboards; Multi-level admin with audit trails"
+                data-url="https://mubileather.com" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://mubileather.com" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://mubileather.com" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>MubiLeather</h5><span class="type">E-Commerce • Luxury</span>
+                        <p>Premium leather platform with multi-currency, DHL shipping, and Power BI analytics.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">Power BI</span><span class="tech-tag">DHL API</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- E-Commerce Page 2 -->
+        <div class="row g-3 g-md-4 mb-4 ecom-page-section" id="ecomPage2" style="display:none;">
+            
+            <!-- Vian Consultancy -->
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="Vian Consultancy - Professional Services" data-type="Professional Services Platform" data-status="Live"
+                data-description="Consulting firm website with client portal, lead tracking, reporting, and comprehensive admin dashboard."
+                data-architecture="PHP/HTML/Tailwind CSS consulting site with lead capture forms. Client portal for project tracking and document sharing. Admin dashboard with lead management, reporting, and analytics. Responsive design with Tailwind CSS utility classes."
+                data-stack="PHP, HTML, Tailwind CSS, JavaScript, Lead Tracking, Analytics"
+                data-metrics='[{"value":"Client","label":"Portal"},{"value":"Lead","label":"Tracking"},{"value":"Tailwind","label":"CSS"},{"value":"Live","label":"Status"}]'
+                data-highlights="Client portal with document sharing; Lead tracking and management; Reporting dashboard; Modern Tailwind CSS design"
+                data-url="https://vianconsultancy.com" data-urltext="Visit Site">
+                <div class="project-card">
+                    <div class="card-preview" style="position:relative;overflow:hidden;">
+                        <iframe src="https://vianconsultancy.com" loading="lazy" scrolling="no" style="position:absolute;top:0;left:0;width:400%;height:400%;border:none;transform:scale(0.25);transform-origin:0 0;pointer-events:none;"></iframe>
+                        <a href="https://vianconsultancy.com" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <h5>Vian Consultancy</h5><span class="type">Professional Services</span>
+                        <p>Consulting site with client portal, lead tracking, reporting, and admin dashboard.</p>
+                        <div style="margin-top:auto;"><span class="tech-tag">PHP</span><span class="tech-tag">Tailwind</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Analytics</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- E-Commerce Pagination -->
+        <div class="pagination-container" id="ecomPagination">
+            <button class="page-btn disabled" id="ecomPrevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="page-btn active" data-page="1">1</button>
+            <button class="page-btn" data-page="2">2</button>
+            <span class="page-info">7 projects</span>
+            <button class="page-btn" id="ecomNextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+
+        <!-- ============ ENTERPRISE & GOVERNMENT ============ -->
+        <div class="section-divider"><h3><i class="fas fa-landmark"></i> Enterprise & Government Systems</h3></div>
+        <div class="row g-3 g-md-4 mb-4">
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="SASRA - ERP & Regulatory Dashboards" data-type="Government • Dynamics NAV" data-status="Delivered • Live"
+                data-description="Microsoft Dynamics NAV ERP customization and Power BI regulatory dashboards for the Sacco Societies Regulatory Authority."
+                data-architecture="Extended Dynamics NAV with AL custom modules for SACCO-specific regulatory workflows. Built Power BI dashboards connected to live NAV data via OData endpoints. Developed complementary .NET staff portal for non-ERP workflows."
+                data-stack="AL (Dynamics NAV), Power BI, .NET Framework, MS SQL Server, OData, C#"
+                data-metrics='[{"value":"200+","label":"SACCOs Regulated"},{"value":"12","label":"Dashboards"},{"value":"AL","label":"Custom Modules"},{"value":"Live","label":"Status"}]'
+                data-highlights="Real-time regulatory compliance dashboards; Automated SACCO data collection and validation; Role-based staff portal with document workflows; Integration with Central Bank reporting systems"
+                data-url="https://www.sasra.go.ke" data-urltext="SASRA Website">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1117,#1a1a2e,#0f1412);display:flex;align-items:center;justify-content:center;"><img src="https://www.sasra.go.ke/wp-content/uploads/2021/12/logo.jpg" alt="SASRA" style="max-width:120px;max-height:60px;object-fit:contain;opacity:0.9;" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span style="display:none;font-size:2.5rem;">🏦</span></div>
+                    <div class="card-body"><h5>SASRA ERP System</h5><span class="type">Government • ERP</span><p>Dynamics NAV customization with Power BI dashboards for 200+ SACCO regulatory oversight.</p><div style="margin-top:auto;"><span class="tech-tag">AL/NAV</span><span class="tech-tag">Power BI</span><span class="tech-tag">.NET</span><span class="tech-tag">MS SQL</span></div></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="Privatization Authority - AIMS Portal" data-type="Government • Asset Management" data-status="Delivered • Live"
+                data-description="Asset Information Management System for tracking government assets under privatization with real-time NAV ERP synchronization."
+                data-architecture="ASP.NET MVC portal with real-time bidirectional sync to Microsoft Dynamics NAV ERP. Asset lifecycle tracking from listing through valuation, bidding, and transfer. Power BI dashboards for executive oversight. Role-based access for commission members, valuation teams, and bidders."
+                data-stack="ASP.NET MVC, AL (Dynamics NAV), Power BI, MS SQL Server, Azure, C#"
+                data-metrics='[{"value":"500+","label":"Assets Tracked"},{"value":"Real-time","label":"NAV Sync"},{"value":"4","label":"User Roles"},{"value":"Live","label":"Status"}]'
+                data-highlights="Real-time NAV ERP synchronization; Asset valuation workflow automation; Bidder management and qualification; Executive Power BI dashboards"
+                data-url="https://privatization.go.ke" data-urltext="Authority Website">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1117,#16213e,#0f1412);display:flex;align-items:center;justify-content:center;"><img src="https://privatization.go.ke/wp-content/uploads/pa-branding/pa-logo-full.png" alt="PA" style="max-width:140px;max-height:50px;object-fit:contain;opacity:0.9;" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span style="display:none;font-size:2.5rem;">🏛️</span></div>
+                    <div class="card-body"><h5>AIMS Asset Portal</h5><span class="type">Government • ERP Integration</span><p>Asset tracking system with real-time NAV ERP sync for the Privatization Commission.</p><div style="margin-top:auto;"><span class="tech-tag">ASP.NET</span><span class="tech-tag">NAV ERP</span><span class="tech-tag">Power BI</span><span class="tech-tag">Azure</span></div></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="UFAA - Data Infrastructure & Analytics" data-type="Government • Data Engineering" data-status="Active Development"
+                data-description="Building the Unclaimed Financial Assets Authority's GCP data lake, Power BI financial dashboards, and providing Microsoft Dynamics NAV ERP support with data migration."
+                data-architecture="Architecting a centralized data lake on GCP consolidating unclaimed assets from 50+ institutions. Building ETL pipelines (Dataflow/BigQuery) for ingestion, cleansing, and standardization. Developing Power BI dashboards for finance covering asset tracking, claims reconciliation, and compliance reporting. Ongoing NAV ERP support and legacy data migration."
+                data-stack="GCP (BigQuery, Cloud Storage, Dataflow), Power BI, AL (Dynamics NAV), MS SQL Server, Python, ETL Pipelines"
+                data-metrics='[{"value":"50+","label":"Data Sources"},{"value":"GCP","label":"Platform"},{"value":"Finance","label":"Department"},{"value":"Active","label":"Status"}]'
+                data-highlights="Centralized data lake architecture on GCP; ETL pipeline development for multi-source ingestion; Power BI financial dashboards for compliance reporting; Dynamics NAV ERP support and legacy data migration; Cross-institutional data consolidation and standardization"
+                data-url="https://www.ufaa.go.ke" data-urltext="UFAA Website">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1117,#1a1a2e,#0f1412);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🏛️</span></div>
+                    <div class="card-body"><h5>UFAA Data Lake & Analytics</h5><span class="type">Government • Data Engineering</span><p>Building GCP data lake, Power BI dashboards for finance, and NAV ERP support with data migration.</p><div style="margin-top:auto;"><span class="tech-tag">GCP</span><span class="tech-tag">BigQuery</span><span class="tech-tag">Power BI</span><span class="tech-tag">NAV ERP</span><span class="tech-tag">ETL</span></div></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="NCA - Contractor Registration System" data-type="Government • Enterprise Workflow" data-status="Delivered • Live"
+                data-description="Contractor registration and management workflows for Kenya's National Construction Authority."
+                data-architecture="ASP.NET enterprise application with multi-stage registration workflow. Document verification pipeline with approval routing. Contractor classification engine based on NCA categories. Integration with government payment systems for registration fees."
+                data-stack="C#, ASP.NET, MS SQL Server, REST APIs, Entity Framework"
+                data-metrics='[{"value":"Multi-stage","label":"Workflow"},{"value":"ASP.NET","label":"Framework"},{"value":"MS SQL","label":"Database"},{"value":"Live","label":"Status"}]'
+                data-highlights="Multi-stage registration with approval routing; Contractor classification engine; Document verification pipeline; Government payment integration"
+                data-url="https://nca.go.ke" data-urltext="NCA Website">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1117,#1a2a1e,#0f1412);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🏗️</span></div>
+                    <div class="card-body"><h5>NCA Contractor System</h5><span class="type">Government • Workflow</span><p>Contractor registration and management workflows for Kenya's construction regulator.</p><div style="margin-top:auto;"><span class="tech-tag">C#</span><span class="tech-tag">ASP.NET</span><span class="tech-tag">MS SQL</span><span class="tech-tag">REST API</span></div></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-bs-toggle="modal" data-bs-target="#projectModal"
+                data-title="KRA - Tax Compliance Integration" data-type="Government • ERP Integration" data-status="Delivered • Live"
+                data-description="Automated tax compliance integration with KRA's TIMS system for e-tax invoice generation and validation."
+                data-architecture="REST API integration layer connecting enterprise ERP systems to KRA's TIMS platform. Automated e-tax invoice generation, submission, and validation. Real-time compliance status checking. Integration with Microsoft Dynamics NAV ERP for seamless financial workflows."
+                data-stack="ASP.NET, REST API, AL (Dynamics NAV), MS SQL Server, TIMS Integration"
+                data-metrics='[{"value":"TIMS","label":"Platform"},{"value":"Real-time","label":"Validation"},{"value":"NAV ERP","label":"Integrated"},{"value":"Live","label":"Status"}]'
+                data-highlights="Automated e-tax invoice generation; Real-time TIMS compliance validation; NAV ERP seamless integration; Error handling with retry logic"
+                data-url="https://www.kra.go.ke" data-urltext="KRA Website">
+                <div class="project-card">
+                    <div class="card-preview" style="background:linear-gradient(145deg,#0d1117,#1a1a2e,#0f1412);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">💰</span></div>
+                    <div class="card-body"><h5>KRA TIMS Integration</h5><span class="type">Government • Tax Compliance</span><p>Automated e-tax invoice integration with KRA TIMS and NAV ERP for seamless compliance.</p><div style="margin-top:auto;"><span class="tech-tag">ASP.NET</span><span class="tech-tag">REST API</span><span class="tech-tag">NAV ERP</span><span class="tech-tag">TIMS</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header"><div><h5 class="modal-title" id="modalTitle" style="font-weight:700;">Project Title</h5><span id="modalType" style="font-size:0.8rem;color:var(--teal);">Type</span></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body">
+                    <div class="mb-3"><span class="detail-badge teal" id="modalStatus">Status</span></div>
+                    <p id="modalDescription" style="font-size:0.9rem;color:var(--text-secondary);"></p>
+                    <div class="row g-2 mb-3" id="modalMetrics"></div>
+                    <h6 style="color:var(--teal);font-weight:600;margin-top:1rem;">Architecture & Approach</h6>
+                    <p id="modalArchitecture" style="font-size:0.82rem;color:var(--text-secondary);"></p>
+                    <h6 style="color:var(--teal);font-weight:600;margin-top:1rem;">Technology Stack</h6>
+                    <div id="modalStack" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+                    <h6 style="color:var(--teal);font-weight:600;margin-top:1rem;">Key Highlights</h6>
+                    <ul id="modalHighlights" style="font-size:0.82rem;color:var(--text-secondary);padding-left:1.2rem;"></ul>
+                </div>
+                <div class="modal-footer" style="justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;"><a href="#" id="modalUrl" target="_blank" rel="noopener" class="btn-gradient" style="display:none;text-decoration:none;"><span id="modalUrlText">Visit</span> <i class="fas fa-external-link-alt ms-2"></i></a></div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;" id="modalActionButtons"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Modal -->
+    <div class="modal fade" id="investorInquiryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;">
+                <div class="modal-header" style="border-bottom:1px solid var(--border);"><h5 class="modal-title" style="color:var(--text);font-weight:600;" id="inquiryModalTitle"><i class="fas fa-handshake me-2" style="color:var(--gold);"></i>Investor / Partner Inquiry</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body">
+                    <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:0.5rem;" id="inquiryContextText">You're inquiring about: <strong id="inquiryProjectName" style="color:var(--teal);">---</strong></p>
+                    <p style="color:var(--text-secondary);font-size:0.75rem;margin-bottom:1rem;background:rgba(217,164,65,0.08);border:1px solid rgba(217,164,65,0.2);border-radius:8px;padding:10px;"><i class="fas fa-info-circle me-1" style="color:var(--gold);"></i>All inquiries are confidential. I respond within 24-48 hours.</p>
+                    <form id="investorInquiryForm">
+                        <input type="hidden" name="project" id="inquiryProject">
+                        <div class="mb-3"><label class="form-label" style="color:var(--text-secondary);font-size:0.8rem;">Your Name *</label><input type="text" class="inquiry-input form-control" name="name" required></div>
+                        <div class="mb-3"><label class="form-label" style="color:var(--text-secondary);font-size:0.8rem;">Your Email *</label><input type="email" class="inquiry-input form-control" name="email" required></div>
+                        <div class="mb-3"><label class="form-label" style="color:var(--text-secondary);font-size:0.8rem;">Organization / Company</label><input type="text" class="inquiry-input form-control" name="organization"></div>
+                        <div class="mb-3"><label class="form-label" style="color:var(--text-secondary);font-size:0.8rem;">Inquiry Type *</label><select class="inquiry-input form-control" name="inquiry_type" required><option value="">Select type...</option><option value="investment">Investment / Funding</option><option value="partnership">Strategic Partnership</option><option value="acquisition">Acquisition Interest</option><option value="licensing">Technology Licensing</option><option value="pilot">Pilot / Build Similar Project</option><option value="other">Other</option></select></div>
+                        <div class="mb-3"><label class="form-label" style="color:var(--text-secondary);font-size:0.8rem;">Tell me about your interest *</label><textarea class="inquiry-textarea form-control" name="message" rows="4" required placeholder="Describe your interest, timeline, and any specific questions..."></textarea></div>
+                        <button type="submit" class="btn-gradient w-100" id="submitInquiryBtn"><span id="submitInquiryText">Send Inquiry</span> <i class="fas fa-paper-plane ms-2"></i></button>
+                    </form>
+                    <div id="inquiryStatus" style="margin-top:1rem;padding:10px;border-radius:8px;display:none;"></div>
+                </div>
+                <div class="modal-footer" style="border-top:1px solid var(--border);"><small style="color:var(--text-secondary);"><i class="fas fa-shield-haltered me-1" style="color:var(--teal);"></i>I review all inquiries personally.</small></div>
+            </div>
+        </div>
+    </div>
+
+    <footer><div class="container"><p>&copy; 2026 David Seme Luvai. All rights reserved. | <a href="index.html" style="color:var(--teal);text-decoration:none;">Back to Portfolio</a></p></div></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme
+        const body = document.body, themeToggle = document.getElementById('themeToggle'), themeIcon = document.getElementById('themeIcon'), themeText = document.getElementById('themeText');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) { body.setAttribute('data-theme', savedTheme); updateThemeUI(savedTheme); }
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme); localStorage.setItem('theme', newTheme); updateThemeUI(newTheme);
+        });
+        function updateThemeUI(theme) { themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon'; themeText.textContent = theme === 'light' ? 'Light' : 'Dark'; }
+
+        // E-Commerce Pagination
+        let currentEcomPage = 1;
+        const totalEcomPages = 2;
+        function showEcomPage(page) {
+            document.querySelectorAll('.ecom-page-section').forEach(s => s.style.display = 'none');
+            const target = document.getElementById('ecomPage' + page);
+            if (target) target.style.display = 'flex';
+            document.querySelectorAll('#ecomPagination .page-btn[data-page]').forEach(b => b.classList.remove('active'));
+            const activeBtn = document.querySelector('#ecomPagination .page-btn[data-page="' + page + '"]');
+            if (activeBtn) activeBtn.classList.add('active');
+            document.getElementById('ecomPrevBtn').classList.toggle('disabled', page === 1);
+            document.getElementById('ecomNextBtn').classList.toggle('disabled', page === totalEcomPages);
+            currentEcomPage = page;
+        }
+        document.getElementById('ecomPrevBtn').addEventListener('click', () => { if (currentEcomPage > 1) showEcomPage(currentEcomPage - 1); });
+        document.getElementById('ecomNextBtn').addEventListener('click', () => { if (currentEcomPage < totalEcomPages) showEcomPage(currentEcomPage + 1); });
+        document.querySelectorAll('#ecomPagination .page-btn[data-page]').forEach(b => b.addEventListener('click', () => showEcomPage(parseInt(b.dataset.page))));
+        showEcomPage(1);
+
+        // Modal
+        let currentProjectTitle = '', currentProjectCategory = '';
+        const projectModalEl = document.getElementById('projectModal'), investorInquiryModal = new bootstrap.Modal(document.getElementById('investorInquiryModal'));
+
+        projectModalEl.addEventListener('show.bs.modal', function(event) {
+            const trigger = event.relatedTarget;
+            const title = trigger.getAttribute('data-title'); currentProjectTitle = title;
+            const card = trigger.closest('.col-lg-4'), section = card.closest('.row').previousElementSibling;
+            if (section && section.classList.contains('section-divider')) { const h = section.querySelector('h3'); if (h) currentProjectCategory = h.textContent.trim(); }
+            
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalType').textContent = trigger.getAttribute('data-type');
+            document.getElementById('modalStatus').textContent = trigger.getAttribute('data-status');
+            document.getElementById('modalDescription').textContent = trigger.getAttribute('data-description');
+            document.getElementById('modalArchitecture').textContent = trigger.getAttribute('data-architecture');
+            
+            document.getElementById('modalMetrics').innerHTML = JSON.parse(trigger.getAttribute('data-metrics') || '[]').map(m => `<div class="col-3"><div class="metric" style="background:var(--bg);border-radius:8px;padding:0.6rem;"><div class="value">${m.value}</div><div class="label">${m.label}</div></div></div>`).join('');
+            document.getElementById('modalStack').innerHTML = trigger.getAttribute('data-stack').split(',').map(s => `<span class="tech-tag">${s.trim()}</span>`).join('');
+            document.getElementById('modalHighlights').innerHTML = trigger.getAttribute('data-highlights').split(';').map(h => `<li>${h.trim()}</li>`).join('');
+            
+            const url = trigger.getAttribute('data-url'), urlBtn = document.getElementById('modalUrl');
+            if (url) { urlBtn.href = url; urlBtn.style.display = 'inline-flex'; document.getElementById('modalUrlText').textContent = trigger.getAttribute('data-urltext') || 'Visit'; }
+            else { urlBtn.style.display = 'none'; }
+            
+            const actionBtns = document.getElementById('modalActionButtons');
+            if (currentProjectCategory.includes('Enterprise') || currentProjectCategory.includes('Government')) {
+                actionBtns.innerHTML = '<button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Close</button>';
+            } else if (currentProjectCategory.includes('E-Commerce')) {
+                actionBtns.innerHTML = '<button type="button" class="btn-ecom" id="modalEcomBtn"><i class="fas fa-store"></i> Want a Similar Site?</button><button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Close</button>';
+                setTimeout(() => { const b = document.getElementById('modalEcomBtn'); if (b) b.addEventListener('click', () => openInquiry('Custom build similar to: ' + currentProjectTitle, 'pilot')); }, 100);
+            } else {
+                actionBtns.innerHTML = '<button type="button" class="btn-investor" id="modalInvestorBtn"><i class="fas fa-handshake"></i> Investor / Partner Inquiry</button><button type="button" class="btn-outline-custom" data-bs-dismiss="modal">Close</button>';
+                setTimeout(() => { const b = document.getElementById('modalInvestorBtn'); if (b) b.addEventListener('click', () => openInquiry(currentProjectTitle, '')); }, 100);
+            }
+        });
+
+        function openInquiry(projectName, presetType) {
+            document.getElementById('inquiryProjectName').textContent = projectName;
+            document.getElementById('inquiryProject').value = projectName;
+            if (presetType) document.querySelector('#investorInquiryForm select[name="inquiry_type"]').value = presetType;
+            const mt = document.getElementById('inquiryModalTitle'), ct = document.getElementById('inquiryContextText');
+            if (projectName.includes('Custom') || projectName.includes('Similar')) {
+                mt.innerHTML = '<i class="fas fa-store me-2" style="color:var(--teal);"></i>Project Inquiry';
+                ct.innerHTML = 'You\'re requesting: <strong id="inquiryProjectName" style="color:var(--teal);">' + projectName + '</strong>';
+            } else {
+                mt.innerHTML = '<i class="fas fa-handshake me-2" style="color:var(--gold);"></i>Investor / Partner Inquiry';
+                ct.innerHTML = 'You\'re inquiring about: <strong id="inquiryProjectName" style="color:var(--teal);">' + projectName + '</strong>';
+            }
+            bootstrap.Modal.getInstance(projectModalEl).hide();
+            setTimeout(() => investorInquiryModal.show(), 300);
+        }
+
+        const form = document.getElementById('investorInquiryForm');
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                document.getElementById('submitInquiryText').textContent = 'Sending...';
+                document.getElementById('submitInquiryBtn').disabled = true;
+                try {
+                    const fd = new FormData(form);
+                    fd.append('_subject', 'Inquiry: ' + fd.get('project'));
+                    fd.append('_captcha', 'false'); fd.append('_template', 'table');
+                    const r = await fetch('https://formsubmit.co/ajax/davidluvai56@gmail.com', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+                    const s = document.getElementById('inquiryStatus');
+                    if (r.ok) {
+                        form.reset();
+                        s.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><i class="fas fa-check-circle" style="color:var(--teal);font-size:1.2rem;"></i><span style="color:var(--teal);">Sent! I\'ll respond within 24-48 hours.</span></div>';
+                        s.style.cssText = 'display:block;background:rgba(53,185,141,0.1);border:1px solid rgba(53,185,141,0.3);';
+                        setTimeout(() => { investorInquiryModal.hide(); s.style.display = 'none'; }, 4000);
+                    } else throw new Error('Failed');
+                } catch (er) {
+                    const s = document.getElementById('inquiryStatus');
+                    s.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><i class="fas fa-exclamation-circle" style="color:#e15c5c;font-size:1.2rem;"></i><span style="color:#e15c5c;">Failed. Email davidluvai56@gmail.com directly.</span></div>';
+                    s.style.cssText = 'display:block;background:rgba(225,92,92,0.1);border:1px solid rgba(225,92,92,0.3);';
+                } finally { document.getElementById('submitInquiryText').textContent = 'Send Inquiry'; document.getElementById('submitInquiryBtn').disabled = false; }
+            });
+        }
+    </script>
+</body>
+</html>
