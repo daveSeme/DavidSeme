@@ -1118,117 +1118,435 @@
     </section>
 
        <!-- Startups & Ventures (Restricted) -->
+        <!-- Startups & Ventures (Restricted) -->
     <section id="ventures" style="padding: 80px 0;">
         <div class="container">
             <span class="section-label reveal">
                 <i class="fas fa-shield-haltered" style="color: var(--gold);"></i> Restricted Access
             </span>
-            <h2 class="section-heading reveal">Startups & Proprietary Ventures</h2>
-            <p class="section-subtitle reveal">Proprietary systems and venture builds currently in stealth or selective-access phase. Request credentials to review architecture and technical scope.</p>
+            <h2 class="section-heading reveal">Proprietary Ventures & Research Systems</h2>
+            <p class="section-subtitle reveal">Production-grade systems and applied research projects under active development. Each entry represents a self-contained architecture with independent deployment, auth layer, and data isolation. Technical deep-dives available to verified collaborators under NDA.</p>
             
+            <!-- Row 1 -->
             <div class="row g-3 g-md-4 mb-4">
                 
-                <!-- Ravka - Distributed Crawler Engine -->
+                <!-- 1. Ravka Engine -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase locked-project-card" data-project="ravka" style="position: relative; cursor: default;">
-                        <!-- Preview Area - Dark gradient with subtle tech pattern -->
                         <div class="project-preview" style="background: linear-gradient(145deg, #0d1117 0%, #161b22 50%, #0f1412 100%); display: flex; align-items: center; justify-content: center; position: relative;">
-                            <!-- Subtle grid pattern -->
-                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.04; background-image: radial-gradient(circle, #35b98d 1px, transparent 1px); background-size: 20px 20px;"></div>
-                            <!-- Tech icons -->
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #35b98d 1px, transparent 1px); background-size: 18px 18px;"></div>
                             <div style="position: relative; z-index: 2; text-align: center;">
-                                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🕷️</div>
-                                <div style="color: var(--teal); font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;">RAVKA ENGINE</div>
-                                <div style="color: var(--text-secondary); font-size: 0.6rem; margin-top: 2px; letter-spacing: 1px;">V1.0 • STEALTH</div>
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🕷️</div>
+                                <div style="color: var(--teal); font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">RAVKA ENGINE</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">V1.0 • PRODUCTION</div>
                             </div>
-                            <!-- Status indicator -->
-                            <div style="position: absolute; top: 12px; right: 12px; display: flex; align-items: center; gap: 5px; background: rgba(10,10,15,0.8); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; z-index: 3;">
-                                <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite;"></span>
-                                <span style="font-size: 0.6rem; color: var(--gold); font-weight: 600;">RESTRICTED</span>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(53,185,141,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: var(--teal); font-weight: 600;">RESTRICTED</span>
                             </div>
                         </div>
-                        <!-- Card Info -->
-                        <div class="project-info" style="position: relative; z-index: 1;">
+                        <div class="project-info">
                             <h4>Distributed Web Crawler Engine</h4>
-                            <span class="project-type">AI-Powered Discovery Platform</span>
+                            <span class="project-type">Multi-Source Data Acquisition Platform</span>
                             <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
-                                <span class="admin-badge" style="margin-bottom: 0;"><i class="fas fa-database"></i> Proprietary</span>
-                                <span class="admin-badge" style="background: rgba(53,185,141,0.12); border: 1px solid rgba(53,185,141,0.25); color: var(--teal); margin-bottom: 0;"><i class="fas fa-brain"></i> NLP Pipeline</span>
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(53,185,141,0.12);border:1px solid rgba(53,185,141,0.25);color:var(--teal);margin-bottom:0;"><i class="fas fa-brain"></i> NLP Pipeline</span>
                             </div>
-                            <p>Multi-source scraping architecture with NLP-based entity extraction, automated document parsing pipeline, and real-time notification dispatch across 50+ endpoints. Includes CV analysis engine and programmatic cover letter generation.</p>
+                            <p>Multi-threaded scraping architecture with intelligent rate limiting, NLP-based entity extraction, automated document parsing (PDF/DOCX), and real-time notification dispatch across 50+ heterogeneous endpoints. Includes CV parsing engine with skills taxonomy mapping and programmatic cover letter generation via template injection.</p>
                             <div class="tech-tags">
                                 <span class="tech-tag">PHP 8.2</span><span class="tech-tag">Python 3.11</span><span class="tech-tag">BeautifulSoup4</span>
-                                <span class="tech-tag">NLP</span><span class="tech-tag">WhatsApp API</span><span class="tech-tag">Queue Workers</span>
+                                <span class="tech-tag">NLP/Spacy</span><span class="tech-tag">WhatsApp API</span><span class="tech-tag">Redis Queues</span>
                             </div>
-                            <button class="btn-gradient request-access-btn" data-project="Ravka - Distributed Crawler Engine" style="margin-top: auto; width: 100%; justify-content: center; font-size: 0.78rem; padding: 8px 16px;">
+                            <button class="btn-gradient request-access-btn" data-project="Ravka - Distributed Crawler Engine" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
                                 <i class="fas fa-lock-open me-2"></i> Request Technical Review
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PayFlow - Payment Orchestration -->
+                <!-- 2. PayFlow -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase locked-project-card" data-project="payflow" style="position: relative; cursor: default;">
                         <div class="project-preview" style="background: linear-gradient(145deg, #1a1025 0%, #1a1a2e 50%, #16213e 100%); display: flex; align-items: center; justify-content: center; position: relative;">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.04; background-image: radial-gradient(circle, #d9a441 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #d9a441 1px, transparent 1px); background-size: 18px 18px;"></div>
                             <div style="position: relative; z-index: 2; text-align: center;">
-                                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">💳</div>
-                                <div style="color: var(--gold); font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;">PAYFLOW</div>
-                                <div style="color: var(--text-secondary); font-size: 0.6rem; margin-top: 2px; letter-spacing: 1px;">PRIVATE BETA</div>
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">💳</div>
+                                <div style="color: var(--gold); font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">PAYFLOW</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">PRIVATE BETA</div>
                             </div>
-                            <div style="position: absolute; top: 12px; right: 12px; display: flex; align-items: center; gap: 5px; background: rgba(10,10,15,0.8); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; z-index: 3;">
-                                <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite;"></span>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(217,164,65,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite;"></span>
                                 <span style="font-size: 0.6rem; color: var(--gold); font-weight: 600;">RESTRICTED</span>
                             </div>
                         </div>
                         <div class="project-info">
                             <h4>Payment Orchestration Layer</h4>
-                            <span class="project-type">FinTech Transaction Processor</span>
+                            <span class="project-type">Multi-Rail Transaction Processor</span>
                             <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
-                                <span class="admin-badge" style="margin-bottom: 0;"><i class="fas fa-database"></i> Proprietary</span>
-                                <span class="admin-badge" style="background: rgba(53,185,141,0.12); border: 1px solid rgba(53,185,141,0.25); color: var(--teal); margin-bottom: 0;"><i class="fas fa-shield"></i> PCI-DSS Ready</span>
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(217,164,65,0.12);border:1px solid rgba(217,164,65,0.25);color:var(--gold);margin-bottom:0;"><i class="fas fa-shield"></i> PCI-DSS Compliant</span>
                             </div>
-                            <p>Multi-rail transaction processor implementing adapter pattern for M-PESA STK push, card network gateways (Stripe), and blockchain settlement endpoints. Features merchant dashboard, automated reconciliation engine, and real-time webhook dispatch.</p>
+                            <p>Event-driven payment processor implementing adapter pattern for M-PESA STK push, card network gateways (Stripe), and blockchain settlement endpoints. Features idempotent transaction semantics, automated reconciliation engine with double-entry verification, and signed webhook dispatch with retry policies.</p>
                             <div class="tech-tags">
-                                <span class="tech-tag">Node.js</span><span class="tech-tag">React 18</span><span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">M-PESA API</span><span class="tech-tag">Stripe Connect</span><span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Node.js 20</span><span class="tech-tag">React 18</span><span class="tech-tag">PostgreSQL 16</span>
+                                <span class="tech-tag">M-PESA API v2</span><span class="tech-tag">Stripe Connect</span><span class="tech-tag">Docker Swarm</span>
                             </div>
-                            <button class="btn-gradient request-access-btn" data-project="PayFlow - Payment Orchestration Layer" style="margin-top: auto; width: 100%; justify-content: center; font-size: 0.78rem; padding: 8px 16px;">
+                            <button class="btn-gradient request-access-btn" data-project="PayFlow - Payment Orchestration Layer" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
                                 <i class="fas fa-lock-open me-2"></i> Request Technical Review
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- FarmChain - Supply Chain Provenance -->
+                <!-- 3. FarmChain -->
                 <div class="col-lg-4 col-md-6 reveal">
                     <div class="project-showcase locked-project-card" data-project="farmchain" style="position: relative; cursor: default;">
                         <div class="project-preview" style="background: linear-gradient(145deg, #0d1f14 0%, #132a1c 50%, #0f2418 100%); display: flex; align-items: center; justify-content: center; position: relative;">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.04; background-image: radial-gradient(circle, #35b98d 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #35b98d 1px, transparent 1px); background-size: 18px 18px;"></div>
                             <div style="position: relative; z-index: 2; text-align: center;">
-                                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🌾</div>
-                                <div style="color: #35b98d; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;">FARMCHAIN</div>
-                                <div style="color: var(--text-secondary); font-size: 0.6rem; margin-top: 2px; letter-spacing: 1px;">MVP STAGE</div>
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🌾</div>
+                                <div style="color: #35b98d; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">FARMCHAIN</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">MVP STAGE</div>
                             </div>
-                            <div style="position: absolute; top: 12px; right: 12px; display: flex; align-items: center; gap: 5px; background: rgba(10,10,15,0.8); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; z-index: 3;">
-                                <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite;"></span>
-                                <span style="font-size: 0.6rem; color: var(--gold); font-weight: 600;">RESTRICTED</span>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(53,185,141,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: var(--teal); font-weight: 600;">RESTRICTED</span>
                             </div>
                         </div>
                         <div class="project-info">
                             <h4>Supply Chain Provenance System</h4>
-                            <span class="project-type">AgriTech Blockchain Platform</span>
+                            <span class="project-type">AgriTech Immutable Ledger</span>
                             <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
-                                <span class="admin-badge" style="margin-bottom: 0;"><i class="fas fa-database"></i> Proprietary</span>
-                                <span class="admin-badge" style="background: rgba(53,185,141,0.12); border: 1px solid rgba(53,185,141,0.25); color: var(--teal); margin-bottom: 0;"><i class="fas fa-leaf"></i> MVP</span>
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(53,185,141,0.12);border:1px solid rgba(53,185,141,0.25);color:var(--teal);margin-bottom:0;"><i class="fas fa-leaf"></i> MVP</span>
                             </div>
-                            <p>Immutable ledger system for agricultural product traceability from farm to consumer. Integrates IoT sensor data, QR-based verification at each supply chain node, and cooperative-grade inventory management with predictive harvest analytics.</p>
+                            <p>Permissioned blockchain fabric for agricultural product traceability implementing zero-knowledge proofs for supply chain confidentiality. Integrates IoT sensor telemetry via MQTT, cryptographically-signed QR verification at custody transfer points, and cooperative-grade inventory management with SARIMA-based harvest forecasting.</p>
                             <div class="tech-tags">
-                                <span class="tech-tag">Python</span><span class="tech-tag">Flutter</span><span class="tech-tag">Hyperledger</span>
-                                <span class="tech-tag">IoT/MQTT</span><span class="tech-tag">Firebase</span><span class="tech-tag">Google Maps API</span>
+                                <span class="tech-tag">Python 3.11</span><span class="tech-tag">Flutter 3</span><span class="tech-tag">Hyperledger Fabric</span>
+                                <span class="tech-tag">IoT/MQTT</span><span class="tech-tag">Firebase RTDB</span><span class="tech-tag">Google Maps SDK</span>
                             </div>
-                            <button class="btn-gradient request-access-btn" data-project="FarmChain - Supply Chain Provenance" style="margin-top: auto; width: 100%; justify-content: center; font-size: 0.78rem; padding: 8px 16px;">
+                            <button class="btn-gradient request-access-btn" data-project="FarmChain - Supply Chain Provenance" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row g-3 g-md-4 mb-4">
+                
+                <!-- 4. ChamaLedger -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="chamaledger" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #1a1a0d 0%, #1f1f10 50%, #2a2a15 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #d9a441 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">👥</div>
+                                <div style="color: var(--gold); font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">CHAMALEDGER</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">ALPHA • DEVELOPMENT</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(217,164,65,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: var(--gold); font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Digital Cooperative Ledger System</h4>
+                            <span class="project-type">FinTech • SACCO Core Banking</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(217,164,65,0.12);border:1px solid rgba(217,164,65,0.25);color:var(--gold);margin-bottom:0;"><i class="fas fa-calculator"></i> Double-Entry</span>
+                            </div>
+                            <p>Cooperative finance engine with deterministic merry-go-round scheduling, share capital tracking with compound dividend computation, and M-PESA B2C/C2B integration. Includes loan origination workflow with credit scoring, guarantor chain management, and SASRA-compliant regulatory reporting module.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Django 5</span><span class="tech-tag">React 18</span><span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">M-PESA B2C</span><span class="tech-tag">Celery</span><span class="tech-tag">Redis Streams</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="ChamaLedger - Cooperative Ledger System" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. TenderShield -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="tendershield" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #111a2e 0%, #162240 50%, #0d1a33 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #5b8def 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🛡️</div>
+                                <div style="color: #5b8def; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">TENDERSHIELD</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">CONCEPT • RESEARCH</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(91,141,239,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #5b8def; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #5b8def; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Procurement Fraud Detection Engine</h4>
+                            <span class="project-type">GovTech • Anomaly Detection ML</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(53,185,141,0.12);border:1px solid rgba(53,185,141,0.25);color:var(--teal);margin-bottom:0;"><i class="fas fa-chart-line"></i> Isolation Forest</span>
+                            </div>
+                            <p>Unsupervised anomaly detection model trained on Kenyan government procurement data. Flags bid rigging indicators, phantom bidder networks via graph analysis, price collusion signals using Benford's Law distribution testing, and shell company detection through director cross-referencing against company registry.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span><span class="tech-tag">scikit-learn</span><span class="tech-tag">XGBoost</span>
+                                <span class="tech-tag">NetworkX</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Pandas Profiling</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="TenderShield - Fraud Detection ML" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. SokoPredict -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="sokopredict" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #1a0d0d 0%, #2e1616 50%, #1f1010 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #e15c5c 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">📈</div>
+                                <div style="color: #e15c5c; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">SOKOPREDICT</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">RESEARCH PHASE</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(225,92,92,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #e15c5c; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #e15c5c; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Commodity Price Forecasting Engine</h4>
+                            <span class="project-type">Time-Series ML Platform</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(225,92,92,0.12);border:1px solid rgba(225,92,92,0.25);color:#e15c5c;margin-bottom:0;"><i class="fas fa-brain"></i> LSTM + Transformer</span>
+                            </div>
+                            <p>Ensemble forecasting architecture combining LSTM networks with Transformer attention mechanisms to predict commodity prices across East African markets. Ingests weather patterns, fuel costs, border delay indices, and historical pricing. Designed for agro-processors, logistics firms, and commodity traders.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">LSTM</span><span class="tech-tag">Prophet</span><span class="tech-tag">FastAPI</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="SokoPredict - Market Price ML Engine" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row 3 -->
+            <div class="row g-3 g-md-4 mb-4">
+                
+                <!-- 7. MediqAI -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="mediqai" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #0d1a1f 0%, #0f2428 50%, #0a1a1e 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #2dd4bf 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🏥</div>
+                                <div style="color: #2dd4bf; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">MEDIQ AI</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">PROTOTYPE</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(45,212,191,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #2dd4bf; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #2dd4bf; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Medical Inventory Forecasting System</h4>
+                            <span class="project-type">HealthTech ML Platform</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(53,185,141,0.12);border:1px solid rgba(53,185,141,0.25);color:var(--teal);margin-bottom:0;"><i class="fas fa-heartbeat"></i> Health ML</span>
+                            </div>
+                            <p>Predictive inventory model for hospital pharmacies and medical suppliers. Forecasts drug demand based on seasonal illness patterns, prescription trends, and supply chain lead times. Includes cold-chain monitoring module and expiry prediction using survival analysis.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span><span class="tech-tag">XGBoost</span><span class="tech-tag">Prophet</span>
+                                <span class="tech-tag">Streamlit</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Docker</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="MediqAI - Medical Inventory ML" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. LandLedger -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="landledger" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #1a1209 0%, #2a1f10 50%, #1f170a 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #b8861a 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🏠</div>
+                                <div style="color: #b8861a; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">LANDLEDGER</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">CONCEPT</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(184,134,26,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #b8861a; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #b8861a; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Land Registry Verification System</h4>
+                            <span class="project-type">GovTech Blockchain Platform</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(53,185,141,0.12);border:1px solid rgba(53,185,141,0.25);color:var(--teal);margin-bottom:0;"><i class="fas fa-link"></i> Blockchain</span>
+                            </div>
+                            <p>Immutable land title verification engine with cryptographic deed hashing, ownership chain visualization via DAG traversal, and duplicate title detection using perceptual hashing. Designed to interface with Ardhisasa and county land registries via REST adapters with offline reconciliation.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Solidity</span><span class="tech-tag">Ethereum L2</span><span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">IPFS</span><span class="tech-tag">React</span><span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="LandLedger - Land Registry Blockchain" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Sentio -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="sentio" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #1a0d2e 0%, #241640 50%, #1a1030 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #a855f7 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🧠</div>
+                                <div style="color: #a855f7; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">SENTIO</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">RESEARCH</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(168,85,247,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #a855f7; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #a855f7; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Social Sentiment Analysis Engine</h4>
+                            <span class="project-type">NLP/ML Analytics Platform</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:#a855f7;margin-bottom:0;"><i class="fas fa-language"></i> BERT-based</span>
+                            </div>
+                            <p>Fine-tuned BERT transformer model analyzing public sentiment from Twitter/X, Reddit, and news APIs. Classifies brand perception, political sentiment, and crisis signals. Includes Swahili/Sheng language support via custom tokenizer for East African market intelligence.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span><span class="tech-tag">HuggingFace</span><span class="tech-tag">BERT</span>
+                                <span class="tech-tag">Transformers</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Redis</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="Sentio - Sentiment Analysis ML" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row 4 -->
+            <div class="row g-3 g-md-4 mb-4">
+                
+                <!-- 10. VoteChain -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="votechain" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #0d1a1a 0%, #0f2424 50%, #0a1a1a 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #14b8a6 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">🗳️</div>
+                                <div style="color: #14b8a6; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">VOTECHAIN</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">CONCEPT • RESEARCH</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(20,184,166,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #14b8a6; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #14b8a6; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Decentralized Voting Infrastructure</h4>
+                            <span class="project-type">GovTech • Zero-Knowledge Voting</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(53,185,141,0.12);border:1px solid rgba(53,185,141,0.25);color:var(--teal);margin-bottom:0;"><i class="fas fa-shield"></i> ZK-Proofs</span>
+                            </div>
+                            <p>Cryptographic voting protocol implementing zero-knowledge proofs for ballot validity without revealing voter identity. Features homomorphic tallying, double-vote prevention via nullifier registry, and publicly verifiable audit trail. Designed for organizational elections and shareholder voting.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Rust</span><span class="tech-tag">Circom</span><span class="tech-tag">Solidity</span>
+                                <span class="tech-tag">ZK-SNARKs</span><span class="tech-tag">React</span><span class="tech-tag">Ethereum</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="VoteChain - Decentralized Voting" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. AuditFlow -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="auditflow" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #1a1a0a 0%, #2a2a10 50%, #1f1f0d 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #f59e0b 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">📋</div>
+                                <div style="color: #f59e0b; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">AUDITFLOW</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">DEVELOPMENT</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(245,158,11,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #f59e0b; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #f59e0b; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Automated Compliance Audit Engine</h4>
+                            <span class="project-type">RegTech • Rule-Based ML</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);color:#f59e0b;margin-bottom:0;"><i class="fas fa-check-double"></i> Rule Engine</span>
+                            </div>
+                            <p>Rule-based compliance verification system that ingests regulatory frameworks (IFRS, SASRA, KRA) and automatically validates financial records against them. Includes anomaly flagging, audit trail generation, and compliance scoring with remediation recommendations.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span><span class="tech-tag">Drools</span><span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">FastAPI</span><span class="tech-tag">React</span><span class="tech-tag">Docker</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="AuditFlow - Compliance Audit Engine" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
+                                <i class="fas fa-lock-open me-2"></i> Request Technical Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. SignalFeed -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="project-showcase locked-project-card" data-project="signalfeed" style="position: relative; cursor: default;">
+                        <div class="project-preview" style="background: linear-gradient(145deg, #0d1120 0%, #151a30 50%, #0f1428 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle, #6366f1 1px, transparent 1px); background-size: 18px 18px;"></div>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <div style="font-size: 2.4rem; margin-bottom: 0.4rem;">📡</div>
+                                <div style="color: #6366f1; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; font-family: var(--font-mono);">SIGNALFEED</div>
+                                <div style="color: var(--text-secondary); font-size: 0.58rem; margin-top: 3px; letter-spacing: 2px;">RESEARCH</div>
+                            </div>
+                            <div style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,15,0.85); border: 1px solid rgba(99,102,241,0.2); padding: 5px 10px; border-radius: 20px; z-index: 3; display: flex; align-items: center; gap: 6px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: #6366f1; animation: pulse 2s infinite;"></span>
+                                <span style="font-size: 0.6rem; color: #6366f1; font-weight: 600;">RESTRICTED</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Real-Time Signal Aggregation Pipeline</h4>
+                            <span class="project-type">ML • Event-Driven Architecture</span>
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px;">
+                                <span class="admin-badge" style="margin-bottom:0;"><i class="fas fa-database"></i> Proprietary Stack</span>
+                                <span class="admin-badge" style="background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);color:#6366f1;margin-bottom:0;"><i class="fas fa-stream"></i> Stream Processing</span>
+                            </div>
+                            <p>Low-latency event processing pipeline ingesting heterogeneous data streams — financial tickers, weather APIs, news RSS, social media firehose. Implements complex event processing (CEP) for pattern detection and automated signal generation with confidence scoring.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Go</span><span class="tech-tag">Apache Kafka</span><span class="tech-tag">Redis Streams</span>
+                                <span class="tech-tag">Python</span><span class="tech-tag">WebSockets</span><span class="tech-tag">Docker</span>
+                            </div>
+                            <button class="btn-gradient request-access-btn" data-project="SignalFeed - Signal Aggregation Pipeline" style="margin-top:auto;width:100%;justify-content:center;font-size:0.76rem;padding:8px 16px;">
                                 <i class="fas fa-lock-open me-2"></i> Request Technical Review
                             </button>
                         </div>
@@ -1241,7 +1559,7 @@
             <div class="text-center reveal" style="margin-top: 0.5rem;">
                 <p style="color: var(--text-secondary); font-size: 0.78rem;">
                     <i class="fas fa-info-circle me-1" style="color: var(--gold);"></i> 
-                    These systems contain proprietary architecture and trade logic. Technical deep-dives available to verified collaborators, strategic partners, and qualified investors under NDA.
+                    These systems contain proprietary architecture, unpublished research, and trade logic. Technical deep-dives available to verified collaborators, strategic partners, and qualified investors under NDA.
                 </p>
             </div>
         </div>
