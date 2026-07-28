@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Project</title>
+    <style>
+        body { background: #0a0a0f; color: #e4eae7; font-family: 'Poppins', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+        .card { background: #151a18; border: 1px solid #24302b; border-radius: 14px; padding: 2rem; max-width: 500px; }
+        .success { color: #35b98d; font-size: 3rem; margin-bottom: 1rem; }
+        .btn { background: linear-gradient(135deg, #1f8f6d, #35b98d); color: #fff; padding: 10px 22px; border-radius: 10px; text-decoration: none; display: inline-block; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="success">🔓</div>
+        <h2>Access Granted!</h2>
+        <p>The project has been unlocked. Return to the portfolio to view it.</p>
+        <a href="https://davidseme.vercel.app/#ventures" class="btn">Go to Ventures</a>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const project = params.get('project');
+        if (project) {
+            localStorage.setItem('unlockedProjects', JSON.stringify([project]));
+        }
+    </script>
+</body>
+</html>
