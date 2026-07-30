@@ -1974,14 +1974,13 @@ document.addEventListener('DOMContentLoaded', function() {
             timestamp: new Date().toISOString()
         };
         
-        // Send to tracking endpoint
-        fetch('https://davidseme.vercel.app/track.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-            // Don't block page load
-            keepalive: true
-        }).catch(() => {});
+       // Send to tracking endpoint
+fetch('/api/track', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+    keepalive: true
+}).catch(() => {});
     }
 })();
 </script>
