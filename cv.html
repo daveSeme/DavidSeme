@@ -2,33 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>David Seme Luvai — CV</title>
+<title>David Seme Luvai — Resume</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #1f8f6d;
-    --teal-light: #35b98d;
-    --gold: #b8861a;
-    --ink: #1a2520;
-    --muted: #5c6b64;
-    --rule: #d4dfd9;
-    --pill-bg: #eef5f1;
-    --pill-border: #cfe3da;
+    --teal: #17365D;
+    --teal-light: #2563EB;
+    --gold: #2563EB;
+    --ink: #172033;
+    --muted: #586579;
+    --rule: #D9E2EC;
+    --pill-bg: #F3F6FA;
+    --pill-border: #D9E2EC;
   }
 
-  @page { size: A4; margin: 12mm 13mm; }
+  @page { size: Letter; margin: 0.55in 0.62in; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Poppins', sans-serif;
-    font-size: 8.4pt;
+    font-size: 9pt;
     line-height: 1.42;
     color: var(--ink);
     background: #fff;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+
+  @media print { a { text-decoration: none; } body { background: #fff; } }
 
   /* ---------- Header ---------- */
   header {
@@ -37,14 +39,14 @@
     margin-bottom: 7pt;
   }
   .name {
-    font-size: 19pt;
+    font-size: 23pt;
     font-weight: 700;
     letter-spacing: -0.3pt;
     line-height: 1.1;
   }
   .name span { color: var(--teal); }
   .tagline {
-    font-size: 8.4pt;
+    font-size: 9pt;
     font-weight: 500;
     color: var(--muted);
     margin-top: 1pt;
@@ -54,7 +56,7 @@
     flex-wrap: wrap;
     gap: 3pt 9pt;
     margin-top: 4pt;
-    font-size: 7.4pt;
+    font-size: 7.8pt;
     color: var(--muted);
     font-family: 'JetBrains Mono', monospace;
   }
@@ -63,17 +65,17 @@
   /* ---------- Section ---------- */
   section { margin-bottom: 6pt; }
   .label {
-    font-size: 6.8pt;
+    font-size: 7.2pt;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.3pt;
+    letter-spacing: 1pt;
     color: var(--teal);
     border-bottom: 1px solid var(--rule);
     padding-bottom: 1.5pt;
     margin-bottom: 3.5pt;
   }
 
-  .profile { font-size: 8.2pt; text-align: justify; }
+  .profile { font-size: 9pt; text-align: left; }
 
   /* ---------- Experience / Projects timeline ---------- */
   .item {
@@ -100,23 +102,23 @@
     gap: 8pt;
     flex-wrap: wrap;
   }
-  .title { font-weight: 600; font-size: 8.8pt; }
+  .title { font-weight: 600; font-size: 9.4pt; }
   .title .co { font-weight: 500; color: var(--teal); }
   .date {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 6.8pt;
+    font-size: 7.2pt;
     color: var(--muted);
     white-space: nowrap;
   }
   .context {
-    font-size: 7.2pt;
+    font-size: 7.8pt;
     color: var(--muted);
     font-style: italic;
     margin: 0.5pt 0 1.5pt;
   }
   .item ul { list-style: none; }
   .item li {
-    font-size: 7.8pt;
+    font-size: 8.4pt;
     margin-bottom: 1.2pt;
     padding-left: 8pt;
     position: relative;
@@ -127,16 +129,16 @@
     position: absolute;
     left: 0;
     color: var(--teal);
-    font-size: 6.8pt;
+    font-size: 7.2pt;
     top: 0.3pt;
   }
   .item.gold li::before { color: var(--gold); }
   .item li b { font-weight: 600; }
 
-  .project p { font-size: 7.6pt; color: var(--muted); margin-top: 1pt; }
+  .project p { font-size: 8.2pt; color: var(--muted); margin-top: 1pt; }
   .stack {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 6.6pt;
+    font-size: 7pt;
     color: var(--gold);
   }
 
@@ -149,7 +151,7 @@
   }
   .skill-key {
     flex: 0 0 80pt;
-    font-size: 6.8pt;
+    font-size: 7.2pt;
     font-weight: 600;
     color: var(--muted);
     text-transform: uppercase;
@@ -158,30 +160,30 @@
   }
   .pills { display: flex; flex-wrap: wrap; gap: 2.2pt; flex: 1; }
   .pill {
-    font-size: 6.8pt;
+    font-size: 7.2pt;
     padding: 1pt 4.5pt;
-    border-radius: 20pt;
+    border-radius: 4pt;
     background: var(--pill-bg);
     border: 1px solid var(--pill-border);
     color: var(--ink);
     white-space: nowrap;
   }
-  .pill.accent { background: #e6f4ee; border-color: #b6dccb; color: var(--teal); font-weight: 500; }
+  .pill.accent { background: #EFF6FF; border-color: #b6dccb; color: var(--teal); font-weight: 500; }
   .pill.gold { background: #faf3e2; border-color: #e8d3a4; color: var(--gold); font-weight: 500; }
 
   /* ---------- Education ---------- */
   .edu { display: flex; justify-content: space-between; gap: 10pt; flex-wrap: wrap; }
   .edu b { font-weight: 600; font-size: 8.6pt; }
-  .edu small { display: block; color: var(--muted); font-size: 7.4pt; }
-  .edu-date { font-family: 'JetBrains Mono', monospace; font-size: 6.8pt; color: var(--muted); text-align: right; }
+  .edu small { display: block; color: var(--muted); font-size: 7.8pt; }
+  .edu-date { font-family: 'JetBrains Mono', monospace; font-size: 7.2pt; color: var(--muted); text-align: right; }
 
   .avail {
     margin-top: 5pt;
     padding: 3.5pt 6pt;
-    background: #e6f4ee;
+    background: #EFF6FF;
     border-left: 3px solid var(--teal);
     border-radius: 3pt;
-    font-size: 7.2pt;
+    font-size: 7.8pt;
   }
   .avail b { color: var(--teal); }
 
@@ -212,7 +214,7 @@
 <section>
   <div class="label">Profile</div>
   <div class="profile">
-    Software Engineer and Data Analyst with 5+ years delivering enterprise systems, ERP customizations (Microsoft Dynamics NAV/BC), Power BI dashboards, and AI-powered data pipelines for government agencies and private clients across Kenya. Combines full-stack engineering depth with data analytics expertise — building portals, ETL pipelines, and business intelligence that close the gap between operations and decision-making. Microsoft Power BI and Dynamics NAV certified; BSc Computer Science.
+    Software Engineer and Data Analyst delivering enterprise systems, ERP customizations (Microsoft Dynamics NAV/BC), Power BI dashboards, and data pipelines for government agencies and private clients. Combines full-stack engineering and analytics expertise to build portals, ETL pipelines, and business intelligence solutions that improve operations and decision-making. Microsoft Power BI and Dynamics NAV certified; BSc Computer Science.
   </div>
 </section>
 
@@ -355,7 +357,7 @@
 </section>
 
 <div class="avail">
-  <b>Available for work</b> · Open to remote and Nairobi-based roles in software engineering, data analytics, and enterprise systems.
+  <b>Available for work</b> · Open to remote and Onsite roles in software engineering, data analytics, enterprise systems and Tech-related positions.
 </div>
 
 </body>
