@@ -136,6 +136,11 @@
   .item li b { font-weight: 600; }
 
   .project p { font-size: 8.2pt; color: var(--muted); margin-top: 1pt; }
+  .project-links { list-style: none; margin-top: 2pt; padding: 0; }
+  .project-links li { font-size: 8.2pt; line-height: 1.35; margin-bottom: 2pt; padding-left: 9pt; position: relative; }
+  .project-links li::before { content: '•'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+  .project-links a { color: var(--teal); font-weight: 600; text-decoration: none; }
+  .project-links a:hover { text-decoration: underline; }
   .stack {
     font-family: 'JetBrains Mono', monospace;
     font-size: 7pt;
@@ -274,34 +279,62 @@
 
   <div class="item gold project">
     <div class="head">
+      <div class="title">Power BI — Enterprise Reporting &amp; Business Intelligence</div>
+      <div class="stack">Power BI · DAX · Dynamics NAV/BC · Data Modeling · ETL</div>
+    </div>
+    <p>Built and delivered financial and regulatory reporting solutions that turn operational ERP data into decision-ready insights. Connected dashboards to live Dynamics NAV data, consolidated reporting across multiple sources, and supported stakeholder visibility into financial, compliance, and operational performance.</p>
+  </div>
+
+
+  <div class="item gold project">
+    <div class="head">
       <div class="title">Enterprise &amp; Government Systems</div>
       <div class="stack">AL · .NET · Power BI · GCP · BigQuery</div>
     </div>
-    <p><b>SASRA</b> — Dynamics NAV ERP customization (AL), Power BI regulatory dashboards, .NET staff portal. <b>UFAA</b> — centralized GCP data lake, Power BI financial dashboards, NAV ERP support and legacy data migration. <b>Privatization Authority</b> — lead developer on NAV ERP and AIMS asset-tracking portal with real-time ERP sync. <b>NCA</b> — contractor registration and management workflows. <b>KRA</b> — TIMS e-invoice integration via REST API. <b>MOESNA</b> — multi-country performance evaluation platform across Eastern, Southern &amp; Northern Africa.</p>
+    <ul class="project-links">
+      <li><b>SASRA:</b> Dynamics NAV ERP customization (AL), regulatory Power BI dashboards, and .NET staff portal.</li>
+      <li><b>UFAA:</b> <a href="https://ufaa.go.ke" target="_blank" rel="noopener">UFAA</a> — GCP data lake, financial dashboards, ERP support, and legacy data migration.</li>
+      <li><b>Privatization Authority:</b> NAV ERP and AIMS asset-tracking portal with real-time ERP synchronization.</li>
+      <li><b>NCA:</b> Contractor registration and management workflows for the construction regulator.</li>
+      <li><b>KRA:</b> TIMS e-invoice integration through REST APIs.</li>
+      <li><b>MOESNA:</b> Multi-country performance evaluation platform across Eastern, Southern, and Northern Africa.</li>
+    </ul>
   </div>
+
 
   <div class="item gold project">
     <div class="head">
       <div class="title">E-Commerce &amp; Service Platforms</div>
-      <div class="stack">PHP · MySQL · JavaScript · Bootstrap · M-PESA API</div>
+      <div class="stack">PHP · MySQL · JavaScript · Bootstrap · REST APIs · M-PESA</div>
     </div>
-    <p>Delivered 15+ live production platforms with full admin panels: <b>Ela Glow Spa</b> (booking), <b>Dandora GVTC</b> (TVET CMS + student applications), <b>VITO Electronics</b> (multi-currency e-commerce, M-PESA), <b>MubiLeather</b> (multi-level admin, DHL shipping, Power BI analytics), <b>PeaceFx</b> (forex education + subscriptions), <b>Rovil Coffee</b> (farmer portal + subscriptions), <b>Vian Consultancy</b> (client portal), and more.</p>
+    <p>Delivered production web platforms with customer-facing workflows, administration tools, payments, content management, and analytics. Selected work:</p>
+    <ul class="project-links">
+      <li><b><a href="https://rovil.co.ke/ElaGlowSpa/index.php" target="_blank" rel="noopener">Ela Glow Spa</a></b> — Online service booking, wellness services, gallery, and administration dashboard.</li>
+      <li><b><a href="https://dandoragvtc.ac.ke" target="_blank" rel="noopener">Dandora Green Light VTC</a></b> — TVET website, CMS, student applications, driving school information, and role-based admin.</li>
+      <li><b><a href="https://namfront.co.ke/vito/" target="_blank" rel="noopener">VITO Electronics</a></b> — E-commerce store with multi-currency support, cart, wishlist, M-PESA integration, and product administration.</li>
+      <li><b><a href="https://mubileather.com" target="_blank" rel="noopener">MubiLeather</a></b> — Leather-goods e-commerce, checkout, inventory, multi-level administration, DHL shipping, and Power BI analytics.</li>
+      <li><b><a href="https://rovil.co.ke/Peace/index.php" target="_blank" rel="noopener">PeaceFx Trading</a></b> — Forex education portal with learning resources, subscriptions, messaging, and admin approval workflows.</li>
+      <li><b><a href="https://namfront.co.ke/virovil" target="_blank" rel="noopener">Rovil Coffee Factory</a></b> — Coffee storefront, subscriptions, farmer portal, shipping, and management tools.</li>
+      <li><b><a href="https://vianconsultancy.com" target="_blank" rel="noopener">Vian Consultancy</a></b> — Professional-services website with client portal, lead tracking, reporting, and admin dashboard.</li>
+    </ul>
   </div>
+
 
   <div class="item gold project">
     <div class="head">
       <div class="title">Ravka Engine — Distributed Web Crawler</div>
       <div class="stack">PHP 8.2 · Python 3.11 · NLP/SpaCy · Redis Queues</div>
     </div>
-    <p>Multi-threaded scraping architecture with intelligent rate limiting, NLP-based entity extraction, automated PDF/DOCX parsing, and real-time notification dispatch across 50+ endpoints. Includes CV parsing engine with skills taxonomy mapping.</p>
+    <p>Engineered a distributed scraping workflow with intelligent rate limiting, NLP-based entity extraction, automated PDF/DOCX parsing, and notification dispatch across 50+ endpoints. Includes a CV parsing engine with skills taxonomy mapping.</p>
   </div>
+
 
   <div class="item gold project">
     <div class="head">
       <div class="title">PayFlow — Payment Orchestration Layer</div>
       <div class="stack">Node.js 20 · React 18 · PostgreSQL · M-PESA · Stripe Connect</div>
     </div>
-    <p>Event-driven payment processor with adapter pattern for M-PESA STK push, card gateways, and blockchain settlement. Idempotent transactions, automated reconciliation, signed webhook dispatch with retry policies.</p>
+    <p>Designed an event-driven payment architecture integrating M-PESA STK Push and card gateways, with transaction idempotency, automated reconciliation, signed webhook delivery, and retry handling for resilient payment processing.</p>
   </div>
 </section>
 
